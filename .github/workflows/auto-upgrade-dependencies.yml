@@ -25,6 +25,7 @@ jobs:
               shell: bash
               run: |
                   cargo upgrade
+                  cargo update
                   if [ -n "$(git status --porcelain)" ]; then
                       echo "Found upgrades"
                       echo "upgraded=true" >> "$GITHUB_OUTPUT"
