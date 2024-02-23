@@ -1,0 +1,48 @@
+name: Auto-upgrade Dependencies
+
+on: workflow_dispatch
+
+env:
+    CARGO_TERM_COLOR: always
+    AWS_REGION: us-east-1
+
+jobs:
+    upgrade:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  token: ${{ secrets.LOG_SERVICE_UPGRADES_TOKEN }}
+
+            - name: Install cargo-edit
+              shell: bash
+              run: |
+                  cargo install -f cargo-edit
+
+            - name: Upgrade
+              shell: bash
+              run: |
+                  cargo upgrade
+
+            - name: Build
+              shell: bash
+              run: |
+                  if [ -n "$(git status --porcelain)" ]; then
+                      cargo build
+                  fi
+
+            - name: Commit
+              shell: bash
+              run: |
+                  if [ -n "$(git status --porcelain)" ]; then
+                      echo "Found upgrades"
+                      git config user.name "MoosicBoxBot"
+                      git config user.email "MoosicBoxBot@gmail.com"
+                      git add .
+                      git commit --message "Upgrade Dependencies"
+                      echo "Pushing upgrades"
+                      git push origin master
+                  else
+                      echo "No upgrades"
+                  fi
