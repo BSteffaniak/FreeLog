@@ -32,6 +32,13 @@ jobs:
                       cargo build
                   fi
 
+            - name: Test
+              shell: bash
+              run: |
+                  if [ -n "$(git status --porcelain)" ]; then
+                      cargo test
+                  fi
+
             - name: Commit
               shell: bash
               run: |
