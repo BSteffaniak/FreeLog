@@ -1,0 +1,56 @@
+name: Build and Test
+
+on:
+    push:
+        branches: ['master']
+    pull_request:
+        branches: ['master']
+
+env:
+    CARGO_TERM_COLOR: always
+
+jobs:
+    build:
+        runs-on: ${{ matrix.package.os }}
+
+        strategy:
+            fail-fast: false
+
+            matrix:
+                package:
+                    - name: writer
+                      path: packages/writer
+                      os: ubuntu-latest
+                      cargo: --no-default-features
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: ⚡ Cache cargo
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.cargo/registry
+                      ~/.cargo/git
+                      target
+                  key: ${{ runner.os }}-${{ matrix.package.name }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+            - name: Install dependencies
+              if: ${{ matrix.package.dependencies }}
+              run: ${{ matrix.package.dependencies }}
+
+            - name: Build ${{ matrix.package.name }}
+              shell: bash
+              run: |
+                  ${{ matrix.package.env }} cargo build \
+                        --manifest-path=${{ matrix.package.path }}/Cargo.toml \
+                        --verbose \
+                        --features=fail-on-warnings${{ matrix.package.features && format(',{0}', matrix.package.features) || '' }} ${{ matrix.package.cargo }}
+
+            - name: Run ${{ matrix.package.name }} tests
+              shell: bash
+              run: |
+                  ${{ matrix.package.env }} cargo test \
+                        --manifest-path=${{ matrix.package.path }}/Cargo.toml \
+                        --verbose \
+                        --features=fail-on-warnings${{ matrix.package.features && format(',{0}', matrix.package.features) || '' }} ${{ matrix.package.cargo }}
