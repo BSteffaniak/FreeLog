@@ -9,7 +9,14 @@
         "deploy": "sst deploy",
         "remove": "sst remove",
         "console": "sst console",
-        "typecheck": "tsc --noEmit"
+        "sst:deploy": "sst deploy",
+        "sst:dev": "sst dev",
+        "pretty": "prettier --check \"**/*.{js,cjs,mjs,jsx,ts,tsx,astro}\"",
+        "pretty:write": "prettier --write \"**/*.{js,cjs,mjs,jsx,ts,tsx,astro}\"",
+        "lint": "eslint --ext .ts,.tsx .",
+        "lint:write": "eslint --fix",
+        "typecheck": "tsc --noEmit",
+        "validate": "pnpm pretty && pnpm lint && pnpm typecheck"
     },
     "devDependencies": {
         "@aws-sdk/client-ssm": "^3.414.0",
