@@ -9,16 +9,16 @@ importers:
   .:
     devDependencies:
       '@aws-sdk/client-ssm':
-        specifier: ^3.414.0
+        specifier: ^3.519.0
         version: 3.519.0
       '@tsconfig/node18':
         specifier: ^18.2.2
         version: 18.2.2
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6.7.0
+        specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.56.0)(typescript@5.3.3)
       '@typescript-eslint/parser':
-        specifier: ^6.7.0
+        specifier: ^6.21.0
         version: 6.21.0(eslint@8.56.0)(typescript@5.3.3)
       aws-cdk-lib:
         specifier: 2.124.0
@@ -27,7 +27,7 @@ importers:
         specifier: 10.3.0
         version: 10.3.0
       eslint:
-        specifier: ^8.49.0
+        specifier: ^8.56.0
         version: 8.56.0
       eslint-config-airbnb:
         specifier: ^19.0.4
@@ -36,25 +36,25 @@ importers:
         specifier: ^17.1.0
         version: 17.1.0(@typescript-eslint/eslint-plugin@6.21.0)(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.56.0)
       eslint-config-prettier:
-        specifier: ^9.0.0
+        specifier: ^9.1.0
         version: 9.1.0(eslint@8.56.0)
       eslint-plugin-diff:
-        specifier: ^2.0.1
+        specifier: ^2.0.3
         version: 2.0.3(eslint@8.56.0)
       eslint-plugin-import:
-        specifier: ^2.28.1
+        specifier: ^2.29.1
         version: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.56.0)
       eslint-plugin-node:
         specifier: ^11.1.0
         version: 11.1.0(eslint@8.56.0)
       prettier:
-        specifier: ^3.0.3
+        specifier: ^3.2.5
         version: 3.2.5
       sst:
         specifier: 2.40.3
         version: 2.40.3(@aws-sdk/credential-provider-node@3.515.0)
       typescript:
-        specifier: ^5.2.2
+        specifier: ^5.3.3
         version: 5.3.3
 
 packages:
@@ -3428,7 +3428,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.2.1
+      ieee754: 1.1.13
       isarray: 1.0.0
     dev: true
 
@@ -3629,7 +3629,7 @@ packages:
     resolution: {integrity: sha512-rraC8NXWOEjhADbZe9QBNzLAN5Q3fsTPQtBV+fEVj6xKIgDgNiEVE6ZNfHpZOqfQ21YUzfVNUXLOEZquYvQPPg==}
     dependencies:
       leven: 2.1.0
-      minimist: 1.2.8
+      minimist: 1.2.6
     dev: true
 
   /compress-commons@4.1.2:
@@ -5661,7 +5661,7 @@ packages:
       duplexify: 4.1.2
       help-me: 3.0.0
       inherits: 2.0.4
-      minimist: 1.2.8
+      minimist: 1.2.6
       mqtt-packet: 6.10.0
       pump: 3.0.0
       readable-stream: 3.6.2

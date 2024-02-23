@@ -19,22 +19,22 @@
         "validate": "pnpm pretty && pnpm lint && pnpm typecheck"
     },
     "devDependencies": {
-        "@aws-sdk/client-ssm": "^3.414.0",
+        "@aws-sdk/client-ssm": "^3.519.0",
         "@tsconfig/node18": "^18.2.2",
-        "@typescript-eslint/eslint-plugin": "^6.7.0",
-        "@typescript-eslint/parser": "^6.7.0",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "@typescript-eslint/parser": "^6.21.0",
         "aws-cdk-lib": "2.124.0",
         "constructs": "10.3.0",
-        "eslint": "^8.49.0",
+        "eslint": "^8.56.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^17.1.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-diff": "^2.0.1",
-        "eslint-plugin-import": "^2.28.1",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-diff": "^2.0.3",
+        "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-node": "^11.1.0",
-        "prettier": "^3.0.3",
+        "prettier": "^3.2.5",
         "sst": "2.40.3",
-        "typescript": "^5.2.2"
+        "typescript": "^5.3.3"
     },
     "workspaces": [
         "packages/*"
