@@ -44,8 +44,8 @@ jobs:
               run: |
                   if [ -n "$(git status --porcelain)" ]; then
                       echo "Found upgrades"
-                      git config user.name "MoosicBoxBot"
-                      git config user.email "MoosicBoxBot@gmail.com"
+                      git config user.name "Braden Steffaniak"
+                      git config user.email "BradenSteffaniak+bot@gmail.com"
                       git add .
                       git commit --message "Upgrade Dependencies"
                       echo "Pushing upgrades"
