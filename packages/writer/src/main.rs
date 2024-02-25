@@ -30,6 +30,7 @@ async fn main() -> Result<(), Error> {
             .wrap(cors)
             .wrap(middleware::Compress::default())
             .service(api::get_logs_endpoint)
+            .service(api::create_logs_endpoint)
     };
 
     if is_running_on_lambda() {
