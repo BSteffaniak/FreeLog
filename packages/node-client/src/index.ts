@@ -131,12 +131,12 @@ function calculateLogComponentsSize(values: LogComponent[]): number {
     return sum;
 }
 
-function flushAfterDelay() {
+function flushAfterDelay(delay: number = 1000) {
     if (flushTimeout) {
         clearTimeout(flushTimeout);
     }
 
-    flushTimeout = setTimeout(flush, 1000);
+    flushTimeout = setTimeout(flush, delay);
 }
 
 export function flush() {
