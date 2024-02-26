@@ -156,6 +156,7 @@ export async function flush() {
         await fetch(`${config.logWriterApiUrl}/logs`, {
             method: 'POST',
             body,
+            headers: { 'content-type': 'application/json' },
         });
     }
 }
