@@ -5,7 +5,7 @@ export type LogComponentPrimitive =
     | undefined
     | null;
 export type LogComponent = LogComponentPrimitive | LogComponentPrimitive[];
-export type LogLevel = 'trace' | 'debug' | 'info' | 'warn' | 'error';
+export type LogLevel = 'TRACE' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR';
 
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
@@ -25,7 +25,7 @@ let bufferSize = 0;
 let initialized = false;
 const defaultConfig: Config = {
     logWriterApiUrl: '',
-    logLevel: 'error',
+    logLevel: 'ERROR',
     shimConsole: false,
     autoFlush: true,
     autoFlushOnClose: true,
@@ -33,11 +33,11 @@ const defaultConfig: Config = {
 const config: Config = defaultConfig;
 
 const levels: Record<LogLevel, number> = {
-    trace: 0,
-    debug: 1,
-    info: 2,
-    warn: 3,
-    error: 4,
+    TRACE: 0,
+    DEBUG: 1,
+    INFO: 2,
+    WARN: 3,
+    ERROR: 4,
 } as const;
 
 const oldConsole = {
@@ -49,11 +49,11 @@ const oldConsole = {
 };
 
 const defaultLogger = {
-    trace: oldConsole.debug,
-    debug: oldConsole.debug,
-    info: oldConsole.log,
-    warn: oldConsole.warn,
-    error: oldConsole.error,
+    TRACE: oldConsole.debug,
+    DEBUG: oldConsole.debug,
+    INFO: oldConsole.log,
+    WARN: oldConsole.warn,
+    ERROR: oldConsole.error,
 };
 
 function circularStringify(obj: object): string {
@@ -204,27 +204,27 @@ export function logComponents(level: LogLevel, components: LogComponent[]) {
 function shimConsole() {
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
     console.trace = function (...args: any[]) {
-        log('trace', ...args);
+        log('TRACE', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
     console.debug = function (...args: any[]) {
-        log('debug', ...args);
+        log('DEBUG', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
     console.log = function (...args: any[]) {
-        log('info', ...args);
+        log('INFO', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
     console.warn = function (...args: any[]) {
-        log('warn', ...args);
+        log('WARN', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
     console.error = function (...args: any[]) {
-        log('error', ...args);
+        log('ERROR', ...args);
     };
 }
 
