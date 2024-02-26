@@ -31,6 +31,11 @@ pub async fn get_logs_endpoint(_query: web::Query<GetLogsQuery>) -> Result<Json<
 pub struct CreateLogsQuery {}
 
 #[post("/logs")]
-pub async fn create_logs_endpoint(_query: web::Query<GetLogsQuery>) -> Result<Json<Value>> {
+pub async fn create_logs_endpoint(
+    _query: web::Query<GetLogsQuery>,
+    payload: Json<Value>,
+) -> Result<Json<Value>> {
+    crate::create_logs(payload.clone()).await?;
+
     Ok(Json(serde_json::json!({"success": true})))
 }

@@ -1,4 +1,6 @@
+import { SSMClient } from '@aws-sdk/client-ssm';
 import { StackContext, Api, Stack, ApiDomainProps } from 'sst/constructs';
+import { fetchSstSecret } from '../sst-secrets';
 
 const domainSlug = 'logs';
 const domain = process.env.DOMAIN;
@@ -14,8 +16,10 @@ function getCustomDomain(stack: Stack): ApiDomainProps {
     };
 }
 
-export async function API({ stack }: StackContext) {
+export async function API({ app, stack }: StackContext) {
     if (!domain) throw new Error('Missing DOMAIN environment variable');
+
+    const ssm = new SSMClient({ region: stack.region });
 
     const customDomain = getCustomDomain(stack);
 
@@ -24,7 +28,20 @@ export async function API({ stack }: StackContext) {
             function: {
                 runtime: 'rust',
                 timeout: '5 minutes',
-                environment: {},
+                environment: {
+                    LOG_GROUP_NAME: await fetchSstSecret(
+                        ssm,
+                        app.name,
+                        'LOG_GROUP_NAME',
+                        app.stage,
+                    ),
+                    LOG_STREAM_NAME: await fetchSstSecret(
+                        ssm,
+                        app.name,
+                        'LOG_STREAM_NAME',
+                        app.stage,
+                    ),
+                },
             },
         },
         routes: {
