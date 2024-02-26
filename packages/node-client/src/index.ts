@@ -139,7 +139,7 @@ function flushAfterDelay(delay: number = 1000) {
     flushTimeout = setTimeout(flush, delay);
 }
 
-export function flush() {
+export async function flush() {
     if (!initialized) throw new Error(`Logger not initialized`);
 
     if (flushTimeout) {
@@ -153,7 +153,7 @@ export function flush() {
         logBuffer.length = 0;
         bufferSize = 0;
 
-        fetch(`${config.logWriterApiUrl}/logs`, {
+        await fetch(`${config.logWriterApiUrl}/logs`, {
             method: 'POST',
             body,
         });
