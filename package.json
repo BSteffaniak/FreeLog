@@ -21,6 +21,7 @@
     "devDependencies": {
         "@aws-sdk/client-ssm": "^3.519.0",
         "@tsconfig/node18": "^18.2.2",
+        "@types/node": "^20.11.20",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
         "aws-cdk-lib": "2.124.0",
@@ -34,6 +35,8 @@
         "eslint-plugin-node": "^11.1.0",
         "prettier": "^3.2.5",
         "sst": "2.40.3",
+        "tsx": "^4.7.1",
+        "tsup": "^8.0.2",
         "typescript": "^5.3.3"
     },
     "workspaces": [

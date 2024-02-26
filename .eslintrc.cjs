@@ -5,16 +5,19 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'airbnb',
+        'airbnb/base',
         'airbnb-typescript/base',
         'plugin:diff/diff',
         'prettier',
     ],
     parserOptions: {
-        project: ['./tsconfig.json'],
+        project: ['./tsconfig.packages.json'],
     },
     rules: {
+        'func-names': 'off',
         'import/prefer-default-export': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
         'import/no-extraneous-dependencies': [
             'error',
             { devDependencies: true },

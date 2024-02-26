@@ -1,0 +1,10 @@
+{
+    "extends": "../../tsconfig.packages.json",
+    "compilerOptions": {
+        "module": "esnext",
+        "moduleResolution": "node"
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}
