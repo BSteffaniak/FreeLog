@@ -132,10 +132,10 @@ impl From<CreateLogsError> for actix_web::Error {
     }
 }
 
-pub async fn create_logs(
+pub async fn create_logs<'a>(
     payload: Value,
-    ip: &str,
-    user_agent: &str,
+    ip: &'a str,
+    user_agent: &'a str,
 ) -> Result<(), CreateLogsError> {
     let entries: Vec<LogEntryFromRequest> = serde_json::from_value(payload).map_err(|e| {
         log::error!("Invalid payload: {e:?}");
@@ -153,6 +153,10 @@ pub async fn create_logs(
         })
         .collect::<Vec<_>>();
 
+    create_log_entries(entries).await
+}
+
+pub async fn create_log_entries(entries: Vec<LogEntry<'_>>) -> Result<(), CreateLogsError> {
     let log_group_name = std::env::var("LOG_GROUP_NAME").map_err(|_| {
         CreateLogsError::MissingLogGroupConfiguration {
             r#type: "LOG_GROUP_NAME".into(),
