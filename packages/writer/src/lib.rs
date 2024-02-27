@@ -87,10 +87,17 @@ impl<'de> Deserialize<'de> for LogComponent {
 }
 
 #[derive(Deserialize)]
-pub struct LogEntry {
+pub struct LogEntryFromRequest {
     level: LogLevel,
     values: Vec<LogComponent>,
     ts: usize,
+}
+
+pub struct LogEntry<'a> {
+    level: LogLevel,
+    values: Vec<LogComponent>,
+    ts: usize,
+    ip: &'a str,
 }
 
 #[derive(Debug, Error)]
@@ -124,9 +131,19 @@ impl From<CreateLogsError> for actix_web::Error {
     }
 }
 
-pub async fn create_logs(payload: Value) -> Result<(), CreateLogsError> {
-    let entries: Vec<LogEntry> =
+pub async fn create_logs(payload: Value, ip: &str) -> Result<(), CreateLogsError> {
+    let entries: Vec<LogEntryFromRequest> =
         serde_json::from_value(payload).map_err(|_e| CreateLogsError::InvalidPayload)?;
+
+    let entries = entries
+        .into_iter()
+        .map(|x| LogEntry {
+            level: x.level,
+            values: x.values,
+            ts: x.ts,
+            ip,
+        })
+        .collect::<Vec<_>>();
 
     let log_group_name = std::env::var("LOG_GROUP_NAME").map_err(|_| {
         CreateLogsError::MissingLogGroupConfiguration {
@@ -147,7 +164,12 @@ pub async fn create_logs(payload: Value) -> Result<(), CreateLogsError> {
         .map(|x| {
             InputLogEvent::builder()
                 .timestamp(x.ts as i64)
-                .message(format!("{}: {:?}", x.level.as_ref(), x.values))
+                .message(format!(
+                    "{}: (ip={}) {:?}",
+                    x.level.as_ref(),
+                    x.ip,
+                    x.values
+                ))
                 .build()
         })
         .collect::<Result<Vec<_>, _>>()

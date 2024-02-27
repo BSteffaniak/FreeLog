@@ -1,6 +1,6 @@
 use actix_web::{
     web::{self, Json},
-    Result,
+    HttpRequest, Result,
 };
 use lambda_web::actix_web::{self, get, post};
 use serde::Deserialize;
@@ -32,10 +32,16 @@ pub struct CreateLogsQuery {}
 
 #[post("/logs")]
 pub async fn create_logs_endpoint(
-    _query: web::Query<GetLogsQuery>,
+    _query: web::Query<CreateLogsQuery>,
+    req: HttpRequest,
     payload: Json<Value>,
 ) -> Result<Json<Value>> {
-    crate::create_logs(payload.clone()).await?;
+    let ip = req
+        .peer_addr()
+        .map(|x| x.to_string())
+        .unwrap_or("unknown".to_string());
+
+    crate::create_logs(payload.clone(), &ip).await?;
 
     Ok(Json(serde_json::json!({"success": true})))
 }
