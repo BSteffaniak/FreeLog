@@ -1410,6 +1410,7 @@ dependencies = [
  "awc",
  "aws-config",
  "aws-sdk-cloudwatchlogs",
+ "aws-smithy-runtime-api",
  "env_logger",
  "lambda-web",
  "lambda_runtime 0.8.3",

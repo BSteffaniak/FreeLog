@@ -11,6 +11,7 @@ actix-web              = { workspace = true }
 awc                    = { workspace = true }
 aws-config             = { workspace = true }
 aws-sdk-cloudwatchlogs = { workspace = true }
+aws-smithy-runtime-api = { workspace = true }
 env_logger             = { workspace = true }
 lambda-web             = { workspace = true }
 lambda_runtime         = { workspace = true }

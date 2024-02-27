@@ -2,8 +2,11 @@
 
 use std::fmt::Display;
 
-use actix_web::error::ErrorBadRequest;
-use aws_sdk_cloudwatchlogs::{operation::RequestId, types::InputLogEvent};
+use actix_web::error::{ErrorBadRequest, ErrorInternalServerError};
+use aws_sdk_cloudwatchlogs::{
+    operation::{put_log_events::PutLogEventsError, RequestId},
+    types::InputLogEvent,
+};
 use serde::Deserialize;
 use serde_json::Value;
 use strum_macros::{AsRefStr, EnumString};
@@ -94,12 +97,29 @@ pub struct LogEntry {
 pub enum CreateLogsError {
     #[error("Invalid payload")]
     InvalidPayload,
+    #[error("MissingLogGroupConfiguration: {r#type:?}")]
+    MissingLogGroupConfiguration { r#type: String },
+    #[error("Failed to put logs")]
+    PutLogs(
+        #[from]
+        aws_smithy_runtime_api::client::result::SdkError<
+            PutLogEventsError,
+            aws_smithy_runtime_api::client::orchestrator::HttpResponse,
+        >,
+    ),
 }
 
 impl From<CreateLogsError> for actix_web::Error {
     fn from(value: CreateLogsError) -> Self {
         match value {
             CreateLogsError::InvalidPayload => ErrorBadRequest("Invalid payload"),
+            CreateLogsError::MissingLogGroupConfiguration { .. } => {
+                ErrorInternalServerError(value.to_string())
+            }
+            CreateLogsError::PutLogs(e) => {
+                log::error!("Error: {e:?}");
+                ErrorInternalServerError(e)
+            }
         }
     }
 }
@@ -108,10 +128,16 @@ pub async fn create_logs(payload: Value) -> Result<(), CreateLogsError> {
     let entries: Vec<LogEntry> =
         serde_json::from_value(payload).map_err(|_e| CreateLogsError::InvalidPayload)?;
 
-    let log_group_name =
-        std::env::var("LOG_GROUP_NAME").map_err(|_| CreateLogsError::InvalidPayload)?;
-    let log_stream_name =
-        std::env::var("LOG_STREAM_NAME").map_err(|_| CreateLogsError::InvalidPayload)?;
+    let log_group_name = std::env::var("LOG_GROUP_NAME").map_err(|_| {
+        CreateLogsError::MissingLogGroupConfiguration {
+            r#type: "LOG_GROUP_NAME".into(),
+        }
+    })?;
+    let log_stream_name = std::env::var("LOG_STREAM_NAME").map_err(|_| {
+        CreateLogsError::MissingLogGroupConfiguration {
+            r#type: "LOG_STREAM_NAME".into(),
+        }
+    })?;
 
     let config = aws_config::load_from_env().await;
     let client = aws_sdk_cloudwatchlogs::Client::new(&config);
@@ -125,7 +151,10 @@ pub async fn create_logs(payload: Value) -> Result<(), CreateLogsError> {
                 .build()
         })
         .collect::<Result<Vec<_>, _>>()
-        .map_err(|_e| CreateLogsError::InvalidPayload)?;
+        .map_err(|e| {
+            log::error!("Error: {e:?}");
+            CreateLogsError::InvalidPayload
+        })?;
 
     let output = client
         .put_log_events()
@@ -133,12 +162,7 @@ pub async fn create_logs(payload: Value) -> Result<(), CreateLogsError> {
         .log_stream_name(log_stream_name)
         .set_log_events(Some(events))
         .send()
-        .await
-        .map_err(|e| {
-            log::error!("Error: {e:?}");
-
-            CreateLogsError::InvalidPayload
-        })?;
+        .await?;
 
     log::debug!("Successful request {:?}", output.request_id());
 
