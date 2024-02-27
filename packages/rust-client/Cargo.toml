@@ -1,0 +1,23 @@
+[package]
+authors = ["Braden Steffaniak"]
+edition = "2021"
+name    = "free_log_client"
+version = "0.1.0"
+
+[dependencies]
+futures-util       = { workspace = true }
+once_cell          = { workspace = true }
+reqwest            = { workspace = true }
+serde              = { workspace = true }
+serde_json         = { workspace = true }
+strum              = { workspace = true }
+strum_macros       = { workspace = true }
+thiserror          = { workspace = true }
+tokio              = { workspace = true }
+tracing            = { workspace = true }
+tracing-log        = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+
+[features]
+fail-on-warnings = []

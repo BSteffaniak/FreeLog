@@ -1,27 +1,43 @@
 [workspace]
-members  = ["packages/writer"]
+members  = ["packages/writer", "packages/rust-client"]
 resolver = "2"
 
 [workspace.package]
 edition = "2021"
 
 [workspace.dependencies]
-actix-cors             = "0.6.5"
-actix-files            = "0.6.5"
-actix-web              = "4.5.1"
-awc                    = "3.4.0"
-aws-config             = { version = "1.1.6", features = ["behavior-version-latest"] }
-aws-sdk-cloudwatch     = "1.16.0"
+actix-cors = "0.6.5"
+actix-files = "0.6.5"
+actix-web = "4.5.1"
+awc = "3.4.0"
+aws-config = { version = "1.1.6", features = ["behavior-version-latest"] }
+aws-sdk-cloudwatch = "1.16.0"
 aws-sdk-cloudwatchlogs = "1.16.0"
 aws-smithy-runtime-api = "1.1.7"
-env_logger             = "0.10"
-lambda-web             = { version = "0.2.1", features = ["actix4"] }
-lambda_runtime         = "0.8.3"
-log                    = { version = "0.4", features = ["release_max_level_trace"] }
-once_cell              = { version = "1.19.0" }
-pretty_env_logger      = "0.4"
-serde                  = { version = "1.0", features = ["derive"] }
-serde_json             = "1.0.114"
-strum                  = "0.25.0"
-strum_macros           = "0.25.3"
-thiserror              = "1.0.57"
+derive_builder = "0.20.0"
+env_logger = "0.10"
+futures-util = { version = "0.3.30", default-features = false, features = [
+    "std",
+] }
+lambda-web = { version = "0.2.1", features = ["actix4"] }
+lambda_runtime = "0.8.3"
+log = { version = "0.4", features = ["release_max_level_trace"] }
+once_cell = { version = "1.19.0" }
+pretty_env_logger = "0.4"
+reqwest = { version = "0.11.24", default-features = false, features = [
+    "blocking",
+    "stream",
+    "rustls-tls",
+    "json",
+] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.114"
+strum = "0.25.0"
+strum_macros = "0.25.3"
+thiserror = "1.0.57"
+tokio = { version = "1.36.0", features = ["sync", "io-util"] }
+tokio-stream = "0.1.14"
+tokio-util = "0.7.10"
+tracing = "0.1.40"
+tracing-log = "0.2.0"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
