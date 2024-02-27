@@ -2,6 +2,7 @@
 
 use std::{
     collections::BTreeMap,
+    convert::Infallible,
     sync::{Arc, Mutex},
     time::SystemTime,
 };
@@ -216,6 +217,8 @@ where
 #[derive(Debug, Error)]
 pub enum LogsInitError {
     #[error(transparent)]
+    BuildLogsConfig(#[from] BuildLogsConfigError),
+    #[error(transparent)]
     SetLogger(#[from] log_tracer::SetLoggerError),
     #[error(transparent)]
     SetGlobalDefault(#[from] tracing::subscriber::SetGlobalDefaultError),
@@ -301,10 +304,28 @@ impl LogsConfigBuilder {
     }
 }
 
-pub fn init(config: impl Into<LogsConfig>) -> Result<FreeLogLayer, LogsInitError> {
+impl TryFrom<LogsConfigBuilder> for LogsConfig {
+    type Error = BuildLogsConfigError;
+
+    fn try_from(value: LogsConfigBuilder) -> Result<Self, Self::Error> {
+        value.build()
+    }
+}
+
+impl From<Infallible> for BuildLogsConfigError {
+    fn from(_value: Infallible) -> Self {
+        unreachable!()
+    }
+}
+
+pub fn init<T, X>(config: T) -> Result<FreeLogLayer, LogsInitError>
+where
+    T: TryInto<LogsConfig, Error = X>,
+    X: Into<BuildLogsConfigError>,
+{
     LogTracer::init()?;
 
-    let config = config.into();
+    let config = config.try_into().map_err(|x| x.into())?;
     let auto_flush = config.auto_flush;
 
     let free_log_layer = FreeLogLayer::new(config);
