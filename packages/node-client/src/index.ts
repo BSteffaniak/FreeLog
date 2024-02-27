@@ -83,6 +83,13 @@ export function objToStr(obj: unknown): string {
     if (obj === null) {
         return 'null';
     }
+    if (obj instanceof Error) {
+        if (obj.stack) {
+            return obj.stack;
+        } else {
+            return `${obj}`;
+        }
+    }
     if (typeof obj === 'object') {
         return circularStringify(obj);
     }
