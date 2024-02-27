@@ -190,6 +190,8 @@ pub async fn create_logs(
             CreateLogsError::InvalidPayload
         })?;
 
+    log::debug!("Writing events ({}): {events:?}", events.len());
+
     let output = client
         .put_log_events()
         .log_group_name(log_group_name)
