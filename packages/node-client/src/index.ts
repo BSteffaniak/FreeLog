@@ -200,7 +200,7 @@ function toLogComponent(value: any): LogComponent {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function log(this: void, level: LogLevel, ...args: any[]) {
-    defaultLogger[level].apply(this, [`[${level.toUpperCase()}]`, ...args]);
+    defaultLogger[level]?.apply(this, [`[${level.toUpperCase()}]`, ...args]);
     const components = args.map(toLogComponent);
     logComponents(level, components);
 }
