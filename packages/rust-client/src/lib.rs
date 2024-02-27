@@ -121,14 +121,14 @@ pub enum FlushError {
 #[derive(Clone)]
 pub struct FreeLogLayer {
     buffer: Arc<Mutex<Vec<LogEntry>>>,
-    config: LogsConfig,
+    config: Arc<LogsConfig>,
 }
 
 impl FreeLogLayer {
     pub fn new(config: LogsConfig) -> Self {
         Self {
             buffer: Arc::new(Mutex::new(vec![])),
-            config,
+            config: Arc::new(config),
         }
     }
 
@@ -140,8 +140,6 @@ impl FreeLogLayer {
         }
 
         let body = serde_json::to_string(&buffer)?;
-
-        println!("Sending request with {body}");
 
         let response = CLIENT
             .post(format!("{}/logs", self.config.log_writer_api_url))
@@ -219,6 +217,8 @@ pub enum LogsInitError {
     #[error(transparent)]
     BuildLogsConfig(#[from] BuildLogsConfigError),
     #[error(transparent)]
+    EnvFilter(#[from] EnvFilterError),
+    #[error(transparent)]
     SetLogger(#[from] log_tracer::SetLoggerError),
     #[error(transparent)]
     SetGlobalDefault(#[from] tracing::subscriber::SetGlobalDefaultError),
@@ -235,13 +235,14 @@ pub enum Level {
     Error,
 }
 
-#[derive(Clone, Default)]
+#[derive(Default)]
 pub struct LogsConfig {
     pub user_agent: String,
     pub log_writer_api_url: String,
     pub log_level: Level,
     pub auto_flush: bool,
     pub auto_flush_on_close: bool,
+    env_filter: Option<EnvFilter>,
 }
 
 impl LogsConfig {
@@ -256,6 +257,92 @@ pub enum BuildLogsConfigError {
     MissingRequiredProperty(String),
 }
 
+#[derive(Debug, Clone)]
+pub struct EnvFilter {
+    directives: Option<String>,
+    from_env: Option<String>,
+    from_default_env: bool,
+}
+
+impl EnvFilter {
+    pub fn new<S: AsRef<str>>(directives: S) -> Self {
+        Self {
+            directives: Some(directives.as_ref().to_string()),
+            from_env: None,
+            from_default_env: false,
+        }
+    }
+
+    pub fn from_env<S: AsRef<str>>(env: S) -> Self {
+        Self {
+            directives: None,
+            from_env: Some(env.as_ref().to_string()),
+            from_default_env: false,
+        }
+    }
+
+    pub fn from_default_env() -> Self {
+        Self {
+            directives: None,
+            from_env: None,
+            from_default_env: true,
+        }
+    }
+}
+
+#[derive(Debug, Error)]
+pub enum EnvFilterError {
+    #[error("Invalid configuration")]
+    InvalidConfiguration,
+    #[error(transparent)]
+    Parse(#[from] tracing_subscriber::filter::ParseError),
+}
+
+impl<T> From<T> for EnvFilter
+where
+    T: AsRef<str>,
+{
+    fn from(value: T) -> Self {
+        EnvFilter::new(value)
+    }
+}
+
+impl TryInto<tracing_subscriber::EnvFilter> for EnvFilter {
+    type Error = EnvFilterError;
+
+    fn try_into(self) -> Result<tracing_subscriber::EnvFilter, Self::Error> {
+        (&self).try_into()
+    }
+}
+
+impl TryInto<tracing_subscriber::EnvFilter> for &EnvFilter {
+    type Error = EnvFilterError;
+
+    fn try_into(self) -> Result<tracing_subscriber::EnvFilter, Self::Error> {
+        if let Some(env) = &self.from_env {
+            let filter = tracing_subscriber::EnvFilter::from_env(env);
+
+            Ok(if let Some(directives) = &self.directives {
+                filter.add_directive(directives.parse()?)
+            } else {
+                filter
+            })
+        } else if self.from_default_env {
+            let filter = tracing_subscriber::EnvFilter::from_default_env();
+
+            Ok(if let Some(directives) = &self.directives {
+                filter.add_directive(directives.parse()?)
+            } else {
+                filter
+            })
+        } else if let Some(directives) = &self.directives {
+            Ok(tracing_subscriber::EnvFilter::new(directives))
+        } else {
+            Err(EnvFilterError::InvalidConfiguration)
+        }
+    }
+}
+
 #[derive(Clone, Default)]
 pub struct LogsConfigBuilder {
     user_agent: Option<String>,
@@ -263,6 +350,7 @@ pub struct LogsConfigBuilder {
     log_level: Option<Level>,
     auto_flush: Option<bool>,
     auto_flush_on_close: Option<bool>,
+    env_filter: Option<EnvFilter>,
 }
 
 impl LogsConfigBuilder {
@@ -291,6 +379,11 @@ impl LogsConfigBuilder {
         self
     }
 
+    pub fn env_filter(mut self, value: impl Into<EnvFilter>) -> LogsConfigBuilder {
+        self.env_filter = Some(value.into());
+        self
+    }
+
     pub fn build(self) -> Result<LogsConfig, BuildLogsConfigError> {
         Ok(LogsConfig {
             user_agent: self.user_agent.unwrap_or("free_log_rust_client".into()),
@@ -300,6 +393,7 @@ impl LogsConfigBuilder {
             log_level: self.log_level.unwrap_or(Level::default()),
             auto_flush: self.auto_flush.unwrap_or(true),
             auto_flush_on_close: self.auto_flush_on_close.unwrap_or(true),
+            env_filter: self.env_filter,
         })
     }
 }
@@ -321,21 +415,29 @@ impl From<Infallible> for BuildLogsConfigError {
 pub fn init<T, X>(config: T) -> Result<FreeLogLayer, LogsInitError>
 where
     T: TryInto<LogsConfig, Error = X>,
-    X: Into<BuildLogsConfigError>,
+    X: Into<LogsInitError>,
 {
     LogTracer::init()?;
 
-    let config = config.try_into().map_err(|x| x.into())?;
+    let config: LogsConfig = config.try_into().map_err(|x| x.into())?;
     let auto_flush = config.auto_flush;
+    let env_filter = config.env_filter.clone();
 
     let free_log_layer = FreeLogLayer::new(config);
     let layer_send = free_log_layer.clone();
     let layer_return = free_log_layer.clone();
 
-    let subscriber = tracing_subscriber::registry()
+    let registry = tracing_subscriber::registry();
+
+    let subscriber = registry
         .with(free_log_layer)
-        .with(tracing_subscriber::fmt::Layer::default().with_writer(std::io::stdout))
-        .with(tracing_subscriber::EnvFilter::from_default_env());
+        .with(tracing_subscriber::fmt::Layer::default().with_writer(std::io::stdout));
+
+    let subscriber = if let Some(env_filter) = env_filter {
+        subscriber.with(env_filter.try_into()?)
+    } else {
+        subscriber.with(tracing_subscriber::EnvFilter::from_default_env())
+    };
 
     tracing::subscriber::set_global_default(subscriber)?;
 
