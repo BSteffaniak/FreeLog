@@ -98,6 +98,7 @@ pub struct LogEntry<'a> {
     values: Vec<LogComponent>,
     ts: usize,
     ip: &'a str,
+    user_agent: &'a str,
 }
 
 #[derive(Debug, Error)]
@@ -131,7 +132,11 @@ impl From<CreateLogsError> for actix_web::Error {
     }
 }
 
-pub async fn create_logs(payload: Value, ip: &str) -> Result<(), CreateLogsError> {
+pub async fn create_logs(
+    payload: Value,
+    ip: &str,
+    user_agent: &str,
+) -> Result<(), CreateLogsError> {
     let entries: Vec<LogEntryFromRequest> =
         serde_json::from_value(payload).map_err(|_e| CreateLogsError::InvalidPayload)?;
 
@@ -142,6 +147,7 @@ pub async fn create_logs(payload: Value, ip: &str) -> Result<(), CreateLogsError
             values: x.values,
             ts: x.ts,
             ip,
+            user_agent,
         })
         .collect::<Vec<_>>();
 
@@ -165,10 +171,14 @@ pub async fn create_logs(payload: Value, ip: &str) -> Result<(), CreateLogsError
             InputLogEvent::builder()
                 .timestamp(x.ts as i64)
                 .message(format!(
-                    "{}: (ip={}) {:?}",
+                    "{}:\n\n\t\
+                     {:?}\n\n\t\
+                     ip={}\n\n\t\
+                     user_agent={}",
                     x.level.as_ref(),
+                    x.values,
                     x.ip,
-                    x.values
+                    x.user_agent,
                 ))
                 .build()
         })

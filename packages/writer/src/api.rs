@@ -41,7 +41,13 @@ pub async fn create_logs_endpoint(
         .map(|x| x.to_string())
         .unwrap_or("unknown".to_string());
 
-    crate::create_logs(payload.clone(), &ip).await?;
+    let user_agent = req
+        .headers()
+        .get(actix_web::http::header::USER_AGENT)
+        .and_then(|x| x.to_str().ok().map(|x| x.to_string()))
+        .unwrap_or("none".to_string());
+
+    crate::create_logs(payload.clone(), &ip, &user_agent).await?;
 
     Ok(Json(serde_json::json!({"success": true})))
 }
