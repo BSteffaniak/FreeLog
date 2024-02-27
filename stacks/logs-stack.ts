@@ -45,8 +45,8 @@ export async function API({ app, stack }: StackContext) {
             },
         },
         routes: {
-            'GET /logs': 'packages/writer/src/log_service_writer.handler',
-            'POST /logs': 'packages/writer/src/log_service_writer.handler',
+            'GET /logs': 'packages/writer/src/free_log_writer.handler',
+            'POST /logs': 'packages/writer/src/free_log_writer.handler',
         },
         customDomain,
     });

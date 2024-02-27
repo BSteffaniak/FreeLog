@@ -1,7 +1,7 @@
 [package]
 authors = ["Braden Steffaniak"]
 edition = "2021"
-name    = "log_service_writer"
+name    = "free_log_writer"
 version = "0.1.0"
 
 [dependencies]

@@ -1,9 +1,9 @@
 use actix_cors::Cors;
 use actix_web::{http, middleware, Result};
+use free_log_writer::api;
 use lambda_runtime::Error;
 use lambda_web::actix_web::{self, App, HttpServer};
 use lambda_web::{is_running_on_lambda, run_actix_on_lambda};
-use log_service_writer::api;
 
 #[actix_web::main]
 async fn main() -> Result<(), Error> {
