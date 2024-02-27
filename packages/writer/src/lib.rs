@@ -137,8 +137,10 @@ pub async fn create_logs(
     ip: &str,
     user_agent: &str,
 ) -> Result<(), CreateLogsError> {
-    let entries: Vec<LogEntryFromRequest> =
-        serde_json::from_value(payload).map_err(|_e| CreateLogsError::InvalidPayload)?;
+    let entries: Vec<LogEntryFromRequest> = serde_json::from_value(payload).map_err(|e| {
+        log::error!("Invalid payload: {e:?}");
+        CreateLogsError::InvalidPayload
+    })?;
 
     let entries = entries
         .into_iter()
