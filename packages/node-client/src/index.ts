@@ -15,9 +15,15 @@ export type Config = {
     shimConsole: boolean;
     autoFlush: boolean;
     autoFlushOnClose: boolean;
+    properties?: { [key: string]: LogComponent };
 };
 
-type LogEntry = { level: LogLevel; values: LogComponent[]; ts: number };
+type LogEntry = {
+    level: LogLevel;
+    values: LogComponent[];
+    ts: number;
+    properties?: { [key: string]: LogComponent };
+};
 
 const logBuffer: LogEntry[] = [];
 let flushTimeout: ReturnType<typeof setTimeout> | undefined;
@@ -97,6 +103,10 @@ export function objToStr(obj: unknown): string {
     return obj.toString();
 }
 
+export function withProperties(properties: { [key: string]: LogComponent }) {
+    config.properties = structuredClone(properties);
+}
+
 export function init(
     opts: PartialBy<
         Config,
@@ -172,7 +182,13 @@ function writeLog(level: LogLevel, values: LogComponent[]) {
     if (!initialized) throw new Error(`Logger not initialized`);
     if (levels[level] < levels[config.logLevel]) return;
 
-    logBuffer.push({ level, values, ts: Date.now() });
+    const entry: LogEntry = { level, values, ts: Date.now() };
+
+    if (config.properties) {
+        entry.properties = structuredClone(config.properties);
+    }
+
+    logBuffer.push(entry);
     bufferSize += calculateLogComponentsSize(values);
 
     if (bufferSize > 10240) {
