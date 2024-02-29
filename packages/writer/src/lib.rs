@@ -1,105 +1,15 @@
 #![cfg_attr(feature = "fail-on-warnings", deny(warnings))]
 
-use std::fmt::Display;
-
 use actix_web::error::{ErrorBadRequest, ErrorInternalServerError};
 use aws_sdk_cloudwatchlogs::{
     operation::{put_log_events::PutLogEventsError, RequestId},
     types::InputLogEvent,
 };
-use serde::Deserialize;
+use free_log_models::{LogEntry, LogEntryRequest};
 use serde_json::Value;
-use strum_macros::{AsRefStr, EnumString};
 use thiserror::Error;
 
 pub mod api;
-
-#[derive(Debug, Deserialize, EnumString, AsRefStr)]
-#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
-#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
-pub enum LogLevel {
-    Trace,
-    Debug,
-    Info,
-    Warn,
-    Error,
-}
-
-pub enum LogComponent {
-    Integer(isize),
-    UInteger(usize),
-    Real(f64),
-    String(String),
-    Boolean(bool),
-    Undefined,
-    Null,
-}
-
-impl Display for LogComponent {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            LogComponent::Integer(value) => f.write_fmt(format_args!("{value}")),
-            LogComponent::UInteger(value) => f.write_fmt(format_args!("{value}")),
-            LogComponent::Real(value) => f.write_fmt(format_args!("{value}")),
-            LogComponent::String(value) => f.write_fmt(format_args!("{value}")),
-            LogComponent::Boolean(value) => f.write_fmt(format_args!("{value}")),
-            LogComponent::Undefined => f.write_str("undefined"),
-            LogComponent::Null => f.write_str("null"),
-        }
-    }
-}
-
-impl std::fmt::Debug for LogComponent {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        Display::fmt(self, f)
-    }
-}
-
-impl From<LogComponent> for String {
-    fn from(value: LogComponent) -> Self {
-        value.to_string()
-    }
-}
-
-impl<'de> Deserialize<'de> for LogComponent {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: serde::Deserializer<'de>,
-    {
-        let value: Value = Deserialize::deserialize(deserializer)?;
-
-        if value.is_u64() {
-            Ok(LogComponent::UInteger(value.as_u64().unwrap() as usize))
-        } else if value.is_i64() {
-            Ok(LogComponent::Integer(value.as_i64().unwrap() as isize))
-        } else if value.is_f64() {
-            Ok(LogComponent::Real(value.as_f64().unwrap()))
-        } else if value.is_string() {
-            Ok(LogComponent::String(value.as_str().unwrap().to_string()))
-        } else if value.is_boolean() {
-            Ok(LogComponent::Boolean(value.as_bool().unwrap()))
-        } else if value.is_null() {
-            Ok(LogComponent::Null)
-        } else {
-            Ok(LogComponent::Undefined)
-        }
-    }
-}
-
-#[derive(Deserialize)]
-pub struct LogEntryFromRequest {
-    level: LogLevel,
-    values: Vec<LogComponent>,
-    ts: usize,
-}
-
-pub struct LogEntry<'a> {
-    level: LogLevel,
-    values: Vec<LogComponent>,
-    ts: usize,
-    ip: &'a str,
-    user_agent: &'a str,
-}
 
 #[derive(Debug, Error)]
 pub enum CreateLogsError {
@@ -137,7 +47,7 @@ pub async fn create_logs<'a>(
     ip: &'a str,
     user_agent: &'a str,
 ) -> Result<(), CreateLogsError> {
-    let entries: Vec<LogEntryFromRequest> = serde_json::from_value(payload).map_err(|e| {
+    let entries: Vec<LogEntryRequest> = serde_json::from_value(payload).map_err(|e| {
         log::error!("Invalid payload: {e:?}");
         CreateLogsError::InvalidPayload
     })?;
@@ -150,6 +60,7 @@ pub async fn create_logs<'a>(
             ts: x.ts,
             ip,
             user_agent,
+            properties: x.properties,
         })
         .collect::<Vec<_>>();
 
@@ -180,11 +91,13 @@ pub async fn create_log_entries(entries: Vec<LogEntry<'_>>) -> Result<(), Create
                     "{}:\n\n\t\
                      {:?}\n\n\t\
                      ip={}\n\n\t\
-                     user_agent={}",
+                     user_agent={}\n\n\t\
+                     properties={:?}",
                     x.level.as_ref(),
                     x.values,
                     x.ip,
                     x.user_agent,
+                    x.properties,
                 ))
                 .build()
         })

@@ -1,15 +1,16 @@
 #![cfg_attr(feature = "fail-on-warnings", deny(warnings))]
 
 use std::{
-    collections::BTreeMap,
+    collections::{BTreeMap, HashMap},
     convert::Infallible,
+    str::FromStr,
     sync::{Arc, Mutex},
     time::SystemTime,
 };
 
+use free_log_models::{LogComponent, LogEntryRequest, LogLevel};
 use once_cell::sync::Lazy;
 use reqwest::StatusCode;
-use serde::{Serialize, Serializer};
 use serde_json::Value;
 use strum_macros::{AsRefStr, EnumString};
 use thiserror::Error;
@@ -78,36 +79,6 @@ impl tracing::field::Visit for FieldVisitor {
     }
 }
 
-#[derive(Debug, Clone)]
-pub struct LogEntry {
-    level: String,
-    message: String,
-    ts: usize,
-}
-
-impl ::serde::Serialize for LogEntry {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        #[derive(Serialize)]
-        #[serde(rename_all = "camelCase")]
-        struct ApiLogEntry<'a> {
-            level: &'a str,
-            values: &'a Vec<&'a str>,
-            ts: usize,
-        }
-
-        let api = ApiLogEntry {
-            level: &self.level.to_string().to_uppercase(),
-            values: &vec![&self.message],
-            ts: self.ts,
-        };
-
-        api.serialize(serializer)
-    }
-}
-
 #[derive(Debug, Error)]
 pub enum FlushError {
     #[error(transparent)]
@@ -118,10 +89,11 @@ pub enum FlushError {
     Unsuccessful(String),
 }
 
-#[derive(Clone)]
+#[derive(Debug, Clone)]
 pub struct FreeLogLayer {
-    buffer: Arc<Mutex<Vec<LogEntry>>>,
+    buffer: Arc<Mutex<Vec<LogEntryRequest>>>,
     config: Arc<LogsConfig>,
+    properties: Arc<Mutex<Option<HashMap<String, LogComponent>>>>,
 }
 
 impl FreeLogLayer {
@@ -129,11 +101,17 @@ impl FreeLogLayer {
         Self {
             buffer: Arc::new(Mutex::new(vec![])),
             config: Arc::new(config),
+            properties: Arc::new(Mutex::new(None)),
         }
     }
 
+    pub fn with_properties(&self, properties: HashMap<String, LogComponent>) -> &Self {
+        self.properties.lock().as_mut().unwrap().replace(properties);
+        self
+    }
+
     pub async fn flush(&self) -> Result<(), FlushError> {
-        let buffer: Vec<LogEntry> = self.buffer.lock().as_mut().unwrap().drain(..).collect();
+        let buffer: Vec<LogEntryRequest> = self.buffer.lock().as_mut().unwrap().drain(..).collect();
 
         if buffer.is_empty() {
             return Ok(());
@@ -200,13 +178,14 @@ where
         let (message, _) = extract_event_data(event);
 
         if let Some(message) = message {
-            self.buffer.lock().unwrap().push(LogEntry {
-                level: level.to_string().to_uppercase(),
-                message,
+            self.buffer.lock().unwrap().push(LogEntryRequest {
+                level: LogLevel::from_str(level.as_str()).unwrap(),
+                values: vec![LogComponent::String(message)],
                 ts: SystemTime::now()
                     .duration_since(SystemTime::UNIX_EPOCH)
                     .unwrap()
                     .as_millis() as usize,
+                properties: self.properties.lock().as_ref().unwrap().as_ref().cloned(),
             });
         }
     }
@@ -235,7 +214,7 @@ pub enum Level {
     Error,
 }
 
-#[derive(Default)]
+#[derive(Debug, Default)]
 pub struct LogsConfig {
     pub user_agent: String,
     pub log_writer_api_url: String,

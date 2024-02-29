@@ -5,6 +5,8 @@ name    = "free_log_client"
 version = "0.1.0"
 
 [dependencies]
+free_log_models = { path = "../models" }
+
 futures-util       = { workspace = true }
 once_cell          = { workspace = true }
 reqwest            = { workspace = true }
