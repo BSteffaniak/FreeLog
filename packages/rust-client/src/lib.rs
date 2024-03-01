@@ -110,6 +110,26 @@ impl FreeLogLayer {
         self
     }
 
+    pub fn set_property(&self, name: &str, value: LogComponent) -> &Self {
+        self.properties
+            .lock()
+            .as_mut()
+            .unwrap()
+            .get_or_insert(HashMap::new())
+            .insert(name.to_string(), value);
+        self
+    }
+
+    pub fn remove_property(&self, name: &str) -> &Self {
+        self.properties
+            .lock()
+            .as_mut()
+            .unwrap()
+            .get_or_insert(HashMap::new())
+            .remove(name);
+        self
+    }
+
     pub async fn flush(&self) -> Result<(), FlushError> {
         let buffer: Vec<LogEntryRequest> = self.buffer.lock().as_mut().unwrap().drain(..).collect();
 
