@@ -107,6 +107,16 @@ export function withProperties(properties: { [key: string]: LogComponent }) {
     config.properties = structuredClone(properties);
 }
 
+export function setProperty(key: string, value: LogComponent) {
+    config.properties = config.properties ?? {};
+    config.properties[key] = value;
+}
+
+export function removeProperty(key: string) {
+    config.properties = config.properties ?? {};
+    delete config.properties[key];
+}
+
 export function init(
     opts: PartialBy<
         Config,
