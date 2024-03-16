@@ -1,8 +1,10 @@
 [package]
-authors = ["Braden Steffaniak"]
-edition = "2021"
-name    = "free_log_models"
-version = "0.1.0"
+authors     = ["Braden Steffaniak"]
+description = "Free logging library shared models"
+edition     = "2021"
+license     = "MPL-2.0"
+name        = "free_log_models"
+version     = "0.1.0"
 
 [dependencies]
 log          = { workspace = true }
