@@ -1,5 +1,10 @@
 [workspace]
-members  = ["packages/models", "packages/writer", "packages/rust-client"]
+members = [
+    "packages/free-log",
+    "packages/models",
+    "packages/rust-client",
+    "packages/writer",
+]
 resolver = "2"
 
 [workspace.package]

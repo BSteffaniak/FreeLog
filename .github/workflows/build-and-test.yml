@@ -18,6 +18,21 @@ jobs:
 
             matrix:
                 package:
+                    - name: free_log
+                      path: packages/free-log
+                      os: ubuntu-latest
+                      cargo: --no-default-features
+
+                    - name: models
+                      path: packages/models
+                      os: ubuntu-latest
+                      cargo: --no-default-features
+
+                    - name: rust_client
+                      path: packages/rust-client
+                      os: ubuntu-latest
+                      cargo: --no-default-features
+
                     - name: writer
                       path: packages/writer
                       os: ubuntu-latest

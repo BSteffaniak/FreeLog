@@ -1,0 +1,13 @@
+[package]
+authors = ["Braden Steffaniak"]
+edition = "2021"
+name    = "free_log"
+version = "0.1.0"
+
+[dependencies]
+free_log_models = { version = "0.1.0", path = "../models" }
+free_log_client = { version = "0.1.0", path = "../rust-client" }
+free_log_writer = { version = "0.1.0", path = "../writer" }
+
+[features]
+fail-on-warnings = []

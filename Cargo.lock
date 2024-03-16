@@ -959,6 +959,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "free_log"
+version = "0.1.0"
+dependencies = [
+ "free_log_client",
+ "free_log_models",
+ "free_log_writer",
+]
+
+[[package]]
 name = "free_log_client"
 version = "0.1.0"
 dependencies = [
