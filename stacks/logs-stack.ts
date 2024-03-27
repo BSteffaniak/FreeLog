@@ -42,6 +42,7 @@ export async function API({ app, stack }: StackContext) {
                         app.stage,
                     ),
                 },
+                tracing: 'disabled',
             },
         },
         routes: {
