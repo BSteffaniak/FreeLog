@@ -131,6 +131,12 @@ impl FreeLogLayer {
     }
 
     pub async fn flush(&self) -> Result<(), FlushError> {
+        let api_url = if let Some(api_url) = self.config.log_writer_api_url.clone() {
+            api_url
+        } else {
+            return Ok(());
+        };
+
         let buffer: Vec<LogEntryRequest> = self.buffer.lock().as_mut().unwrap().drain(..).collect();
 
         if buffer.is_empty() {
@@ -140,7 +146,7 @@ impl FreeLogLayer {
         let body = serde_json::to_string(&buffer)?;
 
         let response = CLIENT
-            .post(format!("{}/logs", self.config.log_writer_api_url))
+            .post(format!("{}/logs", api_url))
             .header(reqwest::header::CONTENT_TYPE, "application/json")
             .header(reqwest::header::USER_AGENT, &self.config.user_agent)
             .body(body)
@@ -237,7 +243,7 @@ pub enum Level {
 #[derive(Debug, Default)]
 pub struct LogsConfig {
     pub user_agent: String,
-    pub log_writer_api_url: String,
+    pub log_writer_api_url: Option<String>,
     pub log_level: Level,
     pub auto_flush: bool,
     pub auto_flush_on_close: bool,
@@ -386,10 +392,8 @@ impl LogsConfigBuilder {
     pub fn build(self) -> Result<LogsConfig, BuildLogsConfigError> {
         Ok(LogsConfig {
             user_agent: self.user_agent.unwrap_or("free_log_rust_client".into()),
-            log_writer_api_url: self.log_writer_api_url.ok_or(
-                BuildLogsConfigError::MissingRequiredProperty("log_writer_api_url".into()),
-            )?,
-            log_level: self.log_level.unwrap_or(Level::default()),
+            log_writer_api_url: self.log_writer_api_url,
+            log_level: self.log_level.unwrap_or_default(),
             auto_flush: self.auto_flush.unwrap_or(true),
             auto_flush_on_close: self.auto_flush_on_close.unwrap_or(true),
             env_filter: self.env_filter,
