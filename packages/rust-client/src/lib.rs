@@ -260,14 +260,31 @@ impl FreeLogLayer {
     }
 }
 
-fn level_int(level: &str) -> u8 {
+fn level_int(level: Level) -> u8 {
     match level {
-        "TRACE" => 0,
-        "DEBUG" => 1,
-        "INFO" => 2,
-        "WARN" => 3,
-        "ERROR" => 4,
-        _ => 0,
+        Level::Trace => 0,
+        Level::Debug => 1,
+        Level::Info => 2,
+        Level::Warn => 3,
+        Level::Error => 4,
+    }
+}
+
+impl From<tracing::Level> for Level {
+    fn from(value: tracing::Level) -> Self {
+        (&value).into()
+    }
+}
+
+impl From<&tracing::Level> for Level {
+    fn from(value: &tracing::Level) -> Self {
+        match *value {
+            tracing::Level::TRACE => Level::Trace,
+            tracing::Level::DEBUG => Level::Debug,
+            tracing::Level::INFO => Level::Info,
+            tracing::Level::WARN => Level::Warn,
+            tracing::Level::ERROR => Level::Error,
+        }
     }
 }
 
@@ -282,7 +299,7 @@ where
     ) {
         let level = event.metadata().level();
 
-        if level_int(level.as_str()) < level_int(self.config.log_level.as_ref()) {
+        if level_int(level.into()) < level_int(self.config.log_level) {
             return;
         }
 
