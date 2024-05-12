@@ -98,11 +98,13 @@ pub enum FlushError {
     Multi(Vec<FlushError>),
 }
 
+type FileWriters = Arc<tokio::sync::Mutex<Option<Vec<(Level, BufWriter<File>)>>>>;
+
 #[derive(Debug, Clone)]
 pub struct FreeLogLayer {
     buffer: Arc<Mutex<Vec<LogEntryRequest>>>,
     config: Arc<LogsConfig>,
-    file_writers: Arc<tokio::sync::Mutex<Option<Vec<BufWriter<File>>>>>,
+    file_writers: FileWriters,
     properties: Arc<Mutex<Option<HashMap<String, LogComponent>>>>,
 }
 
@@ -144,22 +146,22 @@ impl FreeLogLayer {
     pub async fn flush(&self) -> Result<(), FlushError> {
         let mut errs = vec![];
 
-        if !self.config.file_paths.is_empty() {
+        if !self.config.file_writers.is_empty() {
             let mut writers = self.file_writers.lock().await;
 
             if writers.is_none() {
                 let mut new_writers = vec![];
 
-                for path in self.config.file_paths.iter() {
+                for file_config in self.config.file_writers.iter() {
                     match tokio::fs::OpenOptions::new()
                         .create(true)
                         .append(true)
                         .write(true)
-                        .open(path)
+                        .open(&file_config.path)
                         .await
                     {
                         Ok(file) => {
-                            new_writers.push(BufWriter::new(file));
+                            new_writers.push((file_config.log_level, BufWriter::new(file)));
                         }
                         Err(err) => {
                             errs.push(err.into());
@@ -177,17 +179,20 @@ impl FreeLogLayer {
             return Ok(());
         }
 
-        let body = if self.config.log_writer_api_url.is_empty() {
-            None
-        } else {
-            Some(serde_json::to_string(&buffer)?)
-        };
+        for api_config in self.config.api_writers.iter() {
+            let entries = buffer
+                .iter()
+                .filter(|r| level_int(r.level.into()) >= level_int(api_config.log_level))
+                .collect::<Vec<_>>();
 
-        for api_url in self.config.log_writer_api_url.iter() {
-            let body = body.clone().expect("catastrophic error");
+            if entries.is_empty() {
+                continue;
+            }
+
+            let body = serde_json::to_string(&entries)?;
 
             let response = match CLIENT
-                .post(format!("{}/logs", api_url))
+                .post(format!("{}/logs", api_config.api_url))
                 .header(reqwest::header::CONTENT_TYPE, "application/json")
                 .header(reqwest::header::USER_AGENT, &self.config.user_agent)
                 .body(body)
@@ -234,8 +239,11 @@ impl FreeLogLayer {
         }
 
         if let Some(writers) = self.file_writers.lock().await.as_mut() {
-            for writer in writers.iter_mut() {
-                for entry in &buffer {
+            for (level, writer) in writers.iter_mut() {
+                for entry in buffer
+                    .iter()
+                    .filter(|r| level_int(r.level.into()) >= level_int(*level))
+                {
                     let mut body = serde_json::to_string(entry)?;
                     body.push('\n');
 
@@ -288,6 +296,24 @@ impl From<&tracing::Level> for Level {
     }
 }
 
+impl From<LogLevel> for Level {
+    fn from(value: LogLevel) -> Self {
+        (&value).into()
+    }
+}
+
+impl From<&LogLevel> for Level {
+    fn from(value: &LogLevel) -> Self {
+        match *value {
+            LogLevel::Trace => Level::Trace,
+            LogLevel::Debug => Level::Debug,
+            LogLevel::Info => Level::Info,
+            LogLevel::Warn => Level::Warn,
+            LogLevel::Error => Level::Error,
+        }
+    }
+}
+
 impl<S> Layer<S> for FreeLogLayer
 where
     S: tracing::Subscriber + for<'span> tracing_subscriber::registry::LookupSpan<'span>,
@@ -334,9 +360,9 @@ pub enum LogsInitError {
 #[derive(Debug, Default, Clone, Copy, EnumString, AsRefStr)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 pub enum Level {
+    #[default]
     Trace,
     Debug,
-    #[default]
     Info,
     Warn,
     Error,
@@ -345,8 +371,8 @@ pub enum Level {
 #[derive(Debug, Default)]
 pub struct LogsConfig {
     pub user_agent: String,
-    pub log_writer_api_url: Vec<String>,
-    pub file_paths: Vec<PathBuf>,
+    pub api_writers: Vec<ApiWriterConfig>,
+    pub file_writers: Vec<FileWriterConfig>,
     pub log_level: Level,
     pub auto_flush: bool,
     pub auto_flush_on_close: bool,
@@ -451,11 +477,125 @@ impl TryInto<tracing_subscriber::EnvFilter> for &EnvFilter {
     }
 }
 
+#[derive(Debug, Default, Clone)]
+pub struct ApiWriterConfig {
+    pub user_agent: String,
+    pub api_url: String,
+    pub log_level: Level,
+}
+
+impl ApiWriterConfig {
+    pub fn builder() -> ApiWriterConfigBuilder {
+        ApiWriterConfigBuilder::default()
+    }
+}
+
+#[derive(Clone, Default)]
+pub struct ApiWriterConfigBuilder {
+    user_agent: Option<String>,
+    api_url: Option<String>,
+    log_level: Option<Level>,
+}
+
+impl ApiWriterConfigBuilder {
+    pub fn user_agent(mut self, value: impl Into<String>) -> ApiWriterConfigBuilder {
+        self.user_agent = Some(value.into());
+        self
+    }
+
+    pub fn api_url(mut self, value: impl Into<String>) -> ApiWriterConfigBuilder {
+        self.api_url.replace(value.into());
+        self
+    }
+
+    pub fn log_level(mut self, value: impl Into<Level>) -> ApiWriterConfigBuilder {
+        self.log_level = Some(value.into());
+        self
+    }
+
+    pub fn build(self) -> Result<ApiWriterConfig, BuildApiWriterConfigError> {
+        Ok(ApiWriterConfig {
+            user_agent: self.user_agent.unwrap_or("free_log_rust_client".into()),
+            api_url: self.api_url.ok_or_else(|| {
+                BuildApiWriterConfigError::MissingRequiredProperty("api_url".to_string())
+            })?,
+            log_level: self.log_level.unwrap_or_default(),
+        })
+    }
+}
+
+#[derive(Debug, Error)]
+pub enum BuildApiWriterConfigError {
+    #[error("Missing required property: {0}")]
+    MissingRequiredProperty(String),
+}
+
+impl TryFrom<ApiWriterConfigBuilder> for ApiWriterConfig {
+    type Error = BuildApiWriterConfigError;
+
+    fn try_from(value: ApiWriterConfigBuilder) -> Result<Self, Self::Error> {
+        value.build()
+    }
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct FileWriterConfig {
+    pub path: PathBuf,
+    pub log_level: Level,
+}
+
+impl FileWriterConfig {
+    pub fn builder() -> FileWriterConfigBuilder {
+        FileWriterConfigBuilder::default()
+    }
+}
+
+#[derive(Clone, Default)]
+pub struct FileWriterConfigBuilder {
+    path: Option<PathBuf>,
+    log_level: Option<Level>,
+}
+
+impl FileWriterConfigBuilder {
+    pub fn file_path(mut self, value: impl Into<PathBuf>) -> FileWriterConfigBuilder {
+        self.path.replace(value.into());
+        self
+    }
+
+    pub fn log_level(mut self, value: impl Into<Level>) -> FileWriterConfigBuilder {
+        self.log_level = Some(value.into());
+        self
+    }
+
+    pub fn build(self) -> Result<FileWriterConfig, BuildFileWriterConfigError> {
+        Ok(FileWriterConfig {
+            path: self.path.ok_or_else(|| {
+                BuildFileWriterConfigError::MissingRequiredProperty("path".to_string())
+            })?,
+            log_level: self.log_level.unwrap_or_default(),
+        })
+    }
+}
+
+#[derive(Debug, Error)]
+pub enum BuildFileWriterConfigError {
+    #[error("Missing required property: {0}")]
+    MissingRequiredProperty(String),
+}
+
+impl TryFrom<FileWriterConfigBuilder> for FileWriterConfig {
+    type Error = BuildFileWriterConfigError;
+
+    fn try_from(value: FileWriterConfigBuilder) -> Result<Self, Self::Error> {
+        value.build()
+    }
+}
+
 #[derive(Clone, Default)]
 pub struct LogsConfigBuilder {
     user_agent: Option<String>,
-    log_writer_api_url: Vec<String>,
-    file_paths: Vec<PathBuf>,
+    api_writers: Vec<ApiWriterConfig>,
+    file_writers: Vec<FileWriterConfig>,
     log_level: Option<Level>,
     auto_flush: Option<bool>,
     auto_flush_on_close: Option<bool>,
@@ -468,14 +608,20 @@ impl LogsConfigBuilder {
         self
     }
 
-    pub fn log_writer_api_url(mut self, value: impl Into<String>) -> LogsConfigBuilder {
-        self.log_writer_api_url.push(value.into());
-        self
+    pub fn with_api_writer<T: TryInto<ApiWriterConfig>>(
+        mut self,
+        value: T,
+    ) -> Result<LogsConfigBuilder, T::Error> {
+        self.api_writers.push(value.try_into()?);
+        Ok(self)
     }
 
-    pub fn file_path(mut self, value: impl Into<PathBuf>) -> LogsConfigBuilder {
-        self.file_paths.push(value.into());
-        self
+    pub fn with_file_writer<T: TryInto<FileWriterConfig>>(
+        mut self,
+        value: T,
+    ) -> Result<LogsConfigBuilder, T::Error> {
+        self.file_writers.push(value.try_into()?);
+        Ok(self)
     }
 
     pub fn log_level(mut self, value: impl Into<Level>) -> LogsConfigBuilder {
@@ -501,8 +647,8 @@ impl LogsConfigBuilder {
     pub fn build(self) -> Result<LogsConfig, BuildLogsConfigError> {
         Ok(LogsConfig {
             user_agent: self.user_agent.unwrap_or("free_log_rust_client".into()),
-            log_writer_api_url: self.log_writer_api_url,
-            file_paths: self.file_paths,
+            api_writers: self.api_writers,
+            file_writers: self.file_writers,
             log_level: self.log_level.unwrap_or_default(),
             auto_flush: self.auto_flush.unwrap_or(true),
             auto_flush_on_close: self.auto_flush_on_close.unwrap_or(true),
@@ -537,13 +683,11 @@ where
     let env_filter = config.env_filter.clone();
 
     let free_log_layer = FreeLogLayer::new(config);
-    let layer_send = free_log_layer.clone();
-    let layer_return = free_log_layer.clone();
 
     let registry = tracing_subscriber::registry();
 
     let subscriber = registry
-        .with(free_log_layer)
+        .with(free_log_layer.clone())
         .with(tracing_subscriber::fmt::Layer::default().with_writer(std::io::stdout));
 
     let subscriber = if let Some(env_filter) = env_filter {
@@ -554,6 +698,8 @@ where
 
     tracing::subscriber::set_global_default(subscriber)?;
 
+    let layer_send = free_log_layer.clone();
+
     if auto_flush {
         RT.spawn(async move {
             log_monitor(&layer_send).await?;
@@ -561,7 +707,7 @@ where
         });
     }
 
-    Ok(layer_return)
+    Ok(free_log_layer)
 }
 
 #[derive(Debug, Error)]
