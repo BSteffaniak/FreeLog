@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use strum_macros::{AsRefStr, EnumString};
 
-#[derive(Debug, Serialize, Deserialize, EnumString, AsRefStr)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize, EnumString, AsRefStr)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 pub enum LogLevel {
