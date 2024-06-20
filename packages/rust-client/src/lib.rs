@@ -32,22 +32,74 @@ static RT: Lazy<tokio::runtime::Runtime> = Lazy::new(|| {
         .unwrap()
 });
 
-fn extract_event_data(event: &tracing::Event) -> (Option<String>, FieldVisitor) {
+struct EventData {
+    message: Option<String>,
+    error: Option<String>,
+    file: Option<String>,
+    line: Option<u64>,
+    module_path: Option<String>,
+    target: Option<String>,
+}
+
+fn extract_event_data(event: &tracing::Event) -> (EventData, FieldVisitor) {
     // Find message of the event, if any
     let mut visitor = FieldVisitor::default();
     event.record(&mut visitor);
-    let message = visitor
+
+    let message = visitor.json_values.remove("message").and_then(|v| match v {
+        Value::String(s) => Some(s),
+        _ => None,
+    });
+    // When #[instrument(err)] is used the event does not have a message attached to it.
+    // the error message is attached to the field "error".
+    let error = visitor.json_values.remove("error").and_then(|v| match v {
+        Value::String(s) => Some(s),
+        _ => None,
+    });
+
+    let file = visitor
         .json_values
-        .remove("message")
-        // When #[instrument(err)] is used the event does not have a message attached to it.
-        // the error message is attached to the field "error".
-        .or_else(|| visitor.json_values.remove("error"))
+        .remove("log.file")
         .and_then(|v| match v {
             Value::String(s) => Some(s),
             _ => None,
         });
 
-    (message, visitor)
+    let line = visitor
+        .json_values
+        .remove("log.line")
+        .and_then(|v| match v {
+            Value::Number(s) => s.as_u64(),
+            _ => None,
+        });
+
+    let module_path = visitor
+        .json_values
+        .remove("log.module_path")
+        .and_then(|v| match v {
+            Value::String(s) => Some(s),
+            _ => None,
+        });
+
+    let target = visitor
+        .json_values
+        .remove("log.target")
+        .and_then(|v| match v {
+            Value::String(s) => Some(s),
+            _ => None,
+        });
+
+    (
+        EventData {
+            message,
+            error,
+            file,
+            line,
+            module_path,
+            target,
+        },
+        visitor,
+    )
 }
 
 #[derive(Default)]
@@ -329,19 +381,28 @@ where
             return;
         }
 
-        let (message, _) = extract_event_data(event);
+        let (event_data, _) = extract_event_data(event);
 
-        if let Some(message) = message {
-            self.buffer.lock().unwrap().push(LogEntryRequest {
-                level: LogLevel::from_str(level.as_str()).unwrap(),
-                values: vec![LogComponent::String(message)],
-                ts: SystemTime::now()
-                    .duration_since(SystemTime::UNIX_EPOCH)
-                    .unwrap()
-                    .as_millis() as usize,
-                properties: self.properties.lock().as_ref().unwrap().as_ref().cloned(),
-            });
-        }
+        let location = if let (Some(file), Some(line)) = (&event_data.file, event_data.line) {
+            Some(format!("{file}:{line}"))
+        } else {
+            event_data.file
+        };
+
+        self.buffer.lock().unwrap().push(LogEntryRequest {
+            level: LogLevel::from_str(level.as_str()).unwrap(),
+            ts: SystemTime::now()
+                .duration_since(SystemTime::UNIX_EPOCH)
+                .unwrap()
+                .as_millis() as usize,
+            values: vec![LogComponent::String(
+                event_data.message.or(event_data.error).unwrap_or_default(),
+            )],
+            target: event_data.target,
+            module_path: event_data.module_path,
+            location,
+            properties: self.properties.lock().as_ref().unwrap().as_ref().cloned(),
+        });
     }
 }
 

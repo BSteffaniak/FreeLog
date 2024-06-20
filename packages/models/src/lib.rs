@@ -145,8 +145,11 @@ pub struct LogEntry<'a> {
 #[serde(rename_all = "camelCase")]
 pub struct LogEntryRequest {
     pub level: LogLevel,
-    pub values: Vec<LogComponent>,
     pub ts: usize,
+    pub values: Vec<LogComponent>,
+    pub target: Option<String>,
+    pub module_path: Option<String>,
+    pub location: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub properties: Option<HashMap<String, LogComponent>>,
 }
