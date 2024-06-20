@@ -4,7 +4,7 @@ description = "Free logging library log writer"
 edition     = "2021"
 license     = "MPL-2.0"
 name        = "free_log_writer"
-version     = "0.1.1"
+version     = "0.1.2"
 
 [dependencies]
 free_log_models = { version = "0.1.1", path = "../models" }
