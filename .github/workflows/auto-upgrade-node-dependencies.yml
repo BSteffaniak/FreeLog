@@ -45,6 +45,8 @@ jobs:
               shell: bash
               run: |
                   pnpm update
+                  pnpm sst update latest
+                  pnpm prettier --write package.json
                   if [ -n "$(git status --porcelain)" ]; then
                       echo "Found upgrades"
                       echo "upgraded=true" >> "$GITHUB_OUTPUT"
