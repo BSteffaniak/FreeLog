@@ -24,7 +24,7 @@
         "@types/node": "^20.14.15",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
-        "aws-cdk-lib": "2.142.1",
+        "aws-cdk-lib": "2.124.0",
         "constructs": "10.3.0",
         "eslint": "^8.57.0",
         "eslint-config-airbnb": "^19.0.4",
@@ -34,7 +34,7 @@
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-node": "^11.1.0",
         "prettier": "^3.3.3",
-        "sst": "2.43.4",
+        "sst": "2.40.3",
         "tsup": "^8.2.4",
         "tsx": "^4.17.0",
         "typescript": "^5.5.4"
