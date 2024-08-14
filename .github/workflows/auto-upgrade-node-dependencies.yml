@@ -48,7 +48,7 @@ jobs:
                   pnpm update
                   echo "Updating SST dependencies"
                   pnpm sst update latest --stage upgrade
-                  pnpm install
+                  pnpm install --no-frozen-lockfile
                   pnpm update
                   echo "Formatting package.json"
                   pnpm prettier --write package.json
