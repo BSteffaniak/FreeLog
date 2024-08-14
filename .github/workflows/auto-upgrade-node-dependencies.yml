@@ -73,6 +73,6 @@ jobs:
                   git config user.name "Braden Steffaniak"
                   git config user.email "BradenSteffaniak+bot@gmail.com"
                   git add .
-                  git commit --message "Upgrade Dependencies"
+                  git commit --message "Upgrade Node Dependencies"
                   echo "Pushing upgrades"
                   git push origin master
