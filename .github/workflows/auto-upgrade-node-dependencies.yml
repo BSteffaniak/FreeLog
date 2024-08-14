@@ -47,7 +47,7 @@ jobs:
                   echo "Updating general dependencies"
                   pnpm update
                   echo "Updating SST dependencies"
-                  pnpm sst update latest
+                  pnpm sst update latest --stage upgrade
                   echo "Formatting package.json"
                   pnpm prettier --write package.json
                   if [ -n "$(git status --porcelain)" ]; then
