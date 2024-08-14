@@ -12,13 +12,13 @@ edition = "2021"
 
 [workspace.dependencies]
 actix-cors = "0.7.0"
-actix-files = "0.6.5"
-actix-web = "4.5.1"
-awc = "3.4.0"
-aws-config = { version = "1.1.8", features = ["behavior-version-latest"] }
-aws-sdk-cloudwatch = "1.19.0"
-aws-sdk-cloudwatchlogs = "1.19.0"
-aws-smithy-runtime-api = "1.2.0"
+actix-files = "0.6.6"
+actix-web = "4.9.0"
+awc = "3.5.1"
+aws-config = { version = "1.5.5", features = ["behavior-version-latest"] }
+aws-sdk-cloudwatch = "1.42.0"
+aws-sdk-cloudwatchlogs = "1.41.0"
+aws-smithy-runtime-api = "1.7.2"
 derive_builder = "0.20.0"
 env_logger = "0.11"
 futures-util = { version = "0.3.30", default-features = false, features = [
@@ -29,20 +29,20 @@ lambda_runtime = "0.10.0"
 log = { version = "0.4", features = ["release_max_level_trace"] }
 once_cell = { version = "1.19.0" }
 pretty_env_logger = "0.5"
-reqwest = { version = "0.11.26", default-features = false, features = [
+reqwest = { version = "0.11.27", default-features = false, features = [
     "blocking",
     "stream",
     "rustls-tls",
     "json",
 ] }
 serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.114"
-strum = "0.26.2"
-strum_macros = "0.26.2"
-thiserror = "1.0.58"
-tokio = { version = "1.36.0", features = ["sync", "io-util"] }
+serde_json = "1.0.124"
+strum = "0.26.3"
+strum_macros = "0.26.4"
+thiserror = "1.0.63"
+tokio = { version = "1.39.2", features = ["sync", "io-util"] }
 tokio-stream = "0.1.15"
-tokio-util = "0.7.10"
+tokio-util = "0.7.11"
 tracing = "0.1.40"
 tracing-log = "0.2.0"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
