@@ -18,6 +18,8 @@ jobs:
               with:
                   token: ${{ secrets.LOG_SERVICE_UPGRADES_TOKEN }}
 
+            - uses: dtolnay/rust-toolchain@stable
+
             - name: Install cargo-edit
               shell: bash
               run: |
