@@ -4,10 +4,10 @@ description = "Free logging library Rust client"
 edition     = "2021"
 license     = "MPL-2.0"
 name        = "free_log_client"
-version     = "0.2.1"
+version     = "0.3.0"
 
 [dependencies]
-free_log_models = { version = "0.1.2", path = "../models" }
+free_log_models = { version = "0.2.0", path = "../models" }
 
 futures-util       = { workspace = true }
 once_cell          = { workspace = true }

@@ -4,7 +4,7 @@ description = "Free logging library shared models"
 edition     = "2021"
 license     = "MPL-2.0"
 name        = "free_log_models"
-version     = "0.1.2"
+version     = "0.2.0"
 
 [dependencies]
 log          = { workspace = true }

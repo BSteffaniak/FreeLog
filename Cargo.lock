@@ -1057,7 +1057,7 @@ dependencies = [
 
 [[package]]
 name = "free_log"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "free_log_client",
  "free_log_models",
@@ -1066,7 +1066,7 @@ dependencies = [
 
 [[package]]
 name = "free_log_client"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "free_log_models",
  "futures-util",
@@ -1085,7 +1085,7 @@ dependencies = [
 
 [[package]]
 name = "free_log_models"
-version = "0.1.2"
+version = "0.2.0"
 dependencies = [
  "log",
  "serde",
@@ -1097,7 +1097,7 @@ dependencies = [
 
 [[package]]
 name = "free_log_writer"
-version = "0.1.2"
+version = "0.2.0"
 dependencies = [
  "actix-cors",
  "actix-files",
