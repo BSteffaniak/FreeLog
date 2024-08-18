@@ -4,23 +4,24 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "sst dev",
         "build": "sst build",
-        "deploy": "sst deploy",
-        "remove": "sst remove",
         "console": "sst console",
-        "sst:deploy": "sst deploy",
-        "sst:dev": "sst dev",
-        "pretty": "prettier --check \"**/*.{js,cjs,mjs,jsx,ts,tsx,astro}\"",
-        "pretty:write": "prettier --write \"**/*.{js,cjs,mjs,jsx,ts,tsx,astro}\"",
+        "deploy": "sst deploy",
+        "dev": "sst dev",
         "lint": "eslint --ext .ts,.tsx .",
         "lint:write": "eslint --fix",
+        "pretty": "prettier --check \"**/*.{js,cjs,mjs,jsx,ts,tsx,astro}\"",
+        "pretty:write": "prettier --write \"**/*.{js,cjs,mjs,jsx,ts,tsx,astro}\"",
+        "remove": "sst remove",
+        "sst:deploy": "sst deploy",
+        "sst:dev": "sst dev",
         "typecheck": "tsc --noEmit",
         "validate": "pnpm pretty && pnpm lint && pnpm typecheck"
     },
     "devDependencies": {
         "@aws-sdk/client-ssm": "^3.632.0",
         "@tsconfig/node18": "^18.2.4",
+        "@types/aws-lambda": "8.10.143",
         "@types/node": "^20.16.0",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
@@ -34,12 +35,15 @@
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-node": "^11.1.0",
         "prettier": "^3.3.3",
-        "sst": "2.43.4",
+        "sst": "3.0.42",
         "tsup": "^8.2.4",
         "tsx": "^4.17.0",
         "typescript": "^5.5.4"
     },
     "workspaces": [
         "packages/*"
-    ]
+    ],
+    "dependencies": {
+        "sst": "3.0.42"
+    }
 }

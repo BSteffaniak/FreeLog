@@ -1,14 +1,16 @@
-import { SSTConfig } from 'sst';
-import { API } from './stacks/logs-stack';
+/// <reference path="./.sst/platform/config.d.ts" />
 
-export default {
-    config(_input) {
+export default $config({
+    app(input) {
         return {
-            name: 'log-service',
-            region: 'us-east-1',
+            name: 'freelog',
+            removal: input?.stage === 'prod' ? 'retain' : 'remove',
+            home: 'aws',
         };
     },
-    async stacks(app) {
-        await app.stack(API);
+    async run() {
+        const api = await import('./infra/api');
+
+        return { ...api };
     },
-} satisfies SSTConfig;
+});

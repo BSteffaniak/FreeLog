@@ -68,14 +68,14 @@ pub async fn create_logs<'a>(
 }
 
 pub async fn create_log_entries(entries: Vec<LogEntry<'_>>) -> Result<(), CreateLogsError> {
-    let log_group_name = std::env::var("LOG_GROUP_NAME").map_err(|_| {
+    let log_group_name = std::env::var("LogGroupName").map_err(|_| {
         CreateLogsError::MissingLogGroupConfiguration {
-            r#type: "LOG_GROUP_NAME".into(),
+            r#type: "LogGroupName".into(),
         }
     })?;
-    let log_stream_name = std::env::var("LOG_STREAM_NAME").map_err(|_| {
+    let log_stream_name = std::env::var("LogStreamName").map_err(|_| {
         CreateLogsError::MissingLogGroupConfiguration {
-            r#type: "LOG_STREAM_NAME".into(),
+            r#type: "LogStreamName".into(),
         }
     })?;
 
