@@ -44,15 +44,15 @@ jobs:
               id: upgrade
               shell: bash
               run: |
-                  echo "Updating general dependencies"
+                  echo "====== Updating general dependencies ======"
                   pnpm update
-                  echo "Updating SST dependencies"
+                  echo "======== Updating SST dependencies ========"
                   pnpm sst upgrade --stage upgrade
-                  echo "Installing updated SST dependencies"
+                  echo "=== Installing updated SST dependencies ==="
                   pnpm install --no-frozen-lockfile
-                  echo "Updating general dependencies"
+                  echo "====== Updating general dependencies ======"
                   pnpm update
-                  echo "Formatting package.json"
+                  echo "========= Formatting package.json ========="
                   pnpm prettier --write package.json
                   if [ -n "$(git status --porcelain)" ]; then
                       echo "Found upgrades"
