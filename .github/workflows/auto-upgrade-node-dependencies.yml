@@ -47,7 +47,7 @@ jobs:
                   echo "Updating general dependencies"
                   pnpm update
                   echo "Updating SST dependencies"
-                  pnpm sst update latest --stage upgrade
+                  pnpm sst upgrade --stage upgrade
                   pnpm install --no-frozen-lockfile
                   pnpm update
                   echo "Formatting package.json"
