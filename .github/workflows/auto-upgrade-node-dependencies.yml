@@ -57,6 +57,7 @@ jobs:
               if: ${{ steps.upgrade.outputs.upgraded == 'true'}}
               shell: bash
               run: |
+                  pnpm sst install
                   pnpm validate
 
             - name: Commit
