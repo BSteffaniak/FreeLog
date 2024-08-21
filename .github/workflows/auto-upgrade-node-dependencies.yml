@@ -44,18 +44,7 @@ jobs:
               id: upgrade
               shell: bash
               run: |
-                  echo "====== Updating general dependencies ======"
                   pnpm update
-                  echo "=== Installing updated SST dependencies ==="
-                  pnpm install --no-frozen-lockfile
-                  echo "======== Updating SST dependencies ========"
-                  pnpm sst upgrade --stage upgrade
-                  echo "=== Installing updated SST dependencies ==="
-                  pnpm install --no-frozen-lockfile
-                  echo "====== Updating general dependencies ======"
-                  pnpm update
-                  echo "========= Formatting package.json ========="
-                  pnpm prettier --write package.json
                   if [ -n "$(git status --porcelain)" ]; then
                       echo "Found upgrades"
                       echo "upgraded=true" >> "$GITHUB_OUTPUT"
