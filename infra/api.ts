@@ -22,8 +22,8 @@ if (!hostedZone) throw new Error('Missing HOSTED_ZONE environment variable');
 
 const customDomain = getCustomDomain();
 
-const logGroupName = new sst.Secret('LogGroupName');
-const logStreamName = new sst.Secret('LogStreamName');
+const logGroupName = new sst.Secret('LogGroupName', 'freelog_logs');
+const logStreamName = new sst.Secret('LogStreamName', 'stream_1');
 
 const api = new sst.aws.ApiGatewayV2('api', {
     transform: {
