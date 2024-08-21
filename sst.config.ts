@@ -12,6 +12,6 @@ export default $config({
     async run() {
         const api = await import('./infra/api');
 
-        return { ...api };
+        return { ...api.default };
     },
 });
