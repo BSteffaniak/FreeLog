@@ -6,6 +6,7 @@ export default $config({
             name: 'freelog',
             removal: input?.stage === 'prod' ? 'retain' : 'remove',
             home: 'aws',
+            providers: { aws: { region: 'us-east-1' } },
         };
     },
     async run() {
