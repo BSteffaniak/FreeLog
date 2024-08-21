@@ -42,8 +42,5 @@
     },
     "workspaces": [
         "packages/*"
-    ],
-    "dependencies": {
-        "sst": "3.0.42"
-    }
+    ]
 }
