@@ -1,26 +1,41 @@
 import { ApiGatewayV2DomainArgs } from '@sst/platform/src/components/aws/helpers/apigatewayv2-domain';
+import { exec } from 'node:child_process';
 
 const domainSlug = 'logs';
 const domain = process.env.DOMAIN;
-const hostedZone = process.env.HOSTED_ZONE;
 const defaultStageName = 'prod';
 
-function getCustomDomain(): ApiGatewayV2DomainArgs {
+async function getHostedZoneId(domain: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+        exec(
+            `aws route53 list-hosted-zones-by-name --query "HostedZones[?Name=='${domain}.'].Id"  --output text | sed s#/hostedzone/##`,
+            (error, stdout, stderr) => {
+                if (error) {
+                    console.error(stderr);
+                    return reject(error);
+                }
+                resolve(stdout.trim());
+            },
+        );
+    });
+}
+
+function getCustomDomain(hostedZoneId: string): ApiGatewayV2DomainArgs {
     return {
         name:
             $app.stage === defaultStageName
                 ? `${domainSlug}.${domain}`
                 : `${domainSlug}-${$app.stage}.${domain}`,
         dns: sst.aws.dns({
-            zone: hostedZone,
+            zone: hostedZoneId,
         }),
     };
 }
 
 if (!domain) throw new Error('Missing DOMAIN environment variable');
-if (!hostedZone) throw new Error('Missing HOSTED_ZONE environment variable');
 
-const customDomain = getCustomDomain();
+const hostedZoneId = await getHostedZoneId(domain);
+const customDomain = getCustomDomain(hostedZoneId);
 
 const logGroupName = new sst.Secret('LogGroupName', 'freelog_logs');
 const logStreamName = new sst.Secret('LogStreamName', 'stream_1');
