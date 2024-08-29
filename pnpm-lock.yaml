@@ -18,8 +18,8 @@ importers:
         specifier: 8.10.143
         version: 8.10.143
       '@types/node':
-        specifier: ^20.16.1
-        version: 20.16.1
+        specifier: ^20.16.2
+        version: 20.16.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
@@ -57,8 +57,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       sst:
-        specifier: ^3.0.70
-        version: 3.0.70(aws-crt@1.21.3)
+        specifier: ^3.0.75
+        version: 3.0.75(aws-crt@1.21.3)
       tsup:
         specifier: ^8.2.4
         version: 8.2.4(tsx@4.19.0)(typescript@5.5.4)
@@ -1173,8 +1173,8 @@ packages:
   '@types/node@20.11.20':
     resolution: {integrity: sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==}
 
-  '@types/node@20.16.1':
-    resolution: {integrity: sha512-zJDo7wEadFtSyNz5QITDfRcrhqDvQI1xQNQ0VoizPjM/dVAODqqIUWbJPkvsxmTI0MYRGRikcdjMPhOssnPejQ==}
+  '@types/node@20.16.2':
+    resolution: {integrity: sha512-91s/n4qUPV/wg8eE9KHYW1kouTfDk2FPGjXbBMfRWP/2vg1rCXNQL1OCabwGs0XSdukuK+MwCDXE30QpSeMUhQ==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
@@ -1348,8 +1348,8 @@ packages:
   aws-crt@1.21.3:
     resolution: {integrity: sha512-oaiP5zoPkXwbM9T3nwSgq6CBZWx0501iefLPg12FODniIgqGMyzbMXHYC+fxbCoP5SOQVmCwtAfbNuIG5bFENg==}
 
-  aws4fetch@1.0.19:
-    resolution: {integrity: sha512-N+F8pZ9hVjckkHODDyalITRNxBJxAGX5ShkVoAgHwqERXsW8Iu5ziFx3SCjGlxx/YStWBTZx4HI/GCMvTBu5kQ==}
+  aws4fetch@1.0.20:
+    resolution: {integrity: sha512-/djoAN709iY65ETD6LKCtyyEI04XIBP5xVvfmNxsEP0uJB5tyaGBztSryRr4HqMStr9R06PisQE7m9zDTXKu6g==}
 
   axe-core@4.7.0:
     resolution: {integrity: sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==}
@@ -2554,33 +2554,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.0.70:
-    resolution: {integrity: sha512-70IjoQkUJqTlIA9y04clBQjda6Xd6WgG0vA9mF9tB+7QRmSU+KiSVEAIo8L2EQoHNATlfyFJF9+6FDNCKpMx3Q==}
+  sst-darwin-arm64@3.0.75:
+    resolution: {integrity: sha512-mzE8t5e12Sc2ca7NO55zr6wybYAnFHdNeCIRpzxx9lrpzFczwAYMtXGn2xPgPfw9OY9jbNp7RYw5eYuP0ylQtg==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.0.70:
-    resolution: {integrity: sha512-hqF39p2VADLNxZM1EhroAFQtaIJeLDWnd80UaFDu12SHYPB6H8wmtK/tTfDFBDk4211IBpR6S4jVylbtNUfu+w==}
+  sst-darwin-x64@3.0.75:
+    resolution: {integrity: sha512-Qbi4yQWb/zFlg4uL88gfazkoq+WHWKeGZ0/Q6/0adeMlFp7vThEyktPS8MK0MiQuLoESLON++cIcmyXHoDBRnQ==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.0.70:
-    resolution: {integrity: sha512-hS7r/Eh98o7fXJyPL+DMau/v/2q65DsBrLgw6XbTKJmSUvj8DgRa+YrH38WKL1XjcDVJep+yDjxUD0OUqI9Iuw==}
+  sst-linux-arm64@3.0.75:
+    resolution: {integrity: sha512-ah51s1Vcn5DJM94iyTh8sn6pvshnFqSPzhVamWY454RvGDY3/3HsHwlqYHkHyo2gMvMEg8GLAxroeXWNf32hmQ==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.0.70:
-    resolution: {integrity: sha512-8MLCqNQiREK2O5VWAQXxA2otfRMy/youPPA/xpRk7nBFW2bojfRBlM64ur4DrOXlhhxMO3Qp34jD4mUmxikjlg==}
+  sst-linux-x64@3.0.75:
+    resolution: {integrity: sha512-IZtcMYo0xugiXs5n0ZvydRq/S6Vs1wiT1EL4QKt+/EGIzor3VUsbaMRVzThzJ7PZ9eJA/8LuzpKTvvh/JBLGUw==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.0.70:
-    resolution: {integrity: sha512-vpZGov18e0GauLi5Ln9qYmY79hmgYujo/veCXyunz50I5rcuRyQZ3JZP3Hz5SBiVgvL9a1gR42r6H3VDziHodg==}
+  sst-linux-x86@3.0.75:
+    resolution: {integrity: sha512-uRMCkG0zmTeFIt92PtTUQS8HZ1qVha76mg/9B1vvTIuUDha3PIIP2OhODzWGLz+bye6toBDMYjnb+Oo73LH/Lg==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.0.70:
-    resolution: {integrity: sha512-yw69fju5+/kgDsIZdkhdKgn1GVAvZpVe4TdnzkMRVVCDt4MwnkenPe7MpuEQC4YRTTyJRwq+n43cIJt3xIS54g==}
+  sst@3.0.75:
+    resolution: {integrity: sha512-6LAic47T2CnsoXOqBCrj5RgDDH2Y+z7oqpGbopcvdVHDTBzi6n7NbQpwtfCwuSvd2ym+royXq9SPfLwpr1jOXA==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -4523,7 +4523,7 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@20.16.1':
+  '@types/node@20.16.2':
     dependencies:
       undici-types: 6.19.8
 
@@ -4531,7 +4531,7 @@ snapshots:
 
   '@types/ws@8.5.12':
     dependencies:
-      '@types/node': 20.16.1
+      '@types/node': 20.16.2
     optional: true
 
   '@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)':
@@ -4748,7 +4748,7 @@ snapshots:
       - utf-8-validate
     optional: true
 
-  aws4fetch@1.0.19: {}
+  aws4fetch@1.0.20: {}
 
   axe-core@4.7.0: {}
 
@@ -6199,33 +6199,33 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.0.70:
+  sst-darwin-arm64@3.0.75:
     optional: true
 
-  sst-darwin-x64@3.0.70:
+  sst-darwin-x64@3.0.75:
     optional: true
 
-  sst-linux-arm64@3.0.70:
+  sst-linux-arm64@3.0.75:
     optional: true
 
-  sst-linux-x64@3.0.70:
+  sst-linux-x64@3.0.75:
     optional: true
 
-  sst-linux-x86@3.0.70:
+  sst-linux-x86@3.0.75:
     optional: true
 
-  sst@3.0.70(aws-crt@1.21.3):
+  sst@3.0.75(aws-crt@1.21.3):
     dependencies:
       '@aws-sdk/client-lambda': 3.478.0(aws-crt@1.21.3)
-      aws4fetch: 1.0.19
+      aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.0.70
-      sst-darwin-x64: 3.0.70
-      sst-linux-arm64: 3.0.70
-      sst-linux-x64: 3.0.70
-      sst-linux-x86: 3.0.70
+      sst-darwin-arm64: 3.0.75
+      sst-darwin-x64: 3.0.75
+      sst-linux-arm64: 3.0.75
+      sst-linux-x64: 3.0.75
+      sst-linux-x86: 3.0.75
     transitivePeerDependencies:
       - aws-crt
 
