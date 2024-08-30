@@ -56,8 +56,8 @@ const api = new sst.aws.ApiGatewayV2('api', {
     domain: customDomain,
 });
 
-api.route('GET /logs', 'packages/writer/src/free_log_writer.handler');
-api.route('POST /logs', 'packages/writer/src/free_log_writer.handler');
+api.route('GET /logs', 'packages/writer/src/main.handler');
+api.route('POST /logs', 'packages/writer/src/main.handler');
 
 export const outputs = {
     ApiEndpoint: api.url,
