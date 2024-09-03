@@ -57,8 +57,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       sst:
-        specifier: ^3.0.83
-        version: 3.0.83(aws-crt@1.21.3)
+        specifier: ^3.0.95
+        version: 3.0.95(aws-crt@1.21.3)
       tsup:
         specifier: ^8.2.4
         version: 8.2.4(tsx@4.19.0)(typescript@5.5.4)
@@ -2340,8 +2340,8 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
-  picocolors@1.0.1:
-    resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
+  picocolors@1.1.0:
+    resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
@@ -2554,33 +2554,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.0.83:
-    resolution: {integrity: sha512-v3X7VAWSxjl7YCsmIDs+4s7hCBNXOM7cYrAU2SNTXCqGVttsHpY+QyfxYYQkjVObe0xiOKIoVvMxJhbaikvUvA==}
+  sst-darwin-arm64@3.0.95:
+    resolution: {integrity: sha512-JRQoLRf+XZ9syPkroPCAPyx97bwY0c2EfOg+X+Zd6HoHc45EWdAbvCOV5n6+f6R1s8dJFVTVTv8b0ChitfXdvA==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.0.83:
-    resolution: {integrity: sha512-CGh/NeTJxsABCLcjWz9rPCosGuWShIw6cDZtWOBN8CK+Q6QoZsDfqeiAX9pSpQISFCYrJV4YmeaxOWv5aNMg3w==}
+  sst-darwin-x64@3.0.95:
+    resolution: {integrity: sha512-bffBcJiUvZ5If49nishhMqT0G45+DpEeKXs1eNWziGcwAYEiTFLwKEWP4nKni3hKr7zGK3gmFixNAaGb5AeZ8w==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.0.83:
-    resolution: {integrity: sha512-RMTDnWO+82icniZ+4EkXX5GKH+GiqvH9X1wq9ZLXzOTcDDsMvibs4gtwUEhXlD1cDAAG1gro7yp//9YtUbe+Xg==}
+  sst-linux-arm64@3.0.95:
+    resolution: {integrity: sha512-tOxRA20e0GO1TTt2hRNsfRnyR2/c2Wxqo64iqqeSkp+y6fh3KFn+aj1s3LaY/D4qTq2cOSlhoLeg2nZSI1/CaA==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.0.83:
-    resolution: {integrity: sha512-VW2ophdsQmuYL7sPDmJlNzQNkmldHvpAcTm183OlHDntGx/QpGUT/FGji3fleMELNQMO59b+RVRa8sXlu6C9lA==}
+  sst-linux-x64@3.0.95:
+    resolution: {integrity: sha512-w7Y6NkRmeZ9rG/i1mRx+9KGhjvTxzvVJTPP8UFAVaj2K6gfwlrPiVD9GiM29yTS25teq6lpA6GNrLM0bvhz49g==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.0.83:
-    resolution: {integrity: sha512-TbpJ1pDqEMlrkeHrcu55QEJ7qX4TUENgzAo6v5Z2YSy/A63IeCI+/NbI3HcWMR/NoFBhjm3jXc7tgCgfH/HLVw==}
+  sst-linux-x86@3.0.95:
+    resolution: {integrity: sha512-xH2T5jLTrpDaWqqImNJBm69Gstcuphr0Yem4ut4oCMz3gnC2wmRyzOSFHitq90ZEFff4A1wXG9tgPmnYPo13ww==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.0.83:
-    resolution: {integrity: sha512-ysKi2TMPpIBxw579gTgf63YdDSwTFr23zF0Fcw5e4mEUuG2NzKCmxDU5SupAZzoLgGVjrHy4G2KOFyfk++hbww==}
+  sst@3.0.95:
+    resolution: {integrity: sha512-Z4+FCDIiVJj05et26UmTrso4Ah9jrw+w79TGyFBSkmrsUSUEtlSpx/x4TxaDX/O7ZGqFU3ohMcZ+y7IYv7v8HQ==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -5964,7 +5964,7 @@ snapshots:
 
   path-type@4.0.0: {}
 
-  picocolors@1.0.1: {}
+  picocolors@1.1.0: {}
 
   picomatch@2.3.1: {}
 
@@ -6199,33 +6199,33 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.0.83:
+  sst-darwin-arm64@3.0.95:
     optional: true
 
-  sst-darwin-x64@3.0.83:
+  sst-darwin-x64@3.0.95:
     optional: true
 
-  sst-linux-arm64@3.0.83:
+  sst-linux-arm64@3.0.95:
     optional: true
 
-  sst-linux-x64@3.0.83:
+  sst-linux-x64@3.0.95:
     optional: true
 
-  sst-linux-x86@3.0.83:
+  sst-linux-x86@3.0.95:
     optional: true
 
-  sst@3.0.83(aws-crt@1.21.3):
+  sst@3.0.95(aws-crt@1.21.3):
     dependencies:
       '@aws-sdk/client-lambda': 3.478.0(aws-crt@1.21.3)
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.0.83
-      sst-darwin-x64: 3.0.83
-      sst-linux-arm64: 3.0.83
-      sst-linux-x64: 3.0.83
-      sst-linux-x86: 3.0.83
+      sst-darwin-arm64: 3.0.95
+      sst-darwin-x64: 3.0.95
+      sst-linux-arm64: 3.0.95
+      sst-linux-x64: 3.0.95
+      sst-linux-x86: 3.0.95
     transitivePeerDependencies:
       - aws-crt
 
@@ -6390,7 +6390,7 @@ snapshots:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      picocolors: 1.0.1
+      picocolors: 1.1.0
       postcss-load-config: 6.0.1(tsx@4.19.0)
       resolve-from: 5.0.0
       rollup: 4.21.2
