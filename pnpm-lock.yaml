@@ -57,8 +57,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       sst:
-        specifier: ^3.0.108
-        version: 3.0.108(aws-crt@1.21.3)
+        specifier: ^3.0.116
+        version: 3.0.116(aws-crt@1.21.3)
       tsup:
         specifier: ^8.2.4
         version: 8.2.4(tsx@4.19.0)(typescript@5.5.4)
@@ -1647,8 +1647,8 @@ packages:
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
-  eslint-module-utils@2.9.0:
-    resolution: {integrity: sha512-McVbYmwA3NEKwRQY5g4aWMdcZE5xZxV8i8l7CqJSrameuGSQJtSWaL/LxTEzSKKaCcOhlpDR8XEfYXWPrdo/ZQ==}
+  eslint-module-utils@2.10.0:
+    resolution: {integrity: sha512-/AXiipjFyfLIUj3E4FR5NEGWoGDZHDfcGzWZkwobRc8fwqUAcy9owTk2LIKwNmtYL8Ad9/XfjSXbGHZ9AJWDEg==}
     engines: {node: '>=4'}
     peerDependencies:
       '@typescript-eslint/parser': '*'
@@ -2557,33 +2557,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.0.108:
-    resolution: {integrity: sha512-YtrigdUSrcul1oq8yYlkTnfPa08RV3VBiugMUE4GNLr3xosXOzJZjS0L4KvGIu4/TUWMU+31FpwL2Ei4td/jRA==}
+  sst-darwin-arm64@3.0.116:
+    resolution: {integrity: sha512-3Fn88mXaFSA6OjXvSVkmgFl4aPbfwwrl53hXLGeH8MxHfOMudu+9Ig360AWiU15kmY86c1CMtWkl1Z2BD6zsOg==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.0.108:
-    resolution: {integrity: sha512-wgGutcjpvCUBqJ8pGl31KgUHaX1bxK0UM+oPGwQGVfhL1Up8CKVn3wNn+/3OFaOP4xpd4iggPezh95fE1MFw/A==}
+  sst-darwin-x64@3.0.116:
+    resolution: {integrity: sha512-/lbQ8Dtl3Q3RzYaTR5mPMqRr23HT0upmhDMW+ZEQKiLi2tlIV6CzHWL/4wwCuiF6DfjVQ8m1X1I6NM8oeTnz6g==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.0.108:
-    resolution: {integrity: sha512-mUTq5jrb657/foETiSPuJrbpFVmLZY1OPRhp5A5JR/0HcPkVlQCieNuLU642T7IhbxtOkWUDIu+zzUA8JV+ZUw==}
+  sst-linux-arm64@3.0.116:
+    resolution: {integrity: sha512-aD9gzsfUSpNenlgQR8nR0SULpe8bK3qE5EThTXOAoZm685x3utJDUlRa+hx9m14h9Ag0sOXFwqccan4Ceqz0KA==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.0.108:
-    resolution: {integrity: sha512-0nKeEljexAPVETY5HohKfkyztHRCENTxOtnw6Taj1zXMoG1+BrRAFYANDTa1XuJFX+OnWmEHxwBM2OVjvdsKXw==}
+  sst-linux-x64@3.0.116:
+    resolution: {integrity: sha512-eWKvH6/9mKF9Gqzop4onaQNLDHsXkHrUVb9EadO0anmOt8w5TGs/8mbMg+AJet07HTqTGNC2Uq3uPm313YwbaA==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.0.108:
-    resolution: {integrity: sha512-hiIjFlxsF2eUOzA08JOwN2M5YebG5rEV8O68D+ALpHmRtzC/CoUV7GY+mqvYgVOJR1aa3FtgdRjI7hxHYIJ3/g==}
+  sst-linux-x86@3.0.116:
+    resolution: {integrity: sha512-2iavtkVGjz+Tll1Yb8VbcaTrbkRg1lgqyivkuxFtGiM+NDCx97909Yp5tmQP2L917E+S6VQ3AoxLBiPw3IO/AQ==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.0.108:
-    resolution: {integrity: sha512-gs1Td7jG8s0DvGu+uxnQkgce/24JFvnXAWAOw2M4cMFG0ppKxz+IE8NPwUw5nptjon7wiHllhC9E/KugKEtZgg==}
+  sst@3.0.116:
+    resolution: {integrity: sha512-/9NhbxkC+eIdHDA/l/QOPIqDy3+STe/dlC09oK3d1sVcMAkneIszjnhoGsHbPNA/VQQZQcg/TMjVNVWzEX2Fpg==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -5175,7 +5175,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.9.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
+  eslint-module-utils@2.10.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -5206,7 +5206,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.9.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
+      eslint-module-utils: 2.10.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
@@ -6205,33 +6205,33 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.0.108:
+  sst-darwin-arm64@3.0.116:
     optional: true
 
-  sst-darwin-x64@3.0.108:
+  sst-darwin-x64@3.0.116:
     optional: true
 
-  sst-linux-arm64@3.0.108:
+  sst-linux-arm64@3.0.116:
     optional: true
 
-  sst-linux-x64@3.0.108:
+  sst-linux-x64@3.0.116:
     optional: true
 
-  sst-linux-x86@3.0.108:
+  sst-linux-x86@3.0.116:
     optional: true
 
-  sst@3.0.108(aws-crt@1.21.3):
+  sst@3.0.116(aws-crt@1.21.3):
     dependencies:
       '@aws-sdk/client-lambda': 3.478.0(aws-crt@1.21.3)
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.0.108
-      sst-darwin-x64: 3.0.108
-      sst-linux-arm64: 3.0.108
-      sst-linux-x64: 3.0.108
-      sst-linux-x86: 3.0.108
+      sst-darwin-arm64: 3.0.116
+      sst-darwin-x64: 3.0.116
+      sst-linux-arm64: 3.0.116
+      sst-linux-x64: 3.0.116
+      sst-linux-x86: 3.0.116
     transitivePeerDependencies:
       - aws-crt
 
