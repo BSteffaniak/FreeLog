@@ -41,7 +41,7 @@ strum = "0.26.3"
 strum_macros = "0.26.4"
 thiserror = "1.0.63"
 tokio = { version = "1.40.0", features = ["sync", "io-util"] }
-tokio-stream = "0.1.15"
+tokio-stream = "0.1.16"
 tokio-util = "0.7.12"
 tracing = "0.1.40"
 tracing-log = "0.2.0"
