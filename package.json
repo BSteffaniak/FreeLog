@@ -35,7 +35,7 @@
         "eslint-plugin-import": "^2.30.0",
         "eslint-plugin-node": "^11.1.0",
         "prettier": "^3.3.3",
-        "sst": "^3.0.122",
+        "sst": "^3.0.123",
         "tsup": "^8.2.4",
         "tsx": "^4.19.0",
         "typescript": "^5.5.4"
