@@ -10,7 +10,6 @@ version     = "0.3.0"
 free_log_models = { version = "0.2.0", path = "../models" }
 
 futures-util       = { workspace = true }
-once_cell          = { workspace = true }
 reqwest            = { workspace = true }
 serde              = { workspace = true }
 serde_json         = { workspace = true }

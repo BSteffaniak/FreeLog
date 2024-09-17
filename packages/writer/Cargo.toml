@@ -20,7 +20,6 @@ env_logger             = { workspace = true }
 lambda-web             = { workspace = true }
 lambda_runtime         = { workspace = true }
 log                    = { workspace = true }
-once_cell              = { workspace = true }
 serde                  = { workspace = true }
 serde_json             = { workspace = true }
 strum                  = { workspace = true }

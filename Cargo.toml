@@ -27,20 +27,19 @@ futures-util = { version = "0.3.30", default-features = false, features = [
 lambda-web = { version = "0.2.1", features = ["actix4"] }
 lambda_runtime = "0.13.0"
 log = { version = "0.4", features = ["release_max_level_trace"] }
-once_cell = { version = "1.19.0" }
 pretty_env_logger = "0.5"
 reqwest = { version = "0.12.7", default-features = false, features = [
     "blocking",
-    "stream",
-    "rustls-tls",
     "json",
+    "rustls-tls",
+    "stream",
 ] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.128"
 strum = "0.26.3"
 strum_macros = "0.26.4"
 thiserror = "1.0.63"
-tokio = { version = "1.40.0", features = ["sync", "io-util"] }
+tokio = { version = "1.40.0", features = ["io-util", "sync"] }
 tokio-stream = "0.1.16"
 tokio-util = "0.7.12"
 tracing = "0.1.40"

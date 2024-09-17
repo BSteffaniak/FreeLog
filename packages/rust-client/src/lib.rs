@@ -5,12 +5,11 @@ use std::{
     convert::Infallible,
     path::PathBuf,
     str::FromStr,
-    sync::{Arc, Mutex},
+    sync::{Arc, LazyLock, Mutex},
     time::SystemTime,
 };
 
 use free_log_models::{LogComponent, LogEntryRequest, LogLevel};
-use once_cell::sync::Lazy;
 use reqwest::StatusCode;
 use serde_json::Value;
 use strum_macros::{AsRefStr, EnumString};
@@ -22,9 +21,9 @@ use tokio::{
 use tracing_log::{log_tracer, LogTracer};
 use tracing_subscriber::{layer::SubscriberExt as _, Layer};
 
-static CLIENT: Lazy<reqwest::Client> = Lazy::new(reqwest::Client::new);
+static CLIENT: LazyLock<reqwest::Client> = LazyLock::new(reqwest::Client::new);
 
-static RT: Lazy<tokio::runtime::Runtime> = Lazy::new(|| {
+static RT: LazyLock<tokio::runtime::Runtime> = LazyLock::new(|| {
     tokio::runtime::Builder::new_multi_thread()
         .enable_all()
         .max_blocking_threads(1)
