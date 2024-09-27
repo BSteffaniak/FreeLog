@@ -57,8 +57,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       sst:
-        specifier: ^3.1.38
-        version: 3.1.38
+        specifier: ^3.1.42
+        version: 3.1.42
       tsup:
         specifier: ^8.3.0
         version: 8.3.0(tsx@4.19.1)(typescript@5.6.2)
@@ -1375,8 +1375,8 @@ packages:
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
-  eslint-module-utils@2.11.1:
-    resolution: {integrity: sha512-EwcbfLOhwVMAfatfqLecR2yv3dE5+kQ8kx+Rrt0DvDXEVwW86KQ/xbMDQhtp5l42VXukD5SOF8mQQHbaNtO0CQ==}
+  eslint-module-utils@2.12.0:
+    resolution: {integrity: sha512-wALZ0HFoytlyh/1+4wuZ9FJCD/leWHQzzrxJ8+rebyReSLk7LApMyd3WJaLVoN+D5+WIdJyDK1c6JnE65V4Zyg==}
     engines: {node: '>=4'}
     peerDependencies:
       '@typescript-eslint/parser': '*'
@@ -2045,8 +2045,8 @@ packages:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
 
-  package-json-from-dist@1.0.0:
-    resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
+  package-json-from-dist@1.0.1:
+    resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -2293,33 +2293,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.1.38:
-    resolution: {integrity: sha512-iIdpj6jXdS6H+4mQLbnlP+pAZoxUgcYoauMbJxK6YHdmWHROr2KEp2jC73ZMO/WzCfbMrKyAuNC2tvyFgGCu7g==}
+  sst-darwin-arm64@3.1.42:
+    resolution: {integrity: sha512-OOK7L7rrA6pZMAAOOQ8axnRJK9vOrkIlzyTumLzVc3LM9jIkgMDqCFQdgiC7TIGDEC/9JdJjpix25GvssJtO7w==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.1.38:
-    resolution: {integrity: sha512-vqg6iQDk7nOTAmr8slcIhMGOfBqG8NY56w8RgpYMRfUyhIYPxvqbkRtk6jXmtIqWrJRNNYg21kC8jpM6o1hGOQ==}
+  sst-darwin-x64@3.1.42:
+    resolution: {integrity: sha512-KJn+1hpm+Ih2sPw2OHLOLMuem0Wz4Pjuc/z00zMlYsXGuCchRNHxSrQW3R5pbgJxvO1rqRNpFOmKxuhDiQunUQ==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.1.38:
-    resolution: {integrity: sha512-qtOU3oUW/zOdAdeNSg/iDf0J0i2f4VQT5y3l345QisPqNzPfIE4BBpkOeakO1P+8q1qdXVtidqo7H2Z+YH08ng==}
+  sst-linux-arm64@3.1.42:
+    resolution: {integrity: sha512-XU19HDI4JBxRfc6miF+2XZUjdJ2EiixLLrbj88mrFJbqBL25rO6GMNo+5Y1DsbvStvBUkG5c0qwewYYvoOgcuQ==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.1.38:
-    resolution: {integrity: sha512-RG2qLjhRDWv0v462zuU6XTImHnZb3vu0Eo+yMUflOzrxN+E9lvykV5ByWNlMCbaX13laCn32nO+PKh9WIeo52A==}
+  sst-linux-x64@3.1.42:
+    resolution: {integrity: sha512-NGd1ECPhnMAGNVDkA35nUFutUtOuY16DqHPa13GPhjlp9IafRkupqWy3p7ekoKO3+rXJeTeG4vJ59SRwuwTVOg==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.1.38:
-    resolution: {integrity: sha512-BUJ8Z9/Tsw9LzPpiGNPNkUepGAjRA9FSj0lutCR7466Op1mDYTMjEvdmiJjh0Nc38hAUACJJRE6UHN/IjpawzA==}
+  sst-linux-x86@3.1.42:
+    resolution: {integrity: sha512-nOzV1pcZGKuFS3yYlEH5oPUIRatji3+gdS9RidSCriL3M7Yx5F8JLic9I0xk2Az5M7E02vECqk06pzOUrs3+tw==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.1.38:
-    resolution: {integrity: sha512-yqmsFvtOaJulJ9ZQhxtawTbkdjSJtrI7Vs/TosmTpqZQJ09yxYapAXLqKzM0QMXcjnq1nK63CoSfD7uLaQ0MoQ==}
+  sst@3.1.42:
+    resolution: {integrity: sha512-PdC7DQwI9ceLwzfWB9FE9WBhBtknZYWTRd09zYke9aYKQfAovtt9A0+2jc+8plxP5OLOxB/hsvC7fJ3WfPW07Q==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -4274,7 +4274,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.11.1(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -4305,7 +4305,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.11.1(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint@8.57.1)
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
@@ -4582,7 +4582,7 @@ snapshots:
       jackspeak: 3.4.3
       minimatch: 9.0.5
       minipass: 7.1.2
-      package-json-from-dist: 1.0.0
+      package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
   glob@7.2.3:
@@ -5048,7 +5048,7 @@ snapshots:
     dependencies:
       p-limit: 3.1.0
 
-  package-json-from-dist@1.0.0: {}
+  package-json-from-dist@1.0.1: {}
 
   parent-module@1.0.1:
     dependencies:
@@ -5306,32 +5306,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.1.38:
+  sst-darwin-arm64@3.1.42:
     optional: true
 
-  sst-darwin-x64@3.1.38:
+  sst-darwin-x64@3.1.42:
     optional: true
 
-  sst-linux-arm64@3.1.38:
+  sst-linux-arm64@3.1.42:
     optional: true
 
-  sst-linux-x64@3.1.38:
+  sst-linux-x64@3.1.42:
     optional: true
 
-  sst-linux-x86@3.1.38:
+  sst-linux-x86@3.1.42:
     optional: true
 
-  sst@3.1.38:
+  sst@3.1.42:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.1.38
-      sst-darwin-x64: 3.1.38
-      sst-linux-arm64: 3.1.38
-      sst-linux-x64: 3.1.38
-      sst-linux-x86: 3.1.38
+      sst-darwin-arm64: 3.1.42
+      sst-darwin-x64: 3.1.42
+      sst-linux-arm64: 3.1.42
+      sst-linux-x64: 3.1.42
+      sst-linux-x86: 3.1.42
 
   stream-shift@1.0.3:
     optional: true
