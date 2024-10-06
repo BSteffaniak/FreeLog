@@ -15,13 +15,13 @@ actix-cors = "0.7.0"
 actix-files = "0.6.6"
 actix-web = "4.9.0"
 awc = "3.5.1"
-aws-config = { version = "1.5.7", features = ["behavior-version-latest"] }
-aws-sdk-cloudwatch = "1.49.0"
-aws-sdk-cloudwatchlogs = "1.50.0"
+aws-config = { version = "1.5.8", features = ["behavior-version-latest"] }
+aws-sdk-cloudwatch = "1.50.0"
+aws-sdk-cloudwatchlogs = "1.51.0"
 aws-smithy-runtime-api = "1.7.2"
 derive_builder = "0.20.1"
 env_logger = "0.11"
-futures-util = { version = "0.3.30", default-features = false, features = [
+futures-util = { version = "0.3.31", default-features = false, features = [
     "std",
 ] }
 lambda-web = { version = "0.2.1", features = ["actix4"] }
