@@ -9,18 +9,22 @@ version     = "0.3.0"
 [dependencies]
 free_log_models = { version = "0.2.0", path = "../models" }
 
-futures-util       = { workspace = true }
-reqwest            = { workspace = true }
-serde              = { workspace = true }
+futures-util       = { workspace = true, optional = true }
+reqwest            = { workspace = true, optional = true }
+serde              = { workspace = true, optional = true }
 serde_json         = { workspace = true }
 strum              = { workspace = true }
 strum_macros       = { workspace = true }
 thiserror          = { workspace = true }
-tokio              = { workspace = true, features = ["rt-multi-thread"] }
+tokio              = { workspace = true, optional = true, features = ["rt-multi-thread"] }
 tracing            = { workspace = true }
 tracing-log        = { workspace = true }
 tracing-subscriber = { workspace = true }
 
 
 [features]
+default = ["api"]
+
 fail-on-warnings = []
+
+api = ["dep:futures-util", "dep:reqwest", "dep:serde", "dep:tokio"]
