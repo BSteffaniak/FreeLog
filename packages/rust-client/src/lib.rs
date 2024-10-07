@@ -127,6 +127,7 @@ impl tracing::field::Visit for FieldVisitor {
 pub enum FlushError {
     #[error(transparent)]
     IO(#[from] std::io::Error),
+    #[cfg(feature = "api")]
     #[error(transparent)]
     Reqwest(#[from] reqwest::Error),
     #[error(transparent)]
@@ -151,6 +152,7 @@ impl FreeLogLayer {
         Self {
             buffer: Arc::new(Mutex::new(vec![])),
             config: Arc::new(config),
+            #[cfg(feature = "api")]
             file_writers: Arc::new(tokio::sync::Mutex::new(None)),
             properties: Arc::new(Mutex::new(None)),
         }
@@ -181,122 +183,123 @@ impl FreeLogLayer {
         self
     }
 
+    #[cfg(feature = "api")]
     pub async fn flush(&self) -> Result<(), FlushError> {
         let mut errs = vec![];
 
-        #[cfg(feature = "api")]
-        {
-            if !self.config.file_writers.is_empty() {
-                let mut writers = self.file_writers.lock().await;
+        if !self.config.file_writers.is_empty() {
+            let mut writers = self.file_writers.lock().await;
 
-                if writers.is_none() {
-                    let mut new_writers = vec![];
+            if writers.is_none() {
+                let mut new_writers = vec![];
 
-                    #[cfg(feature = "api")]
-                    for file_config in self.config.file_writers.iter() {
-                        match tokio::fs::OpenOptions::new()
-                            .create(true)
-                            .append(true)
-                            .write(true)
-                            .open(&file_config.path)
-                            .await
-                        {
-                            Ok(file) => {
-                                new_writers
-                                    .push((file_config.log_level, tokio::io::BufWriter::new(file)));
-                            }
-                            Err(err) => {
-                                errs.push(err.into());
-                            }
-                        };
-                    }
-
-                    writers.replace(new_writers);
-                }
-            }
-
-            let buffer: Vec<LogEntryRequest> =
-                self.buffer.lock().as_mut().unwrap().drain(..).collect();
-
-            if buffer.is_empty() {
-                return Ok(());
-            }
-
-            for api_config in self.config.api_writers.iter() {
-                let entries = buffer
-                    .iter()
-                    .filter(|r| level_int(r.level.into()) >= level_int(api_config.log_level))
-                    .collect::<Vec<_>>();
-
-                if entries.is_empty() {
-                    continue;
-                }
-
-                let body = serde_json::to_string(&entries)?;
-
-                let response = match api::CLIENT
-                    .post(format!("{}/logs", api_config.api_url))
-                    .header(reqwest::header::CONTENT_TYPE, "application/json")
-                    .header(reqwest::header::USER_AGENT, &self.config.user_agent)
-                    .body(body)
-                    .send()
-                    .await
-                {
-                    Ok(response) => response,
-                    Err(err) => {
-                        errs.push(err.into());
-                        continue;
-                    }
-                };
-
-                if response.status() != reqwest::StatusCode::OK {
-                    errs.push(FlushError::Unsuccessful(
-                        response
-                            .text()
-                            .await
-                            .unwrap_or("(failed to get response text)".to_string()),
-                    ));
-                    continue;
-                }
-
-                let value: Value = match response.json().await {
-                    Ok(response) => response,
-                    Err(err) => {
-                        errs.push(err.into());
-                        continue;
-                    }
-                };
-
-                if !value.get("success").and_then(|x| x.as_bool()).ok_or(
-                    FlushError::Unsuccessful(format!("Received unsuccessful response: {value:?}")),
-                )? {
-                    errs.push(FlushError::Unsuccessful(format!(
-                        "Received unsuccessful response: {value:?}"
-                    )));
-                    continue;
-                }
-            }
-
-            use tokio::io::AsyncWriteExt as _;
-            if let Some(writers) = self.file_writers.lock().await.as_mut() {
-                for (level, writer) in writers.iter_mut() {
-                    for entry in buffer
-                        .iter()
-                        .filter(|r| level_int(r.level.into()) >= level_int(*level))
+                #[cfg(feature = "api")]
+                for file_config in self.config.file_writers.iter() {
+                    match tokio::fs::OpenOptions::new()
+                        .create(true)
+                        .append(true)
+                        .write(true)
+                        .open(&file_config.path)
+                        .await
                     {
-                        let mut body = serde_json::to_string(entry)?;
-                        body.push('\n');
-
-                        if let Err(err) = writer.write_all(body.as_bytes()).await {
-                            errs.push(err.into());
-                            continue;
+                        Ok(file) => {
+                            new_writers
+                                .push((file_config.log_level, tokio::io::BufWriter::new(file)));
                         }
-                    }
+                        Err(err) => {
+                            errs.push(err.into());
+                        }
+                    };
+                }
 
-                    if let Err(err) = writer.flush().await {
+                writers.replace(new_writers);
+            }
+        }
+
+        let buffer: Vec<LogEntryRequest> = self.buffer.lock().as_mut().unwrap().drain(..).collect();
+
+        if buffer.is_empty() {
+            return Ok(());
+        }
+
+        for api_config in self.config.api_writers.iter() {
+            let entries = buffer
+                .iter()
+                .filter(|r| level_int(r.level.into()) >= level_int(api_config.log_level))
+                .collect::<Vec<_>>();
+
+            if entries.is_empty() {
+                continue;
+            }
+
+            let body = serde_json::to_string(&entries)?;
+
+            let response = match api::CLIENT
+                .post(format!("{}/logs", api_config.api_url))
+                .header(reqwest::header::CONTENT_TYPE, "application/json")
+                .header(reqwest::header::USER_AGENT, &self.config.user_agent)
+                .body(body)
+                .send()
+                .await
+            {
+                Ok(response) => response,
+                Err(err) => {
+                    errs.push(err.into());
+                    continue;
+                }
+            };
+
+            if response.status() != reqwest::StatusCode::OK {
+                errs.push(FlushError::Unsuccessful(
+                    response
+                        .text()
+                        .await
+                        .unwrap_or("(failed to get response text)".to_string()),
+                ));
+                continue;
+            }
+
+            let value: Value = match response.json().await {
+                Ok(response) => response,
+                Err(err) => {
+                    errs.push(err.into());
+                    continue;
+                }
+            };
+
+            if !value
+                .get("success")
+                .and_then(|x| x.as_bool())
+                .ok_or(FlushError::Unsuccessful(format!(
+                    "Received unsuccessful response: {value:?}"
+                )))?
+            {
+                errs.push(FlushError::Unsuccessful(format!(
+                    "Received unsuccessful response: {value:?}"
+                )));
+                continue;
+            }
+        }
+
+        use tokio::io::AsyncWriteExt as _;
+        if let Some(writers) = self.file_writers.lock().await.as_mut() {
+            for (level, writer) in writers.iter_mut() {
+                for entry in buffer
+                    .iter()
+                    .filter(|r| level_int(r.level.into()) >= level_int(*level))
+                {
+                    let mut body = serde_json::to_string(entry)?;
+                    body.push('\n');
+
+                    if let Err(err) = writer.write_all(body.as_bytes()).await {
                         errs.push(err.into());
                         continue;
                     }
+                }
+
+                if let Err(err) = writer.flush().await {
+                    errs.push(err.into());
+                    continue;
                 }
             }
         }
@@ -700,9 +703,12 @@ impl LogsConfigBuilder {
     pub fn build(self) -> Result<LogsConfig, BuildLogsConfigError> {
         Ok(LogsConfig {
             user_agent: self.user_agent.unwrap_or("free_log_rust_client".into()),
+            #[cfg(feature = "api")]
             api_writers: self.api_writers,
+            #[cfg(feature = "api")]
             file_writers: self.file_writers,
             log_level: self.log_level.unwrap_or_default(),
+            #[cfg(feature = "api")]
             auto_flush: self.auto_flush.unwrap_or(true),
             auto_flush_on_close: self.auto_flush_on_close.unwrap_or(true),
             env_filter: self.env_filter,
@@ -752,14 +758,16 @@ where
 
     tracing::subscriber::set_global_default(subscriber)?;
 
-    let layer_send = free_log_layer.clone();
-
     #[cfg(feature = "api")]
-    if auto_flush {
-        api::RT.spawn(async move {
-            log_monitor(&layer_send).await?;
-            Ok::<_, MonitorError>(())
-        });
+    {
+        let layer_send = free_log_layer.clone();
+
+        if auto_flush {
+            api::RT.spawn(async move {
+                log_monitor(&layer_send).await?;
+                Ok::<_, MonitorError>(())
+            });
+        }
     }
 
     Ok(free_log_layer)
@@ -771,6 +779,7 @@ pub enum MonitorError {
     IO(#[from] std::io::Error),
 }
 
+#[cfg(feature = "api")]
 async fn log_monitor(layer: &FreeLogLayer) -> Result<(), MonitorError> {
     let mut interval = tokio::time::interval(tokio::time::Duration::from_millis(1000));
 
