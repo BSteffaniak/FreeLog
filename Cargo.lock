@@ -1058,7 +1058,7 @@ dependencies = [
 
 [[package]]
 name = "free_log"
-version = "0.4.0"
+version = "0.4.1"
 dependencies = [
  "free_log_client",
  "free_log_models",
@@ -1067,7 +1067,7 @@ dependencies = [
 
 [[package]]
 name = "free_log_client"
-version = "0.4.0"
+version = "0.4.1"
 dependencies = [
  "free_log_models",
  "futures-util",

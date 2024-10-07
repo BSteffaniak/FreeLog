@@ -4,7 +4,7 @@ description = "Free logging library Rust client"
 edition     = "2021"
 license     = "MPL-2.0"
 name        = "free_log_client"
-version     = "0.4.0"
+version     = "0.4.1"
 
 [dependencies]
 free_log_models = { version = "0.2.0", path = "../models" }
