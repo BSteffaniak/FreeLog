@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@aws-sdk/client-ssm':
-        specifier: ^3.670.0
-        version: 3.670.0(aws-crt@1.21.3)
+        specifier: ^3.674.0
+        version: 3.674.0(aws-crt@1.21.3)
       '@tsconfig/node18':
         specifier: ^18.2.4
         version: 18.2.4
@@ -57,8 +57,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       sst:
-        specifier: ^3.2.31
-        version: 3.2.31
+        specifier: ^3.2.34
+        version: 3.2.34
       tsup:
         specifier: ^8.3.0
         version: 8.3.0(tsx@4.19.1)(typescript@5.6.3)
@@ -108,8 +108,8 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-sdk/client-ssm@3.670.0':
-    resolution: {integrity: sha512-w0WRKSSMsruNtt8+UQpgwTydrjPnSz3xsS74bMbnJdnQo7joI+N3emXTqXWXFdfLOw99wKkJpXsYJCOosE3Nkg==}
+  '@aws-sdk/client-ssm@3.674.0':
+    resolution: {integrity: sha512-pLIRRk9LdcymJ8K5x9G3NFiaJ65pC5mn54otuLaNdzTlhwuaLx6GeEyxqD2OMQGW9KgzCocC4kwM8XnaUZK/ow==}
     engines: {node: '>=16.0.0'}
 
   '@aws-sdk/client-sso-oidc@3.670.0':
@@ -915,6 +915,9 @@ packages:
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
+
+  '@types/uuid@9.0.8':
+    resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
 
   '@types/ws@8.5.12':
     resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
@@ -2298,33 +2301,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.2.31:
-    resolution: {integrity: sha512-IkMU7Vf91tmx74bCX4nCr4u0KJ15hdnIYINK2tIPSpAfANw+ZRSLMV7X4WmmQFFiELCdKWg+6pEtb5EiOpU58A==}
+  sst-darwin-arm64@3.2.34:
+    resolution: {integrity: sha512-8kJmHhDAGCQBFZPWU48Lah0EeEyGuP8WcBFlvSNzfuHC7YxBEdYh1prQu3vThmiTbmx2hqU3587iXyYu8kuDLA==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.2.31:
-    resolution: {integrity: sha512-GXUzVoXbQJo0W01SKHBU8FnLcHKtj6FMzYgFTF7sb5se2za9bVvdIkBVnZM6+oJY5fWacMDSlabgU8Ruv7P28w==}
+  sst-darwin-x64@3.2.34:
+    resolution: {integrity: sha512-VEYqfRKoSMJWpMwXcvdzTxuzKoc27yhbiMSdjGK8vmuaEww2ta52soBSgiFZqCuVumsYzFadhvQSBQHCPdVA8Q==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.2.31:
-    resolution: {integrity: sha512-yV1XZTihiuDVP7BNzTV9DbUl8sHzBEi044n8xIUU/pEr/yJSHliuZqMIESnQ+W0y3o+qJ1Ldr/Mp505TRG9ssQ==}
+  sst-linux-arm64@3.2.34:
+    resolution: {integrity: sha512-xw+riVwgnqN/ehpflEaQ5L7Q8QqmAB6fSMGqOJAWXATr/gGtMmN7ti6PCZfy7atXuWqOSVzS3IshQpy0SpmO0A==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.2.31:
-    resolution: {integrity: sha512-UycmzraCh1zowc7SPMvbooUpIYQfYsiVWiT2H3z7z2rJF1Z8CMY5QHbQfCXXlTSNvbYztOVIlp2AvQ2SXJOVFQ==}
+  sst-linux-x64@3.2.34:
+    resolution: {integrity: sha512-JixXBffv+XboLWhVdwI1pIOdjsu8QWSrCkXA34gZXULOdMtOvUi2DMo86hAFZmdJRLv9UMYBSWu80PzUgSvLHQ==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.2.31:
-    resolution: {integrity: sha512-3t2Al+q/6wRrD06LbyFuN1yj5hAcoUfITQT+XhD9afiTZryKZD+YmeQ7o9VND8iuwLaiBJyoZjxF5myZqdzXRg==}
+  sst-linux-x86@3.2.34:
+    resolution: {integrity: sha512-jgJ9GX7Cl/6YZqpPu85ll1ku1BSu0PiqV+nrlM0BiqqXtmk+dbua4cT33Wq+ycWzM/MBKYCDnR8Pg6Kz8Y26pw==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.2.31:
-    resolution: {integrity: sha512-YsPUeYITAk9H1c9INpSCvKBvvbxbko4Ep/SiGk0yID8S7I3fewOktSJ6fLeBS6MH1N9l6bL6YAmJ+EJ/YgI96Q==}
+  sst@3.2.34:
+    resolution: {integrity: sha512-5uCfTgA+fTsZr1lPUlyx+n9V1tmLfgBOTskpIraIoV7twtctIaMHZwaSmowKkdfsl247cWWc9cQC/R4HVEQcxA==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -2662,7 +2665,7 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.0
 
-  '@aws-sdk/client-ssm@3.670.0(aws-crt@1.21.3)':
+  '@aws-sdk/client-ssm@3.674.0(aws-crt@1.21.3)':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -2705,6 +2708,7 @@ snapshots:
       '@smithy/util-retry': 3.0.7
       '@smithy/util-utf8': 3.0.0
       '@smithy/util-waiter': 3.1.6
+      '@types/uuid': 9.0.8
       tslib: 2.8.0
       uuid: 9.0.1
     transitivePeerDependencies:
@@ -3653,6 +3657,8 @@ snapshots:
       undici-types: 6.19.8
 
   '@types/semver@7.5.8': {}
+
+  '@types/uuid@9.0.8': {}
 
   '@types/ws@8.5.12':
     dependencies:
@@ -5324,32 +5330,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.2.31:
+  sst-darwin-arm64@3.2.34:
     optional: true
 
-  sst-darwin-x64@3.2.31:
+  sst-darwin-x64@3.2.34:
     optional: true
 
-  sst-linux-arm64@3.2.31:
+  sst-linux-arm64@3.2.34:
     optional: true
 
-  sst-linux-x64@3.2.31:
+  sst-linux-x64@3.2.34:
     optional: true
 
-  sst-linux-x86@3.2.31:
+  sst-linux-x86@3.2.34:
     optional: true
 
-  sst@3.2.31:
+  sst@3.2.34:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.2.31
-      sst-darwin-x64: 3.2.31
-      sst-linux-arm64: 3.2.31
-      sst-linux-x64: 3.2.31
-      sst-linux-x86: 3.2.31
+      sst-darwin-arm64: 3.2.34
+      sst-darwin-x64: 3.2.34
+      sst-linux-arm64: 3.2.34
+      sst-linux-x64: 3.2.34
+      sst-linux-x86: 3.2.34
 
   stream-shift@1.0.3:
     optional: true
