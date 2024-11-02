@@ -311,9 +311,9 @@ dependencies = [
 
 [[package]]
 name = "anstyle"
-version = "1.0.9"
+version = "1.0.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8365de52b16c035ff4fcafe0092ba9390540e3e352870ac09933bebcaa2c8c56"
+checksum = "55cc3b69f167a1ef2e161439aa98aed94e6028e5f9a59be9a6ffb47aef1651f9"
 
 [[package]]
 name = "anstyle-parse"
@@ -473,9 +473,9 @@ dependencies = [
 
 [[package]]
 name = "aws-sdk-cloudwatchlogs"
-version = "1.55.0"
+version = "1.56.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e44f5e8bf087ea33f121487a8456fcd76e19c70ab6e9b7ae17d3b35b064a0c8c"
+checksum = "35867d9b551a097ba7163b430560cbc34b0ace82a6ba94078ce828f886174b4e"
 dependencies = [
  "aws-credential-types",
  "aws-runtime",
