@@ -15,7 +15,7 @@ pub mod api;
 pub enum CreateLogsError {
     #[error("Invalid payload")]
     InvalidPayload,
-    #[error("MissingLogGroupConfiguration: {r#type:?}")]
+    #[error("MissingLogGroupConfiguration: {type:?}")]
     MissingLogGroupConfiguration { r#type: String },
     #[error("Failed to put logs")]
     PutLogs(
