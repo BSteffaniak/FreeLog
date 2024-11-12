@@ -57,8 +57,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       sst:
-        specifier: ^3.3.13
-        version: 3.3.13
+        specifier: ^3.3.19
+        version: 3.3.19
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.6.3)
@@ -86,8 +86,8 @@ importers:
 
 packages:
 
-  '@aws-cdk/asset-awscli-v1@2.2.210':
-    resolution: {integrity: sha512-yxuGP52ZtdAGkcAik5mW79FKKv6yvc5QuCZbsKMyICk48alqs+ni7Iv2UnuGLkVSLh09+ixoHHu4o5rIv8X9jg==}
+  '@aws-cdk/asset-awscli-v1@2.2.211':
+    resolution: {integrity: sha512-56G1FYTiKyec3bEfEI/5UcU0XPnaGUlaDDH7OYClyvqss0HlnmoSulHK2gwai2PGAD1Nk+scPrdfH/MVAkSKuw==}
 
   '@aws-cdk/asset-kubectl-v20@2.1.3':
     resolution: {integrity: sha512-cDG1w3ieM6eOT9mTefRuTypk95+oyD7P5X/wRltwmYxU7nZc3+076YEVS6vrjDKr3ADYbfn0lDKpfB1FBtO9CQ==}
@@ -2468,33 +2468,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.3.13:
-    resolution: {integrity: sha512-EMX3jSXaI8fDVxn3d1fV251MhQhWy80ZOAqxd/7IngFOsGod2qFcVhfDXE5RtlBdHVxkhxxv1/ri9DNcX/r/ww==}
+  sst-darwin-arm64@3.3.19:
+    resolution: {integrity: sha512-FZoqMDIhMNLp6WS3lyMypEoIA+uOgdKlcNs1G6P4FAS/L6XSqu7WIiWuBrUqxYIHWZbc7Mlbd8/AK1lYHd/kHA==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.3.13:
-    resolution: {integrity: sha512-bJBQqpFxHF43JMMREugg51htMp959mVXoADZZW8xCk43ayaQVwJOx6E56sV3Cs85EO9fuUARVvRWoS4i3EWulg==}
+  sst-darwin-x64@3.3.19:
+    resolution: {integrity: sha512-QFFduBG72+OIscnbsI6TPlQPaR+chyiM+0HG9rBq6L1PYM/iTdX/yL9y+tGUVZsUa17GYOhrLe7+/zEpo2zcKw==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.3.13:
-    resolution: {integrity: sha512-xZWC1PsWkHAgBEta6XYtWcS33XMhcePoqsDA7McrqiAdFv5D1m/kuM6VCMOK6XtEWNbxjzfVmV8kQWRUzyKKhA==}
+  sst-linux-arm64@3.3.19:
+    resolution: {integrity: sha512-24V6y3HsLVHMTaio9h0vL5Wv+6NuuEjkpDil1JzJJlw8oG79GK7+pJHaCbYwRvxTTULA5YiuDHUXMfmxaLvOVQ==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.3.13:
-    resolution: {integrity: sha512-fJMVFe7Ks6gaaWXt5ZY4I29+EA53v68i1Fv2JJ9PgYEveDhgtXDJ8DYmb+rglFe7r7u5LnJ8efKMCzW0fu04FA==}
+  sst-linux-x64@3.3.19:
+    resolution: {integrity: sha512-hxya4Wng0LEv0A2JLeP5WnqUYZ9yLkSOP5K5pjuosNgp2mobM7LbEr3gLhNi+oE0ZofXzXsiGwjUMuhyXYQovA==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.3.13:
-    resolution: {integrity: sha512-bLdY3g5Z+jGPIi6IjW2lQP16V0Vzl5fNcsT2w322jG3CFlDrR/mM9uvpqttCC4cPO+qNUAHm+Dhdpgm/IM0JXg==}
+  sst-linux-x86@3.3.19:
+    resolution: {integrity: sha512-7GtPWLR69lTosJONT3kVh/oJhz1Dzqqchtvg3FzdHD8rJcQfgF0wmfUUx2FjCX8LL+wQA44NdFrlDfA2FGGvPA==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.3.13:
-    resolution: {integrity: sha512-vROt/6K0+AHgcDS9PqWIy5V4GpIA6/wo2k9uYB8KyfN1swhcbsUdln7fe3BNY5Riom31oYgVnlTLTcKpk9n5ZA==}
+  sst@3.3.19:
+    resolution: {integrity: sha512-oZ09YGNqAJOkFQjUp2G2ZyANJ7j7yZEZmho+ASwvCFb10vXJbJbzLjIFS9+FkFpf2Cq+Y8uZpbtHHdPSJPrpGQ==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -2803,7 +2803,7 @@ packages:
 
 snapshots:
 
-  '@aws-cdk/asset-awscli-v1@2.2.210': {}
+  '@aws-cdk/asset-awscli-v1@2.2.211': {}
 
   '@aws-cdk/asset-kubectl-v20@2.1.3': {}
 
@@ -4104,7 +4104,7 @@ snapshots:
 
   aws-cdk-lib@2.142.1(constructs@10.3.0):
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.210
+      '@aws-cdk/asset-awscli-v1': 2.2.211
       '@aws-cdk/asset-kubectl-v20': 2.1.3
       '@aws-cdk/asset-node-proxy-agent-v6': 2.1.0
       constructs: 10.3.0
@@ -5614,32 +5614,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.3.13:
+  sst-darwin-arm64@3.3.19:
     optional: true
 
-  sst-darwin-x64@3.3.13:
+  sst-darwin-x64@3.3.19:
     optional: true
 
-  sst-linux-arm64@3.3.13:
+  sst-linux-arm64@3.3.19:
     optional: true
 
-  sst-linux-x64@3.3.13:
+  sst-linux-x64@3.3.19:
     optional: true
 
-  sst-linux-x86@3.3.13:
+  sst-linux-x86@3.3.19:
     optional: true
 
-  sst@3.3.13:
+  sst@3.3.19:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.3.13
-      sst-darwin-x64: 3.3.13
-      sst-linux-arm64: 3.3.13
-      sst-linux-x64: 3.3.13
-      sst-linux-x86: 3.3.13
+      sst-darwin-arm64: 3.3.19
+      sst-darwin-x64: 3.3.19
+      sst-linux-arm64: 3.3.19
+      sst-linux-x64: 3.3.19
+      sst-linux-x86: 3.3.19
 
   stream-shift@1.0.3:
     optional: true
