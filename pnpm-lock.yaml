@@ -54,11 +54,11 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0(eslint@8.57.1)
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       sst:
-        specifier: ^3.3.29
-        version: 3.3.29
+        specifier: ^3.3.30
+        version: 3.3.30
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.7.2)
@@ -1487,8 +1487,8 @@ packages:
   es-shim-unscopables@1.0.2:
     resolution: {integrity: sha512-J3yBRXCzDu4ULnQwxyToo/OjdMx6akgVC7K6few0a7F/0wLtmKKN7I73AH5T2836UuXRqN7Qg+IIUw/+YJksRw==}
 
-  es-to-primitive@1.2.1:
-    resolution: {integrity: sha512-QCOllgZJtaUo9miYBcLChTUaHNjJF3PYs1VidD7AwiEj1kYxKeQTctLAezAOH5ZKRH0g2IgPn6KwB4IT8iRpvA==}
+  es-to-primitive@1.3.0:
+    resolution: {integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==}
     engines: {node: '>= 0.4'}
 
   esbuild@0.19.12:
@@ -2300,8 +2300,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.4.1:
+    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2469,33 +2469,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.3.29:
-    resolution: {integrity: sha512-xX+Rni98IkBNrImYcrFHzKbWO92AAE7yxgU0F1aS11boiJ7H4jZ3wMs8mcqXOvQCWSPygmT57bRN/+5jDNP8+g==}
+  sst-darwin-arm64@3.3.30:
+    resolution: {integrity: sha512-cm8caB6q2SZl3FzzfW44G6EgtQ+c/UlDDdh9upSYH6ZTM7xih9x7cei4lNeVbVQj0UTHAH6/Vi8Pb9I5rrd+lQ==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.3.29:
-    resolution: {integrity: sha512-x3lCPUialIWM29PeUUB96TRDZz3wkzASf2BsOrd7qbG3mdySbxCzKF+gAJNGxKXx9xmbL9M+moXwKjHDnioSEQ==}
+  sst-darwin-x64@3.3.30:
+    resolution: {integrity: sha512-wRY+lq1mAJfGEfTbTxY5nZOZVJIJf1jQdxPYAcCzwP6zycSKs13lBnEglxBK2DIKBVIVakWZoQEao1bLx/bGGQ==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.3.29:
-    resolution: {integrity: sha512-XpRgG5qngXEz32r+TBySE3b97UB9Aib20TWwkvr1ZbJcxKmXCAelj1cA9AbRdCuNF0Z2hs0Jg2CGEP1yki3Kog==}
+  sst-linux-arm64@3.3.30:
+    resolution: {integrity: sha512-uItWuTAPM1u5UtaxId7uQukJ2lKAAvgOgnJEPJL3XPR+gjL6bf6M83GyrAbS6wRi0LhwjAUJBWT8fXAwlLVDBQ==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.3.29:
-    resolution: {integrity: sha512-yX0IpIUA2XM5qUhI8ETkpQQ40EybuCUzLMMFtJ/YO9B99zrWBbXXadAix4D1r6rDdO/4mVdsILrsV/JEjW695A==}
+  sst-linux-x64@3.3.30:
+    resolution: {integrity: sha512-AgctTo8op4q3qm5hqPdQGSPz0ZAe8/k7B9Q3E1KKa+Hg0+o8j1R9EIw21JddAM7NT+K2hcKF16rjvGnggtswxw==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.3.29:
-    resolution: {integrity: sha512-apbxDxfNYLFXfjZOyE1UMMOzLdm2qOhYXdnY25Bw4Y3GYu104tSgNxsqGwCpX0p49EIWl/qyZPVm0Kl3YHZL3Q==}
+  sst-linux-x86@3.3.30:
+    resolution: {integrity: sha512-H0HTfi4syDHtDegtcVi8dkq+gpOi48LP9SoVu638gb8XSo5vNc1sUhIUl8Ne0pnX13L9cVCGgEGqbfUJA7fPdQ==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.3.29:
-    resolution: {integrity: sha512-QjR4sFFuGCqgVfFp7tJSpaNQtVS2WqgecKYU6d1I2g4cOs1rFlYfCxustIEwN2fCgUk0EC0NWJ/ywCvyjwvzew==}
+  sst@3.3.30:
+    resolution: {integrity: sha512-oWQmUJfY+hLXMA7v+Irgv9UMZVE6Vt82bvtKFSkSALrZuS513HSiNuVbI4pDsfuX6C4F3tah2Sd8dvaSl7B3PQ==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -2602,8 +2602,8 @@ packages:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
     hasBin: true
 
-  ts-api-utils@1.4.1:
-    resolution: {integrity: sha512-5RU2/lxTA3YUZxju61HO2U6EoZLvBLtmV2mbTvqyu4a/7s7RmJPT+1YekhMVsQhznRWk/czIwDUg+V8Q9ZuG4w==}
+  ts-api-utils@1.4.2:
+    resolution: {integrity: sha512-ZF5gQIQa/UmzfvxbHZI3JXN0/Jt+vnAfAviNRAMc491laiK6YCLpCW9ft8oaCRFOTxCZtUTE6XB0ZQAe3olntw==}
     engines: {node: '>=16'}
     peerDependencies:
       typescript: '>=4.2.0'
@@ -3928,7 +3928,7 @@ snapshots:
       ignore: 5.3.2
       natural-compare: 1.4.0
       semver: 7.6.3
-      ts-api-utils: 1.4.1(typescript@5.7.2)
+      ts-api-utils: 1.4.2(typescript@5.7.2)
     optionalDependencies:
       typescript: 5.7.2
     transitivePeerDependencies:
@@ -3958,7 +3958,7 @@ snapshots:
       '@typescript-eslint/utils': 6.21.0(eslint@8.57.1)(typescript@5.7.2)
       debug: 4.3.7
       eslint: 8.57.1
-      ts-api-utils: 1.4.1(typescript@5.7.2)
+      ts-api-utils: 1.4.2(typescript@5.7.2)
     optionalDependencies:
       typescript: 5.7.2
     transitivePeerDependencies:
@@ -3975,7 +3975,7 @@ snapshots:
       is-glob: 4.0.3
       minimatch: 9.0.3
       semver: 7.6.3
-      ts-api-utils: 1.4.1(typescript@5.7.2)
+      ts-api-utils: 1.4.2(typescript@5.7.2)
     optionalDependencies:
       typescript: 5.7.2
     transitivePeerDependencies:
@@ -4376,7 +4376,7 @@ snapshots:
       es-errors: 1.3.0
       es-object-atoms: 1.0.0
       es-set-tostringtag: 2.0.3
-      es-to-primitive: 1.2.1
+      es-to-primitive: 1.3.0
       function.prototype.name: 1.1.6
       get-intrinsic: 1.2.4
       get-symbol-description: 1.0.2
@@ -4450,7 +4450,7 @@ snapshots:
     dependencies:
       hasown: 2.0.2
 
-  es-to-primitive@1.2.1:
+  es-to-primitive@1.3.0:
     dependencies:
       is-callable: 1.2.7
       is-date-object: 1.0.5
@@ -5397,7 +5397,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.3.3: {}
+  prettier@3.4.1: {}
 
   process-nextick-args@2.0.1:
     optional: true
@@ -5615,32 +5615,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.3.29:
+  sst-darwin-arm64@3.3.30:
     optional: true
 
-  sst-darwin-x64@3.3.29:
+  sst-darwin-x64@3.3.30:
     optional: true
 
-  sst-linux-arm64@3.3.29:
+  sst-linux-arm64@3.3.30:
     optional: true
 
-  sst-linux-x64@3.3.29:
+  sst-linux-x64@3.3.30:
     optional: true
 
-  sst-linux-x86@3.3.29:
+  sst-linux-x86@3.3.30:
     optional: true
 
-  sst@3.3.29:
+  sst@3.3.30:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.3.29
-      sst-darwin-x64: 3.3.29
-      sst-linux-arm64: 3.3.29
-      sst-linux-x64: 3.3.29
-      sst-linux-x86: 3.3.29
+      sst-darwin-arm64: 3.3.30
+      sst-darwin-x64: 3.3.30
+      sst-linux-arm64: 3.3.30
+      sst-linux-x64: 3.3.30
+      sst-linux-x86: 3.3.30
 
   stream-shift@1.0.3:
     optional: true
@@ -5760,7 +5760,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  ts-api-utils@1.4.1(typescript@5.7.2):
+  ts-api-utils@1.4.2(typescript@5.7.2):
     dependencies:
       typescript: 5.7.2
 
