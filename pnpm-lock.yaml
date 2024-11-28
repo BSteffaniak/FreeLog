@@ -57,8 +57,8 @@ importers:
         specifier: ^3.4.1
         version: 3.4.1
       sst:
-        specifier: ^3.3.30
-        version: 3.3.30
+        specifier: ^3.3.33
+        version: 3.3.33
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.7.2)
@@ -2469,33 +2469,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.3.30:
-    resolution: {integrity: sha512-cm8caB6q2SZl3FzzfW44G6EgtQ+c/UlDDdh9upSYH6ZTM7xih9x7cei4lNeVbVQj0UTHAH6/Vi8Pb9I5rrd+lQ==}
+  sst-darwin-arm64@3.3.33:
+    resolution: {integrity: sha512-dg7W+6yHwi6XSpSzcyn350kBzHfI6rGxO5hLLjQslchKC8st4XQxKYVlPYg97aB4AUl9kjx46lOt7WirDOb2iA==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.3.30:
-    resolution: {integrity: sha512-wRY+lq1mAJfGEfTbTxY5nZOZVJIJf1jQdxPYAcCzwP6zycSKs13lBnEglxBK2DIKBVIVakWZoQEao1bLx/bGGQ==}
+  sst-darwin-x64@3.3.33:
+    resolution: {integrity: sha512-ssgRW/GbSLe0lHuDM0Gb1okF4u4dq43jQYFqpzfMiyFsWhWWkG8QB1871jLTaq21N+NnNTs5GTKoBtzL7/gRzg==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.3.30:
-    resolution: {integrity: sha512-uItWuTAPM1u5UtaxId7uQukJ2lKAAvgOgnJEPJL3XPR+gjL6bf6M83GyrAbS6wRi0LhwjAUJBWT8fXAwlLVDBQ==}
+  sst-linux-arm64@3.3.33:
+    resolution: {integrity: sha512-/XWCpfP+NlUSH+w4BZVowseLN8gYyB9MZ5XpQ0HrvEw3iI/xmNtoYJJrZlfpLxvXEmQ8SHlkL0PNJmegg+hdyw==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.3.30:
-    resolution: {integrity: sha512-AgctTo8op4q3qm5hqPdQGSPz0ZAe8/k7B9Q3E1KKa+Hg0+o8j1R9EIw21JddAM7NT+K2hcKF16rjvGnggtswxw==}
+  sst-linux-x64@3.3.33:
+    resolution: {integrity: sha512-xRwnOgSe6k1DVzWtYFCOV8zyF2oG6zdnODUh4GHZEmlYNOGiyMyu1rZr2wY4keIgbOrkCxjZkTIjHWleOM0t3g==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.3.30:
-    resolution: {integrity: sha512-H0HTfi4syDHtDegtcVi8dkq+gpOi48LP9SoVu638gb8XSo5vNc1sUhIUl8Ne0pnX13L9cVCGgEGqbfUJA7fPdQ==}
+  sst-linux-x86@3.3.33:
+    resolution: {integrity: sha512-NdDMZQ2wArVsWb37d0NNAxxyzmNTckZXMxfQA3JsP6SGGWZxcPX7ei9BuOSaBYIuEdgGSqTctyZvQPTHAmRdWA==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.3.30:
-    resolution: {integrity: sha512-oWQmUJfY+hLXMA7v+Irgv9UMZVE6Vt82bvtKFSkSALrZuS513HSiNuVbI4pDsfuX6C4F3tah2Sd8dvaSl7B3PQ==}
+  sst@3.3.33:
+    resolution: {integrity: sha512-hiSQxCoVl40RR30c3qRFi62KypRbZnRluTnSLKkICVbLB0x+JcKbbU2wg2fWJpGCvWpDTK0p4V9tWhJYUOIHEg==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -2738,8 +2738,8 @@ packages:
     resolution: {integrity: sha512-K4jVyjnBdgvc86Y6BkaLZEN933SwYOuBFkdmBu9ZfkcAbdVbpITnDmjvZ/aQjRXQrv5EPkTnD1s39GiiqbngCw==}
     engines: {node: '>= 0.4'}
 
-  which-typed-array@1.1.15:
-    resolution: {integrity: sha512-oV0jmFtUky6CXfkqehVvBP/LSWJ2sy4vWMioiENyJLePrBO/yKyV9OyJySfAKosh+RYkIl5zJCNZ8/4JncrpdA==}
+  which-typed-array@1.1.16:
+    resolution: {integrity: sha512-g+N+GAWiRj66DngFwHvISJd+ITsyphZvD1vChfVg6cEdnzy53GzB3oy0fUNlvhz7H7+MiqhYr26qxQShCpKTTQ==}
     engines: {node: '>= 0.4'}
 
   which@2.0.2:
@@ -4410,7 +4410,7 @@ snapshots:
       typed-array-byte-offset: 1.0.3
       typed-array-length: 1.0.7
       unbox-primitive: 1.0.2
-      which-typed-array: 1.1.15
+      which-typed-array: 1.1.16
 
   es-define-property@1.0.0:
     dependencies:
@@ -5063,7 +5063,7 @@ snapshots:
 
   is-typed-array@1.1.13:
     dependencies:
-      which-typed-array: 1.1.15
+      which-typed-array: 1.1.16
 
   is-weakmap@2.0.2: {}
 
@@ -5615,32 +5615,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.3.30:
+  sst-darwin-arm64@3.3.33:
     optional: true
 
-  sst-darwin-x64@3.3.30:
+  sst-darwin-x64@3.3.33:
     optional: true
 
-  sst-linux-arm64@3.3.30:
+  sst-linux-arm64@3.3.33:
     optional: true
 
-  sst-linux-x64@3.3.30:
+  sst-linux-x64@3.3.33:
     optional: true
 
-  sst-linux-x86@3.3.30:
+  sst-linux-x86@3.3.33:
     optional: true
 
-  sst@3.3.30:
+  sst@3.3.33:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.3.30
-      sst-darwin-x64: 3.3.30
-      sst-linux-arm64: 3.3.30
-      sst-linux-x64: 3.3.30
-      sst-linux-x86: 3.3.30
+      sst-darwin-arm64: 3.3.33
+      sst-darwin-x64: 3.3.33
+      sst-linux-arm64: 3.3.33
+      sst-linux-x64: 3.3.33
+      sst-linux-x86: 3.3.33
 
   stream-shift@1.0.3:
     optional: true
@@ -5933,7 +5933,7 @@ snapshots:
       isarray: 2.0.5
       which-boxed-primitive: 1.0.2
       which-collection: 1.0.2
-      which-typed-array: 1.1.15
+      which-typed-array: 1.1.16
 
   which-collection@1.0.2:
     dependencies:
@@ -5942,7 +5942,7 @@ snapshots:
       is-weakmap: 2.0.2
       is-weakset: 2.0.3
 
-  which-typed-array@1.1.15:
+  which-typed-array@1.1.16:
     dependencies:
       available-typed-arrays: 1.0.7
       call-bind: 1.0.7
