@@ -57,8 +57,8 @@ importers:
         specifier: ^3.4.1
         version: 3.4.1
       sst:
-        specifier: ^3.3.41
-        version: 3.3.41
+        specifier: ^3.3.43
+        version: 3.3.43
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.7.2)
@@ -2049,8 +2049,8 @@ packages:
     resolution: {integrity: sha512-O18pf7nyvHTckunPWCV1XUNXU1piu01y2b7ATJ0ppkUkk8ocqVWBrYjJBCwHDjD/ZWcfyrA0P4gKhzWGi5EINQ==}
     engines: {node: '>=14'}
 
-  lilconfig@3.1.2:
-    resolution: {integrity: sha512-eop+wDAvpItUys0FWkHIKeC9ybYrTGbU41U5K7+bttZZeohvnY7M9dZ5kB21GNWiFT2q1OoPTvncPCgSOVO5ow==}
+  lilconfig@3.1.3:
+    resolution: {integrity: sha512-/vlFKAoH5Cgt3Ie+JLhRbwOsCQePABiU3tJ1egGvyQ+33R/vcwM2Zl2QR/LzjsBeItPt3oSVXapn+m4nQDvpzw==}
     engines: {node: '>=14'}
 
   lines-and-columns@1.2.4:
@@ -2471,33 +2471,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.3.41:
-    resolution: {integrity: sha512-tR1Na95x1VHY8n9LbRzH+MLDcLCBfesGtA5lg+TXNbr2yllP0VkdhdeEnEfK9nFBhig7B4+fPRUxVVdDOPLcoQ==}
+  sst-darwin-arm64@3.3.43:
+    resolution: {integrity: sha512-eCPslT7EPHj4q1ikGdpO2TAzxZQ4QV4Q4TAg+PmqzxfhPL7RGdvL50aCRv5psHhW+0AwXpwFH4XJAN+h+FAJxA==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.3.41:
-    resolution: {integrity: sha512-gdg0wzbhG3s3e+JRrIEi1YPgATSHnt56+tsBnT32TaMJt3q1ijw8+i0068oKEh3wvCBIIfsvMf18VkGi3XKe9g==}
+  sst-darwin-x64@3.3.43:
+    resolution: {integrity: sha512-ICWzbui9zz4ku+WGlpohEIuPaY/+e4O0RQ6501/ibnJgpKd6H0AB1a78EGFG2rJLFN0NXs739XNKkWntAuNuaQ==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.3.41:
-    resolution: {integrity: sha512-cFcjiX7bbD3WdIvgdfiYeZCee3nSXcCXc+HT37jvKHwhtNVJRBZaF8XdK9MkzOOmaie7zEiQKjZqVO3VN6EAHQ==}
+  sst-linux-arm64@3.3.43:
+    resolution: {integrity: sha512-6niUfMfsykjn1C7Qbe+A6E7pTbWFbd2FgHn+SgSsOt801R5gUQzWJCxARNVUXQPUFoO8ruXUCHbiPt21uJu/fg==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.3.41:
-    resolution: {integrity: sha512-RPiqmdkpZ3L9P+coqtfFchMx3DcYDJEZ/XnMSOq9QFIPq+5DYlzD9XRNTmeribQKtMvvnHn/x27BH4r0WU4Rbw==}
+  sst-linux-x64@3.3.43:
+    resolution: {integrity: sha512-n/fQhK8Ek0aKhCivxxa7/7qRIwc0CTyoyd3iFDUOL/OCIEh2L531XqeCnVsBfLMd0hvABlnYnfpEIOoTtddL6w==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.3.41:
-    resolution: {integrity: sha512-FygjCCUsCk0K9biXN1TUEEfdtCmFeWuWud3dmaVU7DBAS+2KLkaGQxtYz0UFPbGQDDZcJPrla3CtcrWRnsYhVQ==}
+  sst-linux-x86@3.3.43:
+    resolution: {integrity: sha512-4vGYvSvKBOwIMm7CQ5lLW/V++jp1atEDvsM6Av5eJaao11wP6nH3QLS+xLw/nhMIKhdQs8+lGpeOP/ipDEFzSw==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.3.41:
-    resolution: {integrity: sha512-SWz6sBnqlNzRSJgE6CBHJkvb2DCw8DYny6MEjvKRI0Wf8sHm9l+ZQ4R/ShsF5p1oE1g2PWTnIZLIHO7rGX7SvQ==}
+  sst@3.3.43:
+    resolution: {integrity: sha512-h4eVOXFdeorX8xpqlNKzD3daCuqQoVShGpTMl6WwJ393VVSN6qk+uBYHvuxImJqgMiCPBzNr6q5mo+xfKzXAuw==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -5165,7 +5165,7 @@ snapshots:
 
   lilconfig@3.1.1: {}
 
-  lilconfig@3.1.2: {}
+  lilconfig@3.1.3: {}
 
   lines-and-columns@1.2.4: {}
 
@@ -5402,7 +5402,7 @@ snapshots:
 
   postcss-load-config@6.0.1(tsx@4.19.2):
     dependencies:
-      lilconfig: 3.1.2
+      lilconfig: 3.1.3
     optionalDependencies:
       tsx: 4.19.2
 
@@ -5626,32 +5626,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.3.41:
+  sst-darwin-arm64@3.3.43:
     optional: true
 
-  sst-darwin-x64@3.3.41:
+  sst-darwin-x64@3.3.43:
     optional: true
 
-  sst-linux-arm64@3.3.41:
+  sst-linux-arm64@3.3.43:
     optional: true
 
-  sst-linux-x64@3.3.41:
+  sst-linux-x64@3.3.43:
     optional: true
 
-  sst-linux-x86@3.3.41:
+  sst-linux-x86@3.3.43:
     optional: true
 
-  sst@3.3.41:
+  sst@3.3.43:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.3.41
-      sst-darwin-x64: 3.3.41
-      sst-linux-arm64: 3.3.41
-      sst-linux-x64: 3.3.41
-      sst-linux-x86: 3.3.41
+      sst-darwin-arm64: 3.3.43
+      sst-darwin-x64: 3.3.43
+      sst-linux-arm64: 3.3.43
+      sst-linux-x64: 3.3.43
+      sst-linux-x86: 3.3.43
 
   stream-shift@1.0.3:
     optional: true
