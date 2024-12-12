@@ -22,7 +22,7 @@
         "@aws-sdk/client-ssm": "^3.709.0",
         "@tsconfig/node18": "^18.2.4",
         "@types/aws-lambda": "8.10.143",
-        "@types/node": "^20.17.9",
+        "@types/node": "^20.17.10",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
         "aws-cdk-lib": "2.142.1",
@@ -35,7 +35,7 @@
         "eslint-plugin-import": "^2.31.0",
         "eslint-plugin-node": "^11.1.0",
         "prettier": "^3.4.2",
-        "sst": "^3.3.65",
+        "sst": "^3.3.69",
         "tsup": "^8.3.5",
         "tsx": "^4.19.2",
         "typescript": "^5.7.2"
