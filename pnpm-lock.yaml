@@ -57,8 +57,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       sst:
-        specifier: ^3.4.30
-        version: 3.4.30
+        specifier: ^3.4.31
+        version: 3.4.31
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.7.2)
@@ -1375,8 +1375,8 @@ packages:
   confusing-browser-globals@1.0.11:
     resolution: {integrity: sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==}
 
-  consola@3.3.1:
-    resolution: {integrity: sha512-GyKnPG3/I+a4RtJxgHquJXWr70g9I3c4NT3dvqh0LPHQP2nZFQBOBszb7a5u/pGzqr40AKplQA6UxM1BSynSXg==}
+  consola@3.3.3:
+    resolution: {integrity: sha512-Qil5KwghMzlqd51UXM0b6fyaGHtOC22scxrwrz4A2882LyUMwQjnvaedN1HAeXzphspQ6CpHkzMAWxBTUruDLg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   constructs@10.3.0:
@@ -2509,33 +2509,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.4.30:
-    resolution: {integrity: sha512-y1DBcTwPOX2S3zIIHkv+ugWeI/+u/4Yt5mnX0pr1/we/wGpDFOUum0wREG7F802MGbKhgh0cWgFnm0qFwayHUg==}
+  sst-darwin-arm64@3.4.31:
+    resolution: {integrity: sha512-3lS9+2BUFqO7DCYGZ8pVcTxpEYLvSDSMI0RCHyC8KHC4BjrCLQ3ppsysikENxPLPaNbypc9sGNtT165EU/WGwg==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.4.30:
-    resolution: {integrity: sha512-bAj6Zu5Fhnj4A9VVkXY8H5SvF9m2P25X4Wgvys+1RZYFMt47wo0ewbV3IhZKUnxOvhnrjd/u8l8n0EQBq+6cnA==}
+  sst-darwin-x64@3.4.31:
+    resolution: {integrity: sha512-MTGkZHqhQtM8FNGkEqNknoBuCADjnB1h8bg78f5F93JnqxeNH/CHp6P5xZ30tI/pvX40l8NugcmjHmJ42eJ6Xg==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.4.30:
-    resolution: {integrity: sha512-HFPNJo8jxjGM1WTjMdkhUMC92wNapQlszUUx/zXEv4HBxNm1lneyGauplqHrAUtRERVKV6O9qZ7YW/n0IXoSCw==}
+  sst-linux-arm64@3.4.31:
+    resolution: {integrity: sha512-22Ne6KbOulsvEALVZB5ocpMSTZVT4hsV9OylYcO/f1de75R/FBKc7zOlHX8KkRPSD1VkG7zN0ZPz2zDDblE4cg==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.4.30:
-    resolution: {integrity: sha512-ZyFrjmcvUz7qzZAn/qjW1Em1711Vb3ZO5UwDdgiv5MWV8XuMy9UvnG0WMrPtCqQqwrEexoZ3+WynLoUOLhoOgw==}
+  sst-linux-x64@3.4.31:
+    resolution: {integrity: sha512-Ygyb5BK3Rsurd0BRvZv5lFbX/OX5nizPs/XCr8jOs3gUxQqyPobSV3ToMaboC55832+AZfGwl4QjLoPSePKk3g==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.4.30:
-    resolution: {integrity: sha512-Merqvub35KcWZiIKrzCOPvv33HGVU+/iPQn+zZSkRJntkShAB4Z/wlR+tDQJsuNnH4oyRyXz/Ah4fSq4plEEmA==}
+  sst-linux-x86@3.4.31:
+    resolution: {integrity: sha512-L31AJoe4rxQwhoidZdcM9OVBZBQaTG/Y8Bmk3xsMPmor5ty39fjzQrIg9HHRtTr+VefvWD1BpOtcw5Vyb8u+Ow==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.4.30:
-    resolution: {integrity: sha512-ibmJZw58BF+Fji58oaZLLs5QxWUJ0B3/fn0QIKRgjstcdqLLAqUNICUjPzyD2OStafFxlaM86zaVg7BoN9WOgg==}
+  sst@3.4.31:
+    resolution: {integrity: sha512-oHXw8W8xdy5GwO1ItJivfddFWiA6CToYX6xc3eTAzBxqxURV2BrhwBws+M9UHvMbhQGi7jrDPkh0QfOHVf4Yng==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -4316,7 +4316,7 @@ snapshots:
 
   confusing-browser-globals@1.0.11: {}
 
-  consola@3.3.1: {}
+  consola@3.3.3: {}
 
   constructs@10.3.0: {}
 
@@ -5724,32 +5724,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.4.30:
+  sst-darwin-arm64@3.4.31:
     optional: true
 
-  sst-darwin-x64@3.4.30:
+  sst-darwin-x64@3.4.31:
     optional: true
 
-  sst-linux-arm64@3.4.30:
+  sst-linux-arm64@3.4.31:
     optional: true
 
-  sst-linux-x64@3.4.30:
+  sst-linux-x64@3.4.31:
     optional: true
 
-  sst-linux-x86@3.4.30:
+  sst-linux-x86@3.4.31:
     optional: true
 
-  sst@3.4.30:
+  sst@3.4.31:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.4.30
-      sst-darwin-x64: 3.4.30
-      sst-linux-arm64: 3.4.30
-      sst-linux-x64: 3.4.30
-      sst-linux-x86: 3.4.30
+      sst-darwin-arm64: 3.4.31
+      sst-darwin-x64: 3.4.31
+      sst-linux-arm64: 3.4.31
+      sst-linux-x64: 3.4.31
+      sst-linux-x86: 3.4.31
 
   stream-shift@1.0.3:
     optional: true
@@ -5916,7 +5916,7 @@ snapshots:
       bundle-require: 5.1.0(esbuild@0.24.2)
       cac: 6.7.14
       chokidar: 4.0.3
-      consola: 3.3.1
+      consola: 3.3.3
       debug: 4.4.0
       esbuild: 0.24.2
       joycon: 3.1.1
