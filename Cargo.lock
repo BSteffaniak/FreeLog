@@ -586,9 +586,9 @@ dependencies = [
 
 [[package]]
 name = "aws-smithy-async"
-version = "1.2.2"
+version = "1.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8aa8ff1492fd9fb99ae28e8467af0dbbb7c31512b16fabf1a0f10d7bb6ef78bb"
+checksum = "427cb637d15d63d6f9aae26358e1c9a9c09d5aa490d64b09354c8217cfef0f28"
 dependencies = [
  "futures-util",
  "pin-project-lite",
@@ -636,9 +636,9 @@ dependencies = [
 
 [[package]]
 name = "aws-smithy-runtime"
-version = "1.7.5"
+version = "1.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "431a10d0e07e09091284ef04453dae4069283aa108d209974d67e77ae1caa658"
+checksum = "a05dd41a70fc74051758ee75b5c4db2c0ca070ed9229c3df50e9475cda1cb985"
 dependencies = [
  "aws-smithy-async",
  "aws-smithy-http",
@@ -680,9 +680,9 @@ dependencies = [
 
 [[package]]
 name = "aws-smithy-types"
-version = "1.2.10"
+version = "1.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8ecbf4d5dfb169812e2b240a4350f15ad3c6b03a54074e5712818801615f2dc5"
+checksum = "38ddc9bd6c28aeb303477170ddd183760a956a03e083b3902a990238a7e3792d"
 dependencies = [
  "base64-simd",
  "bytes",
@@ -1710,7 +1710,7 @@ dependencies = [
  "serde_json",
  "tokio",
  "tokio-stream",
- "tower",
+ "tower 0.4.13",
  "tracing",
 ]
 
@@ -1737,7 +1737,7 @@ dependencies = [
  "serde_path_to_error",
  "tokio",
  "tokio-stream",
- "tower",
+ "tower 0.4.13",
  "tower-layer",
  "tracing",
 ]
@@ -1769,7 +1769,7 @@ dependencies = [
  "hyper 1.5.2",
  "hyper-util",
  "tokio",
- "tower",
+ "tower 0.4.13",
  "tower-service",
  "tracing",
  "tracing-subscriber",
@@ -2102,9 +2102,9 @@ dependencies = [
 
 [[package]]
 name = "quote"
-version = "1.0.37"
+version = "1.0.38"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b5b9d34b8991d19d98081b46eacdd8eb58c6f2b201139f7c5f643cc155a633af"
+checksum = "0e4dccaaaf89514f546c693ddc140f729f958c247918a13380cccc6078391acc"
 dependencies = [
  "proc-macro2",
 ]
@@ -2200,9 +2200,9 @@ checksum = "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c"
 
 [[package]]
 name = "reqwest"
-version = "0.12.9"
+version = "0.12.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a77c62af46e79de0a562e1a9849205ffcb7fc1238876e9bd743357570e04046f"
+checksum = "3d3536321cfc54baa8cf3e273d5e1f63f889067829c4b410fcdbac8ca7b80994"
 dependencies = [
  "base64 0.22.1",
  "bytes",
@@ -2233,6 +2233,7 @@ dependencies = [
  "tokio",
  "tokio-rustls 0.26.1",
  "tokio-util",
+ "tower 0.5.2",
  "tower-service",
  "url",
  "wasm-bindgen",
@@ -2367,9 +2368,9 @@ dependencies = [
 
 [[package]]
 name = "rustversion"
-version = "1.0.18"
+version = "1.0.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0e819f2bc632f285be6d7cd36e25940d45b2391dd6d9b939e79de557f7014248"
+checksum = "f7c45b9784283f1b2e7fb61b42047c2fd678ef0960d4f6f1eba131594cc369d4"
 
 [[package]]
 name = "ryu"
@@ -2595,9 +2596,9 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "syn"
-version = "2.0.91"
+version = "2.0.92"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d53cbcb5a243bd33b7858b1d7f4aca2153490815872d86d955d6ea29f743c035"
+checksum = "70ae51629bf965c5c098cc9e87908a3df5301051a9e087d6f9bef5c9771ed126"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2796,6 +2797,21 @@ dependencies = [
  "tower-layer",
  "tower-service",
  "tracing",
+]
+
+[[package]]
+name = "tower"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d039ad9159c98b70ecfd540b2573b97f7f52c3e8d9f8ad57a24b916a536975f9"
+dependencies = [
+ "futures-core",
+ "futures-util",
+ "pin-project-lite",
+ "sync_wrapper",
+ "tokio",
+ "tower-layer",
+ "tower-service",
 ]
 
 [[package]]
