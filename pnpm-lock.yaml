@@ -57,8 +57,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       sst:
-        specifier: ^3.4.51
-        version: 3.4.51
+        specifier: ^3.4.53
+        version: 3.4.53
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.7.2)
@@ -2388,8 +2388,8 @@ packages:
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
-  regexp.prototype.flags@1.5.3:
-    resolution: {integrity: sha512-vqlC04+RQoFalODCbCumG2xIOvapzVMHwsyIGM/SIE8fRhFFsXeH8/QQ+s0T0kDAhKc4k30s73/0ydkHQz6HlQ==}
+  regexp.prototype.flags@1.5.4:
+    resolution: {integrity: sha512-dYqgNSZbDwkaJ2ceRd9ojCGjBq+mOm9LmtXnAnEGyHhN/5R7iDW2TRw3h+o/jCFxus3P2LfWIIiwowAjANm7IA==}
     engines: {node: '>= 0.4'}
 
   regexpp@3.2.0:
@@ -2525,33 +2525,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.4.51:
-    resolution: {integrity: sha512-I+OXXrnnk9SdCg9hxls6H3CXGTgW/P7P1dtwFes54HnBi0URNRkUkHYGVImF1DTjQllH93NYvyJ7m0NKaX3Nxw==}
+  sst-darwin-arm64@3.4.53:
+    resolution: {integrity: sha512-M+2cfh15LrDGukheWMLEoApFekvwc7IApYe+hUosT8HgJ2mhVfEDFYDq05yGz6e5/fkchgL8QtmLSQ5J9Q7rAg==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.4.51:
-    resolution: {integrity: sha512-tFRyJ348i6V/xHpQUoeznm0Zp9N/YQpOqqJakeybLP4ah40/7aeO7fbLSITk54GCzCxQ1mxmCoIJ3Ya5sT24ZQ==}
+  sst-darwin-x64@3.4.53:
+    resolution: {integrity: sha512-IszYDZOUasIFrPxWFYfY2A1HzwhYcfTidoizztu/x8toNprXAu5BvPh7cIB6b3Sp10gxfpKKwIBN4oON0+Lhhw==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.4.51:
-    resolution: {integrity: sha512-fYMeyMlh18+vgmLkK5FbDXoguPF1OnVBs3+6ioe+Bv8AvCRZq9s/jfiV+FCjd5bVUMdByApK40JK1SCWMfJDtA==}
+  sst-linux-arm64@3.4.53:
+    resolution: {integrity: sha512-z5xjVBS5PxXiU46CO1jzD/G3q1Tj8cMie9gAmPs44zEg5jDgvvPD41UP+NiXJHU/ZfUDTsJWNREYqGPsGyslPw==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.4.51:
-    resolution: {integrity: sha512-sO+3SC36kGAj+bWWhWsQiZjdvRBDxtNhvDXosHdWf45IPfrLRMWZ59fwZGQAseiRQDhrNxQ4caDNYjD3qCdB8Q==}
+  sst-linux-x64@3.4.53:
+    resolution: {integrity: sha512-b3DOx5rSy5Rmd3RHeaNmjX2BQxQLCJR+nRBn4DtvpFyZwmfwLoP+GElGK8MZmOwXT466nNoFETCxkld8Zawb/g==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.4.51:
-    resolution: {integrity: sha512-c4++SIA6DDSVsM596EpohoMwfpnkJBVw/eGkDUDAU432DodCGE9ibIYWzsgrVhVUjWE/pRTSiwE4YJhpyNtlfQ==}
+  sst-linux-x86@3.4.53:
+    resolution: {integrity: sha512-L812zugqNnCpBe3LudRFFYxpdKWoCoDRBvyiCWnjuV9dGCrqH4qsgtzp9RZovsOHw7emmT5hISHqPTwKF48HcA==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.4.51:
-    resolution: {integrity: sha512-F8B4Pizs6YMrm6P5rn4W+Knywppw+iMW1azkA5yyI8QFY1u6/A8fym4/wucrVPo9MAneIchvzwFiGrXh6IC6Fg==}
+  sst@3.4.53:
+    resolution: {integrity: sha512-2OwgZqnztDTqtwN5gUpuwVw68qS6M73psGL8RtdkfeFyNjMt8ixrSJjpaw8KdZOAaOwgqE+kc/sRam764zQxxw==}
     hasBin: true
     peerDependencies:
       hono: 4.x
@@ -4481,7 +4481,7 @@ snapshots:
       object-keys: 1.1.1
       object.assign: 4.1.7
       own-keys: 1.0.1
-      regexp.prototype.flags: 1.5.3
+      regexp.prototype.flags: 1.5.4
       safe-array-concat: 1.1.3
       safe-push-apply: 1.0.0
       safe-regex-test: 1.1.0
@@ -5586,11 +5586,13 @@ snapshots:
 
   regenerator-runtime@0.14.1: {}
 
-  regexp.prototype.flags@1.5.3:
+  regexp.prototype.flags@1.5.4:
     dependencies:
       call-bind: 1.0.8
       define-properties: 1.2.1
       es-errors: 1.3.0
+      get-proto: 1.0.1
+      gopd: 1.2.0
       set-function-name: 2.0.2
 
   regexpp@3.2.0: {}
@@ -5773,32 +5775,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.4.51:
+  sst-darwin-arm64@3.4.53:
     optional: true
 
-  sst-darwin-x64@3.4.51:
+  sst-darwin-x64@3.4.53:
     optional: true
 
-  sst-linux-arm64@3.4.51:
+  sst-linux-arm64@3.4.53:
     optional: true
 
-  sst-linux-x64@3.4.51:
+  sst-linux-x64@3.4.53:
     optional: true
 
-  sst-linux-x86@3.4.51:
+  sst-linux-x86@3.4.53:
     optional: true
 
-  sst@3.4.51:
+  sst@3.4.53:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.4.51
-      sst-darwin-x64: 3.4.51
-      sst-linux-arm64: 3.4.51
-      sst-linux-x64: 3.4.51
-      sst-linux-x86: 3.4.51
+      sst-darwin-arm64: 3.4.53
+      sst-darwin-x64: 3.4.53
+      sst-linux-arm64: 3.4.53
+      sst-linux-x64: 3.4.53
+      sst-linux-x86: 3.4.53
 
   stream-shift@1.0.3:
     optional: true
@@ -5827,7 +5829,7 @@ snapshots:
       gopd: 1.2.0
       has-symbols: 1.1.0
       internal-slot: 1.1.0
-      regexp.prototype.flags: 1.5.3
+      regexp.prototype.flags: 1.5.4
       set-function-name: 2.0.2
       side-channel: 1.1.0
 
