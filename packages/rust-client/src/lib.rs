@@ -14,7 +14,7 @@ use serde_json::Value;
 use strum_macros::{AsRefStr, EnumString};
 use thiserror::Error;
 use tracing_log::{log_tracer, LogTracer};
-use tracing_subscriber::{layer::SubscriberExt as _, Layer};
+use tracing_subscriber::{layer::SubscriberExt, Layer, Registry};
 
 #[cfg(feature = "api")]
 pub mod api;
@@ -421,7 +421,9 @@ pub enum Level {
     Error,
 }
 
-#[derive(Debug, Default)]
+pub type DynLayer = Box<dyn Layer<Registry> + Send + Sync>;
+
+#[derive(Default)]
 pub struct LogsConfig {
     pub user_agent: String,
     #[cfg(feature = "api")]
@@ -433,11 +435,38 @@ pub struct LogsConfig {
     pub auto_flush: bool,
     pub auto_flush_on_close: bool,
     env_filter: Option<EnvFilter>,
+    layers: Vec<DynLayer>,
+}
+
+impl std::fmt::Debug for LogsConfig {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut binding = f.debug_struct("LogsConfig");
+
+        let dbg = binding
+            .field("user_agent", &self.user_agent)
+            .field("log_level", &self.log_level)
+            .field("auto_flush_on_close", &self.auto_flush_on_close)
+            .field("env_filter", &self.env_filter);
+
+        #[cfg(feature = "api")]
+        let dbg = dbg
+            .field("api_writers", &self.api_writers)
+            .field("file_writers", &self.file_writers)
+            .field("auto_flush", &self.auto_flush);
+
+        dbg.finish_non_exhaustive()
+    }
 }
 
 impl LogsConfig {
     pub fn builder() -> LogsConfigBuilder {
         LogsConfigBuilder::default()
+    }
+
+    pub fn take_layers(mut self) -> (Self, Vec<DynLayer>) {
+        let layers = self.layers;
+        self.layers = vec![];
+        (self, layers)
     }
 }
 
@@ -647,7 +676,7 @@ impl TryFrom<FileWriterConfigBuilder> for FileWriterConfig {
     }
 }
 
-#[derive(Clone, Default)]
+#[derive(Default)]
 pub struct LogsConfigBuilder {
     user_agent: Option<String>,
     api_writers: Vec<ApiWriterConfig>,
@@ -656,6 +685,7 @@ pub struct LogsConfigBuilder {
     auto_flush: Option<bool>,
     auto_flush_on_close: Option<bool>,
     env_filter: Option<EnvFilter>,
+    layers: Vec<DynLayer>,
 }
 
 impl LogsConfigBuilder {
@@ -678,6 +708,21 @@ impl LogsConfigBuilder {
     ) -> Result<LogsConfigBuilder, T::Error> {
         self.file_writers.push(value.try_into()?);
         Ok(self)
+    }
+
+    pub fn with_layer<T: Layer<Registry> + Send + Sync>(mut self, value: T) -> LogsConfigBuilder {
+        self.layers.push(Box::new(value));
+        self
+    }
+
+    pub fn with_layer_dyn(mut self, value: DynLayer) -> LogsConfigBuilder {
+        self.layers.push(value);
+        self
+    }
+
+    pub fn with_layers(mut self, values: Vec<DynLayer>) -> LogsConfigBuilder {
+        self.layers.extend(values);
+        self
     }
 
     pub fn log_level(mut self, value: impl Into<Level>) -> LogsConfigBuilder {
@@ -712,6 +757,7 @@ impl LogsConfigBuilder {
             auto_flush: self.auto_flush.unwrap_or(true),
             auto_flush_on_close: self.auto_flush_on_close.unwrap_or(true),
             env_filter: self.env_filter,
+            layers: self.layers,
         })
     }
 }
@@ -742,21 +788,30 @@ where
     let auto_flush = config.auto_flush;
     let env_filter = config.env_filter.clone();
 
+    let (config, mut layers) = config.take_layers();
+
     let free_log_layer = FreeLogLayer::new(config);
+    layers.push(free_log_layer.clone().boxed());
+    layers.push(
+        tracing_subscriber::fmt::Layer::default()
+            .with_writer(std::io::stdout)
+            .boxed(),
+    );
+    if let Some(env_filter) = env_filter {
+        let env_filter: tracing_subscriber::EnvFilter = env_filter.try_into()?;
+        layers.push(env_filter.boxed());
+    } else {
+        layers.push(tracing_subscriber::EnvFilter::from_default_env().boxed());
+    }
 
     let registry = tracing_subscriber::registry();
 
-    let subscriber = registry
-        .with(free_log_layer.clone())
-        .with(tracing_subscriber::fmt::Layer::default().with_writer(std::io::stdout));
+    let subscriber: DynLayer = layers
+        .into_iter()
+        .reduce(|acc, layer| acc.and_then(layer).boxed())
+        .expect("No layers to build a subscriber to");
 
-    let subscriber = if let Some(env_filter) = env_filter {
-        subscriber.with(env_filter.try_into()?)
-    } else {
-        subscriber.with(tracing_subscriber::EnvFilter::from_default_env())
-    };
-
-    tracing::subscriber::set_global_default(subscriber)?;
+    tracing::subscriber::set_global_default(registry.with(subscriber))?;
 
     #[cfg(feature = "api")]
     {
