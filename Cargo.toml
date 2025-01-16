@@ -15,9 +15,9 @@ actix-cors = "0.7.0"
 actix-files = "0.6.6"
 actix-web = "4.9.0"
 awc = "3.5.1"
-aws-config = { version = "1.5.13", features = ["behavior-version-latest"] }
-aws-sdk-cloudwatch = "1.59.0"
-aws-sdk-cloudwatchlogs = "1.64.0"
+aws-config = { version = "1.5.14", features = ["behavior-version-latest"] }
+aws-sdk-cloudwatch = "1.60.0"
+aws-sdk-cloudwatchlogs = "1.65.0"
 aws-smithy-runtime-api = "1.7.3"
 derive_builder = "0.20.2"
 env_logger = "0.11"
