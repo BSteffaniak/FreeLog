@@ -57,8 +57,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       sst:
-        specifier: ^3.5.15
-        version: 3.5.15
+        specifier: ^3.6.1
+        version: 3.6.1
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.7.3)
@@ -86,8 +86,8 @@ importers:
 
 packages:
 
-  '@aws-cdk/asset-awscli-v1@2.2.219':
-    resolution: {integrity: sha512-pwkEucYvK3MjoVShBnCWMLKk8/nAhElEM7OPcen/hSlsYoPRkZeZbPDM2XmTjvfUKWD5TQmobs39iBSrgbb1gg==}
+  '@aws-cdk/asset-awscli-v1@2.2.220':
+    resolution: {integrity: sha512-2eXZnnIgwWmXc7eRh8mRKPp6yHTKiQrLziRX/oVSfp4M6Jn2no0QFKJoHWqziF5MDQa5TF8qhD4FGsls/1nYPg==}
 
   '@aws-cdk/asset-kubectl-v20@2.1.3':
     resolution: {integrity: sha512-cDG1w3ieM6eOT9mTefRuTypk95+oyD7P5X/wRltwmYxU7nZc3+076YEVS6vrjDKr3ADYbfn0lDKpfB1FBtO9CQ==}
@@ -1776,8 +1776,8 @@ packages:
   get-tsconfig@4.7.2:
     resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
 
-  get-tsconfig@4.8.1:
-    resolution: {integrity: sha512-k9PN+cFBmaLWtVz29SkUoqU5O0slLuHJXt/2P+tMVFT+phsSGXGkp9t3rQIqdz0e+06EHNGs3oM6ZX1s2zHxRg==}
+  get-tsconfig@4.9.0:
+    resolution: {integrity: sha512-52n24W52sIueosRe0XZ8Ex5Yle+WbhfCKnV/gWXpbVR8FXNTfqdKEKUSypKso66VRHTvvcQxL44UTZbJRlCTnw==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -2517,33 +2517,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.5.15:
-    resolution: {integrity: sha512-u5zmMM+gm5+rAMcq5SUKeoeA6LR+uWE4Xev2F4gg6wD0icaD2O5V7wzGc727ws/7GNCghioHVTw0usLnIR5xrw==}
+  sst-darwin-arm64@3.6.1:
+    resolution: {integrity: sha512-lxbyIgdtEbIE68k5UH1Z5JWAG2KjS8zjJD/CA9xRQImbtSs9wfKTvuyf7aIxWAcEWGLFXyoWficP3gndWG3G0A==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.5.15:
-    resolution: {integrity: sha512-DdjBUDpC8umlqgbCySejRlxgIpYpgakAsUEpBroobtH/2CW0WHFArB8MTWTBYPBm9eNziLdG4zGvKXq+KevU1A==}
+  sst-darwin-x64@3.6.1:
+    resolution: {integrity: sha512-RP/b49uJxNBRv4OAXlLRJ2wTEJcdIRGWLUharF6qYPuU6eIU7ArNnA2qtVOFqoB8BMpIQ5UtJuFVM2hUlNuoPA==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.5.15:
-    resolution: {integrity: sha512-Ji+po1AEly8XOr4dohdxNGcArOBjzYqXp0Zj/LtR2zhLGQejqp1MKMZRxhldLSp4cNtHbFLKS3lxJXHrL+0PmQ==}
+  sst-linux-arm64@3.6.1:
+    resolution: {integrity: sha512-hdHZaPo5EKuEzuPGaQXLnbMexkSmAe3cme8HHnOHwxMJ6PaqCr+xfNxrvPAvGtC2x4XstYp+Yu67JJhCnjHGDg==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.5.15:
-    resolution: {integrity: sha512-aRI0ak60WIFKIjZdBZW6HwLQ6JqFOIQZcXEpBDUQhul3lB6qqxi4gFBdMWVdDt2zH4GKFXt+Cxg9I3ZWai+U6g==}
+  sst-linux-x64@3.6.1:
+    resolution: {integrity: sha512-cbohkdfEaR0RGhwdDR7YghiGya8LIIx6VdITdhwp3Sf4P4kZHk8ZahFFqtXl/DYTHn9kOsDdL9j1TiY+yZZSrg==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.5.15:
-    resolution: {integrity: sha512-RSL/fvHqa3rr8oj9dZttrm2Cf8tcOM4/s5WoaeQYCiOHuImihHKVZDbnDpmewFc4wjgdwH8dh7E9WWqa7PzS2Q==}
+  sst-linux-x86@3.6.1:
+    resolution: {integrity: sha512-oyo0Jz6SGk9UOANeFeM6wV9XJIPptGbEvrOr4Lczlyn5I4L8itfWjwvuUiFyeqjYaw2Irp/p7/BHYdA2/mkKtw==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.5.15:
-    resolution: {integrity: sha512-dzVsaIwvrpZ3t9Xa15CkIEUrmc8dEF/uwy0zBBD2RqAFEhLG3rE3B/5INMX4IlUUPCJHCpg4X/MGRpCnyNNrDg==}
+  sst@3.6.1:
+    resolution: {integrity: sha512-1QXem0GjTWMScc9z+Ejg+cqAwWWaQP5YxIcGu78Q95cngyuCxAqTF8OTToU8mctX26EV3IH3xLAE+hzkDNNljw==}
     hasBin: true
 
   stream-shift@1.0.3:
@@ -2847,7 +2847,7 @@ packages:
 
 snapshots:
 
-  '@aws-cdk/asset-awscli-v1@2.2.219': {}
+  '@aws-cdk/asset-awscli-v1@2.2.220': {}
 
   '@aws-cdk/asset-kubectl-v20@2.1.3': {}
 
@@ -4104,7 +4104,7 @@ snapshots:
 
   aws-cdk-lib@2.142.1(constructs@10.3.0):
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.219
+      '@aws-cdk/asset-awscli-v1': 2.2.220
       '@aws-cdk/asset-kubectl-v20': 2.1.3
       '@aws-cdk/asset-node-proxy-agent-v6': 2.1.0
       constructs: 10.3.0
@@ -4901,7 +4901,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  get-tsconfig@4.8.1:
+  get-tsconfig@4.9.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
@@ -5710,32 +5710,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.5.15:
+  sst-darwin-arm64@3.6.1:
     optional: true
 
-  sst-darwin-x64@3.5.15:
+  sst-darwin-x64@3.6.1:
     optional: true
 
-  sst-linux-arm64@3.5.15:
+  sst-linux-arm64@3.6.1:
     optional: true
 
-  sst-linux-x64@3.5.15:
+  sst-linux-x64@3.6.1:
     optional: true
 
-  sst-linux-x86@3.5.15:
+  sst-linux-x86@3.6.1:
     optional: true
 
-  sst@3.5.15:
+  sst@3.6.1:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.5.15
-      sst-darwin-x64: 3.5.15
-      sst-linux-arm64: 3.5.15
-      sst-linux-x64: 3.5.15
-      sst-linux-x86: 3.5.15
+      sst-darwin-arm64: 3.6.1
+      sst-darwin-x64: 3.6.1
+      sst-linux-arm64: 3.6.1
+      sst-linux-x64: 3.6.1
+      sst-linux-x86: 3.6.1
 
   stream-shift@1.0.3:
     optional: true
@@ -5926,7 +5926,7 @@ snapshots:
   tsx@4.19.2:
     dependencies:
       esbuild: 0.23.1
-      get-tsconfig: 4.8.1
+      get-tsconfig: 4.9.0
     optionalDependencies:
       fsevents: 2.3.3
 
