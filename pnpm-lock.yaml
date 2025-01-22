@@ -57,8 +57,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       sst:
-        specifier: ^3.6.1
-        version: 3.6.1
+        specifier: ^3.6.9
+        version: 3.6.9
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(tsx@4.19.2)(typescript@5.7.3)
@@ -1773,11 +1773,11 @@ packages:
     resolution: {integrity: sha512-w9UMqWwJxHNOvoNzSJ2oPF5wvYcvP7jUvYzhp67yEhTi17ZDBBC1z9pTdGuzjD+EFIqLSYRweZjqfiPzQ06Ebg==}
     engines: {node: '>= 0.4'}
 
+  get-tsconfig@4.10.0:
+    resolution: {integrity: sha512-kGzZ3LWWQcGIAmg6iWvXn0ei6WDtV26wzHRMwDSzmAbcXrTEXxHy6IehI6/4eT6VRKyMP1eF1VqwrVUmE/LR7A==}
+
   get-tsconfig@4.7.2:
     resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
-
-  get-tsconfig@4.9.0:
-    resolution: {integrity: sha512-52n24W52sIueosRe0XZ8Ex5Yle+WbhfCKnV/gWXpbVR8FXNTfqdKEKUSypKso66VRHTvvcQxL44UTZbJRlCTnw==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -2517,33 +2517,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.6.1:
-    resolution: {integrity: sha512-lxbyIgdtEbIE68k5UH1Z5JWAG2KjS8zjJD/CA9xRQImbtSs9wfKTvuyf7aIxWAcEWGLFXyoWficP3gndWG3G0A==}
+  sst-darwin-arm64@3.6.9:
+    resolution: {integrity: sha512-GYeZqo9JnD/ZJIUxAuVXX9N7Yj7xsgWbpQbfNcRr0dPd+qCFNUQEDpQToebo+iNyHmK6ATrtofV2rnTxsZbZrQ==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.6.1:
-    resolution: {integrity: sha512-RP/b49uJxNBRv4OAXlLRJ2wTEJcdIRGWLUharF6qYPuU6eIU7ArNnA2qtVOFqoB8BMpIQ5UtJuFVM2hUlNuoPA==}
+  sst-darwin-x64@3.6.9:
+    resolution: {integrity: sha512-Ds1vRDNL18gISDSySLm1n+kLJIHvF3ihqSP3wcZ6Y6VLGHRy3uq/4hLBY4Rw2nCpbVC3nY5yO3e3oKitcfzxDQ==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.6.1:
-    resolution: {integrity: sha512-hdHZaPo5EKuEzuPGaQXLnbMexkSmAe3cme8HHnOHwxMJ6PaqCr+xfNxrvPAvGtC2x4XstYp+Yu67JJhCnjHGDg==}
+  sst-linux-arm64@3.6.9:
+    resolution: {integrity: sha512-SYLKHjuvXn9Zg+Ez1u/ZoMbzsJjDy4uqRbSolcZGg0OtGpL3YF38R0gwM6TkmVt2KVplDHx/+Zvv56ZtAS204w==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.6.1:
-    resolution: {integrity: sha512-cbohkdfEaR0RGhwdDR7YghiGya8LIIx6VdITdhwp3Sf4P4kZHk8ZahFFqtXl/DYTHn9kOsDdL9j1TiY+yZZSrg==}
+  sst-linux-x64@3.6.9:
+    resolution: {integrity: sha512-+391/HBccCHHDunc9yYiAz0e44W8uvHRVAcd1xOtVKDEZFvaX3JoFvcvSRmzsVBmynZhmJoxUnliFpEDOzhOxQ==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.6.1:
-    resolution: {integrity: sha512-oyo0Jz6SGk9UOANeFeM6wV9XJIPptGbEvrOr4Lczlyn5I4L8itfWjwvuUiFyeqjYaw2Irp/p7/BHYdA2/mkKtw==}
+  sst-linux-x86@3.6.9:
+    resolution: {integrity: sha512-ISjZUs9eqr7lzyHkX1JKuKzGGj+jOkC7Aios0LZtD/qSXKMYivBOWolavfWJCMB7Aua9o7QDQtuMd/AwM/oU2w==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.6.1:
-    resolution: {integrity: sha512-1QXem0GjTWMScc9z+Ejg+cqAwWWaQP5YxIcGu78Q95cngyuCxAqTF8OTToU8mctX26EV3IH3xLAE+hzkDNNljw==}
+  sst@3.6.9:
+    resolution: {integrity: sha512-JOxSjcgyqcILSPaW1T7D9Xg5ikfRRRvIyiUOJI9WoP247tBzz8l4iYlJhiCeEjxCTpkpsN5HaQD6ARfS7Meyug==}
     hasBin: true
 
   stream-shift@1.0.3:
@@ -4897,11 +4897,11 @@ snapshots:
       es-errors: 1.3.0
       get-intrinsic: 1.2.7
 
-  get-tsconfig@4.7.2:
+  get-tsconfig@4.10.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  get-tsconfig@4.9.0:
+  get-tsconfig@4.7.2:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
@@ -5710,32 +5710,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.6.1:
+  sst-darwin-arm64@3.6.9:
     optional: true
 
-  sst-darwin-x64@3.6.1:
+  sst-darwin-x64@3.6.9:
     optional: true
 
-  sst-linux-arm64@3.6.1:
+  sst-linux-arm64@3.6.9:
     optional: true
 
-  sst-linux-x64@3.6.1:
+  sst-linux-x64@3.6.9:
     optional: true
 
-  sst-linux-x86@3.6.1:
+  sst-linux-x86@3.6.9:
     optional: true
 
-  sst@3.6.1:
+  sst@3.6.9:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.6.1
-      sst-darwin-x64: 3.6.1
-      sst-linux-arm64: 3.6.1
-      sst-linux-x64: 3.6.1
-      sst-linux-x86: 3.6.1
+      sst-darwin-arm64: 3.6.9
+      sst-darwin-x64: 3.6.9
+      sst-linux-arm64: 3.6.9
+      sst-linux-x64: 3.6.9
+      sst-linux-x86: 3.6.9
 
   stream-shift@1.0.3:
     optional: true
@@ -5926,7 +5926,7 @@ snapshots:
   tsx@4.19.2:
     dependencies:
       esbuild: 0.23.1
-      get-tsconfig: 4.9.0
+      get-tsconfig: 4.10.0
     optionalDependencies:
       fsevents: 2.3.3
 
