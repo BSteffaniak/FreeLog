@@ -19,10 +19,10 @@
         "validate": "pnpm pretty && pnpm lint && pnpm typecheck"
     },
     "devDependencies": {
-        "@aws-sdk/client-ssm": "^3.731.1",
+        "@aws-sdk/client-ssm": "^3.734.0",
         "@tsconfig/node18": "^18.2.4",
         "@types/aws-lambda": "8.10.143",
-        "@types/node": "^20.17.14",
+        "@types/node": "^20.17.16",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
         "aws-cdk-lib": "2.142.1",
