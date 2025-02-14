@@ -18,8 +18,8 @@ importers:
         specifier: 8.10.143
         version: 8.10.143
       '@types/node':
-        specifier: ^20.17.17
-        version: 20.17.17
+        specifier: ^20.17.19
+        version: 20.17.19
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.7.3))(eslint@8.57.1)(typescript@5.7.3)
@@ -54,11 +54,11 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0(eslint@8.57.1)
       prettier:
-        specifier: ^3.5.0
-        version: 3.5.0
+        specifier: ^3.5.1
+        version: 3.5.1
       sst:
-        specifier: ^3.8.8
-        version: 3.8.8
+        specifier: ^3.9.0
+        version: 3.9.0
       tsup:
         specifier: ^8.3.6
         version: 8.3.6(tsx@4.19.2)(typescript@5.7.3)
@@ -1067,8 +1067,8 @@ packages:
   '@types/node@20.11.20':
     resolution: {integrity: sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==}
 
-  '@types/node@20.17.17':
-    resolution: {integrity: sha512-/WndGO4kIfMicEQLTi/mDANUu/iVUhT7KboZPdEqqHQ4aTS+3qT3U5gIqWDFV+XouorjfgGqvKILJeHhuQgFYg==}
+  '@types/node@20.17.19':
+    resolution: {integrity: sha512-LEwC7o1ifqg/6r2gn9Dns0f1rhK+fPFDoMiceTJ6kWmVk6bgXBI/9IOWfVan4WiAavK9pIVWdX0/e3J+eEUh5A==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
@@ -2333,8 +2333,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.5.0:
-    resolution: {integrity: sha512-quyMrVt6svPS7CjQ9gKb3GLEX/rl3BCL2oa/QkNcXv4YNVBC9olt3s+H7ukto06q7B1Qz46PbrKLO34PR6vXcA==}
+  prettier@3.5.1:
+    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2523,33 +2523,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.8.8:
-    resolution: {integrity: sha512-FJyYk63zZ89pXf/PZnZrOHTU9reuP2IE6kdFlakxukS0SX2sGHv0BXkoiS1f+9p3VDf+74+VKDrZGn1ECIiNmA==}
+  sst-darwin-arm64@3.9.0:
+    resolution: {integrity: sha512-m+ulk47abORKnv3+k+TIfCZ45D9rwBBIBEXWOXdAnamDQAvAxTDG8XWv+Lw2VwWI9pvs6Xgccgf7irDp8zL9Jg==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.8.8:
-    resolution: {integrity: sha512-0jNpXXkSW1pGI5vVg2je8mlmCegjJJmWVSrUXb6wJqSVYySuoZIwqQB5jvCePts3YM+/NnW5INeUFurbC6j/dQ==}
+  sst-darwin-x64@3.9.0:
+    resolution: {integrity: sha512-UTlLn3XX3scdRGhUkHZUXBIXHPvejTs7G+LikM7ypBfsE/226F9H9XX5zLNalGQBQ1CxWuQd5ykggEvgkVJiEg==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.8.8:
-    resolution: {integrity: sha512-vl/H5EDkHeFW2nnOIEOUV/oNE4ns/I1F/KtK/faDY2VotxuPjT3Uvtqdg1A2mItvyx1FKwI8/KgP9CytVagRrw==}
+  sst-linux-arm64@3.9.0:
+    resolution: {integrity: sha512-TVeZjw8Eyrgdynar7OimW45URFrQxO9OyqpKRq4M2uRJsfmbVnE/v2MZhM8n1Imz6OtemQUqZSaquQQy847ZXA==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.8.8:
-    resolution: {integrity: sha512-S+iCcFhtGqK5px0+oJxic5TSHLZdulWfy+qYzSMl+e3evQGIcJmwHjLuEwlmyuwwgs0+dZYt9NYhLTKyUThLDA==}
+  sst-linux-x64@3.9.0:
+    resolution: {integrity: sha512-oUfCgpBFvMKFFJQxM6x7o0d9D7muzD6Z3NbLzg9ORHHNZvofSnVl7AjuEA7KNQlczue1wcRqqmo6X0+aKvcdpQ==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.8.8:
-    resolution: {integrity: sha512-lfGHfbL7U196Y8MtqCvBNOz9qaNsWGldPj6HLR6KsW5LTNxFYYehGVebB+tj0uK3gjWPou1bGPASt9/Q69VwIQ==}
+  sst-linux-x86@3.9.0:
+    resolution: {integrity: sha512-Sq7UTyNhp22n2PN7HneCHR3Fm7e+u1cOcbgFD58BRqhzafm5SV173P3p/E2b2vPsf07uJagOhHtII2eim4w08A==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.8.8:
-    resolution: {integrity: sha512-1de39fi3m2TdY2v/C/58qRx1fXbM8Nmg2+7B7J2fXabYTxYRP/ky3K7Jk/9aS649U5iI2Gmnvs3ltW7wO1/8FA==}
+  sst@3.9.0:
+    resolution: {integrity: sha512-YRxtTkWNq9CHzTLPsNvoJ+gQYd4d0BFX5kKg9Oll7hI1orI5mqD2WqtQeTve7TsH9JAQPbRAlXqKkvpWnQOl7A==}
     hasBin: true
 
   stream-shift@1.0.3:
@@ -3907,7 +3907,7 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@20.17.17':
+  '@types/node@20.17.19':
     dependencies:
       undici-types: 6.19.8
 
@@ -3917,7 +3917,7 @@ snapshots:
 
   '@types/ws@8.5.14':
     dependencies:
-      '@types/node': 20.17.17
+      '@types/node': 20.17.19
     optional: true
 
   '@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.7.3))(eslint@8.57.1)(typescript@5.7.3)':
@@ -5464,7 +5464,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.5.0: {}
+  prettier@3.5.1: {}
 
   process-nextick-args@2.0.1:
     optional: true
@@ -5719,32 +5719,32 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.8.8:
+  sst-darwin-arm64@3.9.0:
     optional: true
 
-  sst-darwin-x64@3.8.8:
+  sst-darwin-x64@3.9.0:
     optional: true
 
-  sst-linux-arm64@3.8.8:
+  sst-linux-arm64@3.9.0:
     optional: true
 
-  sst-linux-x64@3.8.8:
+  sst-linux-x64@3.9.0:
     optional: true
 
-  sst-linux-x86@3.8.8:
+  sst-linux-x86@3.9.0:
     optional: true
 
-  sst@3.8.8:
+  sst@3.9.0:
     dependencies:
       aws4fetch: 1.0.20
       jose: 5.2.3
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.8.8
-      sst-darwin-x64: 3.8.8
-      sst-linux-arm64: 3.8.8
-      sst-linux-x64: 3.8.8
-      sst-linux-x86: 3.8.8
+      sst-darwin-arm64: 3.9.0
+      sst-darwin-x64: 3.9.0
+      sst-linux-arm64: 3.9.0
+      sst-linux-x64: 3.9.0
+      sst-linux-x86: 3.9.0
 
   stream-shift@1.0.3:
     optional: true
