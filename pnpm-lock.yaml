@@ -2226,8 +2226,8 @@ packages:
     resolution: {integrity: sha512-gXah6aZrcUxjWg2zR2MwouP2eHlCBzdV4pygudehaKXSGW4v2AsRQUK+lwwXhii6KFZcunEnmSUoYp5CXibxtA==}
     engines: {node: '>= 0.4'}
 
-  oidc-token-hash@5.0.3:
-    resolution: {integrity: sha512-IF4PcGgzAr6XXSff26Sk/+P4KZFJVuHAJZj3wgO3vX2bMdNVp/QXTP3P7CEm9V1IdG8lDLY3HhiqpsE/nOwpPw==}
+  oidc-token-hash@5.1.0:
+    resolution: {integrity: sha512-y0W+X7Ppo7oZX6eovsRkuzcSM40Bicg2JEJkDJ4irIt1wsYAP5MLSNv+QAogO8xivMffw/9OvV3um1pxXgt1uA==}
     engines: {node: ^10.13.0 || >=12.0.0}
 
   once@1.4.0:
@@ -2611,8 +2611,8 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  strnum@1.1.0:
-    resolution: {integrity: sha512-a4NGarQIHRhvr+k8VXaHg6TMU6f3YEmi5CAb6RYgX2gwbGDBNMbr6coC6g0wmif5dLjHtmHUVD/qOxPq7D0tnQ==}
+  strnum@1.1.1:
+    resolution: {integrity: sha512-O7aCHfYCamLCctjAiaucmE+fHf2DYHkus2OKCn4Wv03sykfFtgeECn505X6K4mPl8CRNd/qurC9guq+ynoN4pw==}
 
   sucrase@3.35.0:
     resolution: {integrity: sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==}
@@ -2829,8 +2829,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.18.0:
-    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+  ws@8.18.1:
+    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -3466,10 +3466,10 @@ snapshots:
       '@types/ws': 8.5.14
       duplexify: 3.7.1
       inherits: 2.0.4
-      isomorphic-ws: 4.0.1(ws@8.18.0)
+      isomorphic-ws: 4.0.1(ws@8.18.1)
       readable-stream: 2.3.8
       safe-buffer: 5.2.1
-      ws: 8.18.0
+      ws: 8.18.1
       xtend: 4.0.2
     transitivePeerDependencies:
       - bufferutil
@@ -4821,7 +4821,7 @@ snapshots:
 
   fast-xml-parser@4.4.1:
     dependencies:
-      strnum: 1.1.0
+      strnum: 1.1.1
 
   fastq@1.19.0:
     dependencies:
@@ -5149,9 +5149,9 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isomorphic-ws@4.0.1(ws@8.18.0):
+  isomorphic-ws@4.0.1(ws@8.18.1):
     dependencies:
-      ws: 8.18.0
+      ws: 8.18.1
     optional: true
 
   iterator.prototype@1.1.5:
@@ -5391,7 +5391,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.1.1
 
-  oidc-token-hash@5.0.3: {}
+  oidc-token-hash@5.1.0: {}
 
   once@1.4.0:
     dependencies:
@@ -5406,7 +5406,7 @@ snapshots:
       jose: 4.15.9
       lru-cache: 6.0.0
       object-hash: 2.2.0
-      oidc-token-hash: 5.0.3
+      oidc-token-hash: 5.1.0
 
   optionator@0.9.4:
     dependencies:
@@ -5835,7 +5835,7 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  strnum@1.1.0: {}
+  strnum@1.1.1: {}
 
   sucrase@3.35.0:
     dependencies:
@@ -6094,7 +6094,7 @@ snapshots:
   ws@7.5.10:
     optional: true
 
-  ws@8.18.0:
+  ws@8.18.1:
     optional: true
 
   xtend@4.0.2:
