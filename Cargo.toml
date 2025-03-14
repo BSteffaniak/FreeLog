@@ -17,7 +17,7 @@ actix-web = "4.10.2"
 awc = "3.6.0"
 aws-config = { version = "1.6.0", features = ["behavior-version-latest"] }
 aws-sdk-cloudwatch = "1.68.0"
-aws-sdk-cloudwatchlogs = "1.73.0"
+aws-sdk-cloudwatchlogs = "1.74.0"
 aws-smithy-runtime-api = "1.7.4"
 derive_builder = "0.20.2"
 env_logger = "0.11"
@@ -39,9 +39,9 @@ serde_json = "1.0.140"
 strum = "0.27.1"
 strum_macros = "0.27.1"
 thiserror = "2.0.12"
-tokio = { version = "1.44.0", features = ["io-util", "sync"] }
+tokio = { version = "1.44.1", features = ["io-util", "sync"] }
 tokio-stream = "0.1.17"
-tokio-util = "0.7.13"
+tokio-util = "0.7.14"
 tracing = "0.1.41"
 tracing-log = "0.2.0"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
