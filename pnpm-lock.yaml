@@ -57,8 +57,8 @@ importers:
         specifier: ^3.5.3
         version: 3.5.3
       sst:
-        specifier: ^3.9.39
-        version: 3.9.39
+        specifier: ^3.9.44
+        version: 3.9.44
       tsup:
         specifier: ^8.4.0
         version: 8.4.0(tsx@4.19.3)(typescript@5.8.2)
@@ -1128,8 +1128,8 @@ packages:
     resolution: {integrity: sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==}
     engines: {node: '>=4'}
 
-  axios@1.8.3:
-    resolution: {integrity: sha512-iP4DebzoNlP/YN2dpwCgb8zoCmhtkajzS48JvwmkSkXvPI3DHc7m+XYL5tGnSlJtR6nImXZmdCuN5aP8dh1d8A==}
+  axios@1.8.4:
+    resolution: {integrity: sha512-eBSYY4Y68NNlHbHBMdeDmKNtDgXWhQsJcGqzO3iLUM0GraQFSS9cVgPX5I9b3lbdFKyYoAEGAZF1DwhTaljNAw==}
 
   axobject-query@3.2.4:
     resolution: {integrity: sha512-aPTElBrbifBU1krmZxGZOlBkslORe7Ll7+BDnI50Wy4LgOt69luMgevkDfTq1O/ZgprooPCtWpjCwKSZw/iZ4A==}
@@ -2616,33 +2616,33 @@ packages:
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
 
-  sst-darwin-arm64@3.9.39:
-    resolution: {integrity: sha512-uDr1CIRoFv8atS+WgR2vj6SA4ELUhTSfpMTzV48AleQiiLwzvMLVWxhJr1b8c9rwrSPymojk17sL6b2sscpvKQ==}
+  sst-darwin-arm64@3.9.44:
+    resolution: {integrity: sha512-51B0GO+otlE2lOvvh3u4yL6RLc64yoaZv37d6rpCKQ9lb7IWacTwjDbAHffB2bWYE9n+heU/8H66UEhOUGy/9A==}
     cpu: [arm64]
     os: [darwin]
 
-  sst-darwin-x64@3.9.39:
-    resolution: {integrity: sha512-NJ1zRTy1zqf+vmqCKADbK1ijUB7At2ONjR594H2NvYcjgLFDtKk8KHjoAQI4DQpFd0Swx/2QfEu5xv722rRXxw==}
+  sst-darwin-x64@3.9.44:
+    resolution: {integrity: sha512-t6hKJbtrM2U6X3x93CkoG2r/SSEZQ9azSvRejnKf1zgy5rj/JFgrrnGseJbvU5a1AwWCeYg1J5GQWQGSW2ACxA==}
     cpu: [x64]
     os: [darwin]
 
-  sst-linux-arm64@3.9.39:
-    resolution: {integrity: sha512-QgvvxVyrDjxkbGn/UDKM1v2bbecXeIbc1OFs+ixm90vMx3JTmW2wISYtK7ek9GL7Ls9b4oEdbyP5UiKpeoNVLw==}
+  sst-linux-arm64@3.9.44:
+    resolution: {integrity: sha512-MUzSWd63s86P2v5gD4b5jMrbl0fuY+g981oseFc8tnjuR8f1zD6KTPsdCDDnaAPAFheKSnv7cHHIk4cnNXSpJA==}
     cpu: [arm64]
     os: [linux]
 
-  sst-linux-x64@3.9.39:
-    resolution: {integrity: sha512-GS4QU5fpAWOInBXgFL/IrTtgHhnQGvmvVyuwPW7q3xE/Zh9W4ClNzRy9XPu8Kw176XB624aNzuZ7zAAz8c22mQ==}
+  sst-linux-x64@3.9.44:
+    resolution: {integrity: sha512-cvHpJVzlruJzo8uoQW7tA1WLHMPmE1DbgTSdESqTKvGu84Ou5zwY8QkZRg8+DLxM3TJhsvp5e5cEnoxPSMzo9w==}
     cpu: [x64]
     os: [linux]
 
-  sst-linux-x86@3.9.39:
-    resolution: {integrity: sha512-AklTtNIaVByxv9KWRj9ADxT7ah/vugi+xTDiFHKqc02fuHvWKndAMIR0GoSc7HWJs0QAfbKww+sYMgO/ARehsw==}
+  sst-linux-x86@3.9.44:
+    resolution: {integrity: sha512-1S5ly2uS1QaLVoaQXsRE03yMooDjUFKGrzK1ArtleqQUKvLEEEH859UunND2skf4VCenbuofw9bACrPsUqh7Ew==}
     cpu: [x86]
     os: [linux]
 
-  sst@3.9.39:
-    resolution: {integrity: sha512-kPoMXAuslfbERc5UY7YjIBvvs7zNGKcXX53gC46absskMtimg8kBXu2CZaWjz5EHMIREvWfr3scz++uEKCUhRw==}
+  sst@3.9.44:
+    resolution: {integrity: sha512-jCUbx/isaoPCez+YwStt12RRWz17AHNLMTYGu5DJKQzlfp4ZpvRFD6T77K/nJ4kVdmGKp/5LUKIh8Udxi42hiA==}
     hasBin: true
 
   statuses@2.0.1:
@@ -4214,7 +4214,7 @@ snapshots:
     dependencies:
       '@aws-sdk/util-utf8-browser': 3.259.0
       '@httptoolkit/websocket-stream': 6.0.1
-      axios: 1.8.3
+      axios: 1.8.4
       buffer: 6.0.3
       crypto-js: 4.2.0
       mqtt: 4.3.8
@@ -4243,7 +4243,7 @@ snapshots:
 
   axe-core@4.7.0: {}
 
-  axios@1.8.3:
+  axios@1.8.4:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.2
@@ -6043,22 +6043,22 @@ snapshots:
       readable-stream: 3.6.2
     optional: true
 
-  sst-darwin-arm64@3.9.39:
+  sst-darwin-arm64@3.9.44:
     optional: true
 
-  sst-darwin-x64@3.9.39:
+  sst-darwin-x64@3.9.44:
     optional: true
 
-  sst-linux-arm64@3.9.39:
+  sst-linux-arm64@3.9.44:
     optional: true
 
-  sst-linux-x64@3.9.39:
+  sst-linux-x64@3.9.44:
     optional: true
 
-  sst-linux-x86@3.9.39:
+  sst-linux-x86@3.9.44:
     optional: true
 
-  sst@3.9.39:
+  sst@3.9.44:
     dependencies:
       aws-sdk: 2.1692.0
       aws4fetch: 1.0.18
@@ -6066,11 +6066,11 @@ snapshots:
       opencontrol: 0.0.6
       openid-client: 5.6.4
     optionalDependencies:
-      sst-darwin-arm64: 3.9.39
-      sst-darwin-x64: 3.9.39
-      sst-linux-arm64: 3.9.39
-      sst-linux-x64: 3.9.39
-      sst-linux-x86: 3.9.39
+      sst-darwin-arm64: 3.9.44
+      sst-darwin-x64: 3.9.44
+      sst-linux-arm64: 3.9.44
+      sst-linux-x64: 3.9.44
+      sst-linux-x86: 3.9.44
     transitivePeerDependencies:
       - supports-color
 
