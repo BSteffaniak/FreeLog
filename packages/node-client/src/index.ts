@@ -242,27 +242,27 @@ export function logComponents(level: LogLevel, components: LogComponent[]) {
 
 function shimConsole() {
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.trace = function(...args: any[]) {
+    console.trace = function (...args: any[]) {
         log('TRACE', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.debug = function(...args: any[]) {
+    console.debug = function (...args: any[]) {
         log('DEBUG', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.log = function(...args: any[]) {
+    console.log = function (...args: any[]) {
         log('INFO', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.warn = function(...args: any[]) {
+    console.warn = function (...args: any[]) {
         log('WARN', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.error = function(...args: any[]) {
+    console.error = function (...args: any[]) {
         log('ERROR', ...args);
     };
 }
