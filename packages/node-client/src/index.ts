@@ -10,7 +10,7 @@ export type LogLevel = 'TRACE' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR';
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 export type Config = {
-    logWriterApiUrl: string;
+    logWriterApiUrl: string | null;
     logLevel: LogLevel;
     shimConsole: boolean;
     autoFlush: boolean;
@@ -30,7 +30,7 @@ let flushTimeout: ReturnType<typeof setTimeout> | undefined;
 let bufferSize = 0;
 let initialized = false;
 const defaultConfig: Config = {
-    logWriterApiUrl: '',
+    logWriterApiUrl: null,
     logLevel: 'ERROR',
     shimConsole: false,
     autoFlush: true,
@@ -120,7 +120,11 @@ export function removeProperty(key: string) {
 export function init(
     opts: PartialBy<
         Config,
-        'logLevel' | 'shimConsole' | 'autoFlush' | 'autoFlushOnClose'
+        | 'logLevel'
+        | 'shimConsole'
+        | 'autoFlush'
+        | 'autoFlushOnClose'
+        | 'logWriterApiUrl'
     >,
 ) {
     initialized = true;
@@ -168,6 +172,7 @@ function flushAfterDelay(delay: number = 1000) {
 
 export async function flush() {
     if (!initialized) throw new Error(`Logger not initialized`);
+    if (!config.logWriterApiUrl) return;
 
     if (flushTimeout) {
         clearTimeout(flushTimeout);
@@ -237,27 +242,27 @@ export function logComponents(level: LogLevel, components: LogComponent[]) {
 
 function shimConsole() {
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.trace = function (...args: any[]) {
+    console.trace = function(...args: any[]) {
         log('TRACE', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.debug = function (...args: any[]) {
+    console.debug = function(...args: any[]) {
         log('DEBUG', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.log = function (...args: any[]) {
+    console.log = function(...args: any[]) {
         log('INFO', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.warn = function (...args: any[]) {
+    console.warn = function(...args: any[]) {
         log('WARN', ...args);
     };
 
     // eslint-disable-next-line no-console, @typescript-eslint/no-explicit-any
-    console.error = function (...args: any[]) {
+    console.error = function(...args: any[]) {
         log('ERROR', ...args);
     };
 }
