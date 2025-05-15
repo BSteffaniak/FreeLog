@@ -490,9 +490,9 @@ dependencies = [
 
 [[package]]
 name = "aws-sdk-cloudwatchlogs"
-version = "1.81.0"
+version = "1.82.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7d91308c3b517f2bf103503ea33ed44721493070e3202ac253b9ac1a0e47a7df"
+checksum = "c75a69ede98e1b3596f18f01659e69ff6e327d3afa74c4eafe84949d08a859a4"
 dependencies = [
  "aws-credential-types",
  "aws-runtime",
@@ -862,9 +862,9 @@ dependencies = [
 
 [[package]]
 name = "bitflags"
-version = "2.9.0"
+version = "2.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c8214115b7bf84099f1309324e63141d4c5d7cc26862f97a0a857dbefe165bd"
+checksum = "1b8e56985ec62d17e9c1001dc89c88ecd7dc08e47eba5ec7c29c7b5eeecde967"
 
 [[package]]
 name = "block-buffer"
