@@ -17,7 +17,7 @@ actix-web = "4.11.0"
 awc = "3.7.0"
 aws-config = { version = "1.8.0", features = ["behavior-version-latest"] }
 aws-sdk-cloudwatch = "1.79.0"
-aws-sdk-cloudwatchlogs = "1.88.0"
+aws-sdk-cloudwatchlogs = "1.89.0"
 aws-smithy-runtime-api = "1.8.1"
 derive_builder = "0.20.2"
 env_logger = "0.11"
