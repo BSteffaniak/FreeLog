@@ -15,9 +15,9 @@ actix-cors = "0.7.1"
 actix-files = "0.6.6"
 actix-web = "4.11.0"
 awc = "3.7.0"
-aws-config = { version = "1.8.0", features = ["behavior-version-latest"] }
-aws-sdk-cloudwatch = "1.79.0"
-aws-sdk-cloudwatchlogs = "1.90.0"
+aws-config = { version = "1.8.1", features = ["behavior-version-latest"] }
+aws-sdk-cloudwatch = "1.80.0"
+aws-sdk-cloudwatchlogs = "1.91.0"
 aws-smithy-runtime-api = "1.8.1"
 derive_builder = "0.20.2"
 env_logger = "0.11"
@@ -28,7 +28,7 @@ lambda-web = { version = "0.2.1", features = ["actix4"] }
 lambda_runtime = "0.14.2"
 log = { version = "0.4", features = ["release_max_level_trace"] }
 pretty_env_logger = "0.5"
-reqwest = { version = "0.12.21", default-features = false, features = [
+reqwest = { version = "0.12.22", default-features = false, features = [
     "blocking",
     "json",
     "rustls-tls",
