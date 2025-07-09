@@ -18,7 +18,7 @@ awc = "3.7.0"
 aws-config = { version = "1.8.1", features = ["behavior-version-latest"] }
 aws-sdk-cloudwatch = "1.80.0"
 aws-sdk-cloudwatchlogs = "1.91.0"
-aws-smithy-runtime-api = "1.8.1"
+aws-smithy-runtime-api = "1.8.3"
 derive_builder = "0.20.2"
 env_logger = "0.11"
 futures-util = { version = "0.3.31", default-features = false, features = [
