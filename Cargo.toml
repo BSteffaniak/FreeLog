@@ -36,8 +36,8 @@ reqwest = { version = "0.12.22", default-features = false, features = [
 ] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.141"
-strum = "0.27.1"
-strum_macros = "0.27.1"
+strum = "0.27.2"
+strum_macros = "0.27.2"
 thiserror = "2.0.12"
 tokio = { version = "1.46.1", features = ["io-util", "sync"] }
 tokio-stream = "0.1.17"
