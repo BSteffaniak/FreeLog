@@ -41,7 +41,7 @@ strum_macros = "0.27.2"
 thiserror = "2.0.12"
 tokio = { version = "1.47.1", features = ["io-util", "sync"] }
 tokio-stream = "0.1.17"
-tokio-util = "0.7.15"
+tokio-util = "0.7.16"
 tracing = "0.1.41"
 tracing-log = "0.2.0"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
